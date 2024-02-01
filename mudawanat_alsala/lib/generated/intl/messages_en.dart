@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appLanguage": MessageLookupByLibrary.simpleMessage("App Language"),
         "appTheme": MessageLookupByLibrary.simpleMessage("App Theme"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Mudawanat Alsala"),
+        "appVersion": MessageLookupByLibrary.simpleMessage("App Version"),
         "calender": MessageLookupByLibrary.simpleMessage("Calender"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "count": MessageLookupByLibrary.simpleMessage("Count"),

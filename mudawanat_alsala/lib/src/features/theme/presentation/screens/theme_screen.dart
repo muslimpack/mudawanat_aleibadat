@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:mudawanat_alsala/generated/l10n.dart';
+import 'package:mudawanat_alsala/src/core/constants/constants.dart';
 import 'package:mudawanat_alsala/src/features/theme/presentation/controller/cubit/theme_cubit.dart';
 
 class ThemeScreen extends StatelessWidget {
@@ -107,6 +108,10 @@ class ThemeScreen extends StatelessWidget {
                         .toList(),
                   ),
                 ),
+              ),
+              ListTile(
+                title: Text(S.of(context).appVersion),
+                subtitle: const Text(kAppVersion),
               ),
             ],
           ),

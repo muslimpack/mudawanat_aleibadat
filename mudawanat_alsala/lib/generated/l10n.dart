@@ -90,6 +90,16 @@ class S {
     );
   }
 
+  /// `App Version`
+  String get appVersion {
+    return Intl.message(
+      'App Version',
+      name: 'appVersion',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Calender`
   String get calender {
     return Intl.message(

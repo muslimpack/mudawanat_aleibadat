@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appLanguage": MessageLookupByLibrary.simpleMessage("لغة التطبيق"),
         "appTheme": MessageLookupByLibrary.simpleMessage("مظهر التطبيق"),
         "appTitle": MessageLookupByLibrary.simpleMessage("مدونة الصلاة"),
+        "appVersion": MessageLookupByLibrary.simpleMessage("إصدار التطبيق"),
         "calender": MessageLookupByLibrary.simpleMessage("التقويم"),
         "close": MessageLookupByLibrary.simpleMessage("اغلاق"),
         "count": MessageLookupByLibrary.simpleMessage("الإجمالي"),
