@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> with WindowListener {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
         useMaterial3: true,
       ),
-      home: const Placeholder(),
+      home: const Scaffold(),
     );
   }
 }
