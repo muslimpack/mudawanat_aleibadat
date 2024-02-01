@@ -7,6 +7,7 @@ import 'package:mudawanat_alsala/src/core/managers/file_manager.dart';
 import 'package:mudawanat_alsala/src/core/repos/local_storage_repo.dart';
 import 'package:mudawanat_alsala/src/core/utils/app_bloc_observer.dart';
 import 'package:mudawanat_alsala/src/core/utils/device_bars.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -20,8 +21,9 @@ Future<void> initServices() async {
     databaseFactory = databaseFactoryFfi;
   }
 
-  await FileManager.init();
+  await initHive();
   await LocalStorageRepo.init();
+  await FileManager.init();
 
   deviceBarsTransparent();
 
@@ -37,14 +39,12 @@ Future<void> initServices() async {
       await windowManager.focus();
     });
   }
-
-  await initHive();
 }
 
 Future initHive() async {
   await Hive.initFlutter();
   if (!kIsWeb) {
-    final dir = LocalStorageRepo.appFolderPath;
-    Hive.init(dir);
+    final dir = await getApplicationSupportDirectory();
+    Hive.init(dir.path);
   }
 }
