@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:mudawanat_alsala/src/core/extension/extension_bool.dart';
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class DailyObligatoryPrayers {
   final bool fajr;
@@ -41,11 +43,11 @@ class DailyObligatoryPrayers {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fajr': fajr,
-      'dhuhr': dhuhr,
-      'asr': asr,
-      'maghrib': maghrib,
-      'ishaa': ishaa,
+      'fajr': fajr.toInt(),
+      'dhuhr': dhuhr.toInt(),
+      'asr': asr.toInt(),
+      'maghrib': maghrib.toInt(),
+      'ishaa': ishaa.toInt(),
     };
   }
 

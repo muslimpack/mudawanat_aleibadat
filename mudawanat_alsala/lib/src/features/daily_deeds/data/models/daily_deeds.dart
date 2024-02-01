@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:mudawanat_alsala/src/core/extension/date_time.dart';
+import 'package:mudawanat_alsala/src/core/extension/extension_bool.dart';
 import 'package:mudawanat_alsala/src/features/daily_deeds/data/models/additional_prayers.dart';
 import 'package:mudawanat_alsala/src/features/daily_deeds/data/models/obligatory_prayer.dart';
 
@@ -42,7 +43,7 @@ class DailyDeeds {
     return <String, dynamic>{
       ...additionalPrayers.toMap(),
       ...obligatoryPrayers.toMap(),
-      'fasting': fasting,
+      'fasting': fasting.toInt(),
       'date': date.dateOnly.millisecondsSinceEpoch,
     };
   }
