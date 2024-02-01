@@ -19,6 +19,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   font_awesome_flutter: ^10.7.0
+  get: ^4.6.6
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   intl: ^0.18.1
@@ -31,7 +32,6 @@ dependencies:
   syncfusion_flutter_calendar: ^24.2.3
   url_launcher: ^6.2.4
   window_manager: ^0.3.8
-  get: ^4.6.6
 
 dev_dependencies:
   flutter_lints: ^2.0.0

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mudawanat_alsala/generated/l10n.dart';
 import 'package:mudawanat_alsala/src/core/shared/loading.dart';
-import 'package:mudawanat_alsala/src/features/daily_deeds/presentation/components/liquid_linear_progress.dart';
+import 'package:mudawanat_alsala/src/features/daily_deeds/presentation/components/liquid_circular_progress.dart';
 import 'package:mudawanat_alsala/src/features/daily_deeds/presentation/components/stats_card_header.dart';
 import 'package:mudawanat_alsala/src/features/daily_deeds/presentation/components/stats_tile.dart';
 import 'package:mudawanat_alsala/src/features/daily_deeds/presentation/controller/daily_deeds_stats_controller.dart';

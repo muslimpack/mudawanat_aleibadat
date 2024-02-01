@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mudawanat_alsala/src/features/daily_deeds/presentation/components/liquid_circular_progress.dart';
+import 'package:mudawanat_alsala/src/features/daily_deeds/presentation/components/liquid_linear_progress.dart';
 
 class StatsTile extends StatelessWidget {
   final String label;
