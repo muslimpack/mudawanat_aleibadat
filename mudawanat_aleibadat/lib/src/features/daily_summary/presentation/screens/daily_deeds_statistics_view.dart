@@ -5,7 +5,7 @@ import 'package:mudawanat_aleibadat/src/core/shared/loading.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/liquid_circular_progress.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_summary/presentation/components/stats_card_header.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_summary/presentation/components/stats_tile.dart';
-import 'package:mudawanat_aleibadat/src/features/daily_summary/presentation/controller/daily_deeds_stats_controller.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_summary/presentation/controller/deeds_summary_controller.dart';
 
 class DailyDeedsStatisticsView extends StatelessWidget {
   const DailyDeedsStatisticsView({super.key});
@@ -13,7 +13,7 @@ class DailyDeedsStatisticsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
-      init: DailyDeedsStatisticsController(),
+      init: DeedsSummaryController(),
       builder: (controller) {
         return controller.isLoading
             ? const Loading()

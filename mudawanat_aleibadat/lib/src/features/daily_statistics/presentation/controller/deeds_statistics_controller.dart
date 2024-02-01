@@ -3,7 +3,7 @@ import 'package:mudawanat_aleibadat/generated/l10n.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/daily_deeds_repo.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_summary/data/models/stats_model.dart';
 
-class DailyPlotsController extends GetxController {
+class DeedsStatisticsController extends GetxController {
   late final int totalDays;
   bool isLoading = true;
   final List<StatsElement> obligatoryElements = [];
