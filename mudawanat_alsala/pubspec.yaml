@@ -24,6 +24,8 @@ dependencies:
   syncfusion_flutter_calendar: ^24.2.3
   lint: ^2.3.0
   font_awesome_flutter: ^10.7.0
+  sqflite_common_ffi: ^2.3.2
+  window_manager: ^0.3.8
 
 dev_dependencies:
   flutter_test:

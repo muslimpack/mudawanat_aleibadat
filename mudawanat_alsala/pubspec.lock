@@ -152,6 +152,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.19.0"
+  js:
+    dependency: transitive
+    description:
+      name: js
+      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.7"
   lint:
     dependency: "direct main"
     description:
@@ -280,6 +288,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.1"
+  screen_retriever:
+    dependency: transitive
+    description:
+      name: screen_retriever
+      sha256: "6ee02c8a1158e6dae7ca430da79436e3b1c9563c8cf02f524af997c201ac2b90"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.9"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -309,6 +325,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.5.3"
+  sqflite_common_ffi:
+    dependency: "direct main"
+    description:
+      name: sqflite_common_ffi
+      sha256: d0e3f0d04fdf668e57db8db1df758f56c4193cb429092c708e7bfcc6ab04b27e
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
+  sqlite3:
+    dependency: transitive
+    description:
+      name: sqlite3
+      sha256: c4a4c5a4b2a32e2d0f6837b33d7c91a67903891a5b7dbe706cf4b1f6b0c798c5
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0"
   stack_trace:
     dependency: transitive
     description:
@@ -485,6 +517,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.2.0"
+  window_manager:
+    dependency: "direct main"
+    description:
+      name: window_manager
+      sha256: b3c895bdf936c77b83c5254bec2e6b3f066710c1f89c38b20b8acc382b525494
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.8"
   xdg_directories:
     dependency: transitive
     description:
