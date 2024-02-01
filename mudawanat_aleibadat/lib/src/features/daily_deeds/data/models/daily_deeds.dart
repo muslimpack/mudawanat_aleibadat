@@ -3,11 +3,13 @@ import 'dart:convert';
 import 'package:mudawanat_aleibadat/src/core/extension/date_time.dart';
 import 'package:mudawanat_aleibadat/src/core/extension/extension_bool.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/additional_prayers.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/daily_awrad.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/obligatory_prayer.dart';
 
 class DailyDeeds {
   final DailyAdditionalPrayers additionalPrayers;
   final DailyObligatoryPrayers obligatoryPrayers;
+  final DailyAwrad wird;
   final bool fasting;
   final DateTime date;
 
@@ -15,16 +17,19 @@ class DailyDeeds {
     required this.additionalPrayers,
     required this.obligatoryPrayers,
     required this.fasting,
+    required this.wird,
     required this.date,
   });
 
   DailyDeeds.empty({
     this.fasting = false,
     required this.date,
-  })  : additionalPrayers = DailyAdditionalPrayers.empty(),
+  })  : wird = DailyAwrad.empty(),
+        additionalPrayers = DailyAdditionalPrayers.empty(),
         obligatoryPrayers = DailyObligatoryPrayers.empty();
 
   DailyDeeds copyWith({
+    DailyAwrad? wird,
     DailyAdditionalPrayers? additionalPrayers,
     DailyObligatoryPrayers? obligatoryPrayers,
     bool? fasting,
@@ -35,11 +40,13 @@ class DailyDeeds {
       obligatoryPrayers: obligatoryPrayers ?? this.obligatoryPrayers,
       fasting: fasting ?? this.fasting,
       date: date ?? this.date,
+      wird: wird ?? this.wird,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      ...wird.toMap(),
       ...additionalPrayers.toMap(),
       ...obligatoryPrayers.toMap(),
       'fasting': fasting.toInt(),
@@ -53,6 +60,9 @@ class DailyDeeds {
         map,
       ),
       obligatoryPrayers: DailyObligatoryPrayers.fromMap(
+        map,
+      ),
+      wird: DailyAwrad.fromMap(
         map,
       ),
       fasting: map['fasting'] == 1,

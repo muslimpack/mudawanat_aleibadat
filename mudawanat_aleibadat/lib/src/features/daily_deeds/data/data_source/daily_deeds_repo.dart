@@ -76,7 +76,9 @@ class DailyDeedsRepo {
             dhuhr INTEGER,
             asr INTEGER,
             maghrib INTEGER,
-            ishaa INTEGER
+            ishaa INTEGER,
+            quran INTEGER,
+            azkar INTEGER
           )
         ''');
   }

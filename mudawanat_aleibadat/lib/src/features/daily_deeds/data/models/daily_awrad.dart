@@ -3,20 +3,25 @@ import 'dart:convert';
 
 import 'package:mudawanat_aleibadat/src/core/extension/extension_bool.dart';
 
-class DailyWird {
+class DailyAwrad {
   final bool azkar;
   final int quran;
 
-  DailyWird({
+  DailyAwrad({
     required this.azkar,
     required this.quran,
   });
 
-  DailyWird copyWith({
+  DailyAwrad.empty({
+    this.azkar = false,
+    this.quran = 0,
+  });
+
+  DailyAwrad copyWith({
     bool? azkar,
     int? quran,
   }) {
-    return DailyWird(
+    return DailyAwrad(
       azkar: azkar ?? this.azkar,
       quran: quran ?? this.quran,
     );
@@ -29,8 +34,8 @@ class DailyWird {
     };
   }
 
-  factory DailyWird.fromMap(Map<String, dynamic> map) {
-    return DailyWird(
+  factory DailyAwrad.fromMap(Map<String, dynamic> map) {
+    return DailyAwrad(
       azkar: map['azkar'] == 1,
       quran: map['quran'] as int,
     );
@@ -38,6 +43,6 @@ class DailyWird {
 
   String toJson() => json.encode(toMap());
 
-  factory DailyWird.fromJson(String source) =>
-      DailyWird.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory DailyAwrad.fromJson(String source) =>
+      DailyAwrad.fromMap(json.decode(source) as Map<String, dynamic>);
 }
