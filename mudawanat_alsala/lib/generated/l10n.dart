@@ -50,11 +50,71 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `مدونة الصلاة`
+  /// `App Color`
+  String get appColor {
+    return Intl.message(
+      'App Color',
+      name: 'appColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App Theme`
+  String get appTheme {
+    return Intl.message(
+      'App Theme',
+      name: 'appTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mudawanat Alsala`
   String get appTitle {
     return Intl.message(
-      'مدونة الصلاة',
+      'Mudawanat Alsala',
       name: 'appTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark Mode`
+  String get darkMode {
+    return Intl.message(
+      'Dark Mode',
+      name: 'darkMode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select`
+  String get select {
+    return Intl.message(
+      'Select',
+      name: 'select',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Color`
+  String get selectColor {
+    return Intl.message(
+      'Select Color',
+      name: 'selectColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use Material3`
+  String get useMaterial3 {
+    return Intl.message(
+      'Use Material3',
+      name: 'useMaterial3',
       desc: '',
       args: [],
     );

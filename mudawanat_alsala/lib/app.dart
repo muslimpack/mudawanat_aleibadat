@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mudawanat_alsala/generated/l10n.dart';
 import 'package:mudawanat_alsala/src/core/repos/local_storage_repo.dart';
+import 'package:mudawanat_alsala/src/features/home/presentation/screens/home_screen.dart';
+import 'package:mudawanat_alsala/src/features/theme/presentation/controller/cubit/theme_cubit.dart';
 import 'package:window_manager/window_manager.dart';
 
 class MyApp extends StatefulWidget {
@@ -32,24 +35,34 @@ class _MyAppState extends State<MyApp> with WindowListener {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      supportedLocales: S.delegate.supportedLocales,
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => ThemeCubit()),
       ],
-      onGenerateTitle: (context) => S.of(context).appTitle,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          brightness: Brightness.dark,
-          seedColor: Colors.brown,
-        ),
-        useMaterial3: true,
+      child: BlocBuilder<ThemeCubit, ThemeState>(
+        builder: (context, state) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            supportedLocales: S.delegate.supportedLocales,
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            onGenerateTitle: (context) => S.of(context).appTitle,
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: state.color,
+                brightness: state.brightness,
+              ),
+              fontFamily: "Cairo",
+              useMaterial3: state.useMaterial3,
+            ),
+            home: const HomeScreen(),
+          );
+        },
       ),
-      home: const Scaffold(),
     );
   }
 }

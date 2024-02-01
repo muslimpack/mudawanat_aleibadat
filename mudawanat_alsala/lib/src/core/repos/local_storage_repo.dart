@@ -47,4 +47,40 @@ class LocalStorageRepo {
     final String data = jsonEncode(screenSize);
     return _box.put(desktopWindowSizeKey, data);
   }
+
+  ///* ******* Themes ******* */
+  static const String brightnessKey = "ThemeBrightness";
+
+  static Brightness getBrightness() {
+    final String? brightness = _box.get(brightnessKey) as String?;
+    return brightness == Brightness.light.toString()
+        ? Brightness.light
+        : Brightness.dark;
+  }
+
+  static Future setBrightness(Brightness brightness) async {
+    await _box.put(brightnessKey, brightness.toString());
+  }
+
+  static const String themeUseMaterial3Key = "themeUseMaterial3";
+
+  static bool getUseMaterial3() {
+    final bool? useMaterial3 = _box.get(themeUseMaterial3Key) as bool?;
+    return useMaterial3 ?? true;
+  }
+
+  static Future setUseMaterial3(bool useMaterial3) async {
+    await _box.put(themeUseMaterial3Key, useMaterial3);
+  }
+
+  static const String themeColorKey = "ThemeColor";
+
+  static Color getColor() {
+    final int? colorValue = _box.get(themeColorKey) as int?;
+    return colorValue != null ? Color(colorValue) : Colors.brown;
+  }
+
+  static Future setColor(Color color) async {
+    await _box.put(themeColorKey, color.value);
+  }
 }

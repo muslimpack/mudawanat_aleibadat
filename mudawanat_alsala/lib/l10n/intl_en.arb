@@ -1,3 +1,9 @@
 {
-  "appTitle": "مدونة الصلاة"
+  "appColor": "App Color",
+  "appTheme": "App Theme",
+  "appTitle": "Mudawanat Alsala",
+  "darkMode": "Dark Mode",
+  "select": "Select",
+  "selectColor": "Select Color",
+  "useMaterial3": "Use Material3"
 }
