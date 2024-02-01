@@ -80,7 +80,7 @@ class _ValueCounterState extends State<ValueCounter> {
           onPressed: () {
             _onChanged(value - widget.increaseBy);
           },
-          icon: const Icon(Icons.exposure_minus_1_outlined),
+          icon: const Icon(Icons.remove),
         ),
         if (widget.allowReset)
           IconButton(
