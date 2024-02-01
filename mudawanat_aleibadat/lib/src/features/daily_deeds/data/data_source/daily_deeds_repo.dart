@@ -282,6 +282,40 @@ class DailyDeedsRepo {
     return count;
   }
 
+  Future<Map<DateTime, int>> getSumByDate(List<String> columnNames) async {
+    final Database db = await database;
+
+    final List<Map<String, dynamic>> rows = await db.rawQuery('''
+      SELECT
+        date,
+        ${columnNames.map((col) => 'COALESCE(SUM($col), 0) AS $col').join(', ')}
+      FROM
+        $tableName
+      GROUP BY
+        date
+      ORDER BY
+        date;
+    ''');
+
+    final Map<DateTime, int> result = {};
+
+    for (final Map<String, dynamic> row in rows) {
+      final DateTime date =
+          DateTime.fromMillisecondsSinceEpoch(row['date'] as int);
+      int sum = 0;
+
+      for (final String columnName in columnNames) {
+        sum += row[columnName] as int;
+      }
+
+      result[date] = sum;
+    }
+
+    await db.close();
+
+    return result;
+  }
+
   Future close() async {
     final db = await database;
     db.close();

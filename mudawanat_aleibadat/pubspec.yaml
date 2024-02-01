@@ -12,6 +12,7 @@ dependencies:
   bloc: ^8.1.2
   cupertino_icons: ^1.0.2
   equatable: ^2.0.5
+  fl_chart: ^0.66.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
