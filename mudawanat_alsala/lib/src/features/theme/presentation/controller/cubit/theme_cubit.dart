@@ -12,6 +12,7 @@ class ThemeCubit extends Cubit<ThemeState> {
             brightness: LocalStorageRepo.getBrightness(),
             color: LocalStorageRepo.getColor(),
             useMaterial3: LocalStorageRepo.getUseMaterial3(),
+            locale: LocalStorageRepo.getLocale(),
           ),
         );
 
@@ -28,5 +29,10 @@ class ThemeCubit extends Cubit<ThemeState> {
   Future<void> changeColor(Color color) async {
     await LocalStorageRepo.setColor(color);
     emit(state.copyWith(color: color));
+  }
+
+  Future<void> changeLocale(Locale locale) async {
+    await LocalStorageRepo.changeLocale(locale);
+    emit(state.copyWith(locale: locale));
   }
 }

@@ -1,5 +1,6 @@
 {
   "appColor": "App Color",
+  "appLanguage": "App Language",
   "appTheme": "App Theme",
   "appTitle": "Mudawanat Alsala",
   "calender": "Calender",
@@ -31,6 +32,7 @@
   "prayer_obligatory": "Obligatory Prayers",
   "select": "Select",
   "selectColor": "Select Color",
+  "settings": "Settings",
   "statistics": "Statistics",
   "timesDone": "Done Times",
   "timesMissed": "Times Missed",

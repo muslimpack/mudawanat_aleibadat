@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `App Language`
+  String get appLanguage {
+    return Intl.message(
+      'App Language',
+      name: 'appLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `App Theme`
   String get appTheme {
     return Intl.message(
@@ -365,6 +375,16 @@ class S {
     return Intl.message(
       'Select Color',
       name: 'selectColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
       desc: '',
       args: [],
     );

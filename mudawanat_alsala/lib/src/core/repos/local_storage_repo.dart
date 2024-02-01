@@ -83,4 +83,17 @@ class LocalStorageRepo {
   static Future setColor(Color color) async {
     await _box.put(themeColorKey, color.value);
   }
+
+  ///* ******* app language ******* */
+
+  static const String _localeKey = "locale";
+  static Locale? getLocale() {
+    final value = _box.get(_localeKey) as String?;
+    if (value == null) return null;
+    return Locale(value);
+  }
+
+  static Future changeLocale(Locale locale) async {
+    return _box.put(_localeKey, locale.languageCode);
+  }
 }

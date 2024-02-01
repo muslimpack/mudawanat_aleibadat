@@ -121,18 +121,6 @@ class DailyDeedsRepo {
     await batch.commit(noResult: true);
   }
 
-  Future<void> updateDailyDeeds(DailyDeeds dailyDeeds) async {
-    final Database db = await database;
-
-    await db.update(
-      tableName,
-      dailyDeeds.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-      where: 'date = ?',
-      whereArgs: [dailyDeeds.date.millisecondsSinceEpoch],
-    );
-  }
-
   Future<List<DailyDeeds>> getAllDailyDeeds() async {
     final Database db = await database;
     final List<Map<String, dynamic>> maps = await db.query(tableName);

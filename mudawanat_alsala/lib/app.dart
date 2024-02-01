@@ -43,6 +43,8 @@ class _MyAppState extends State<MyApp> with WindowListener {
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
           return GetMaterialApp(
+            /// to force update GetMaterialApp
+            key: GlobalKey(),
             debugShowCheckedModeBanner: false,
             supportedLocales: S.delegate.supportedLocales,
             localizationsDelegates: const [
@@ -57,9 +59,10 @@ class _MyAppState extends State<MyApp> with WindowListener {
                 seedColor: state.color,
                 brightness: state.brightness,
               ),
-              fontFamily: "Cairo",
+              fontFamily: state.locale?.languageCode == "ar" ? "Cairo" : null,
               useMaterial3: state.useMaterial3,
             ),
+            locale: state.locale,
             home: const HomeScreen(),
           );
         },

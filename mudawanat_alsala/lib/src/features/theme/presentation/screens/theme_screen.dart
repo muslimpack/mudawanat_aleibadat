@@ -13,7 +13,7 @@ class ThemeScreen extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: Text(S.of(context).appTheme),
+            title: Text(S.of(context).settings),
             centerTitle: true,
           ),
           body: ListView(
@@ -77,6 +77,29 @@ class ThemeScreen extends StatelessWidget {
                 onChanged: (value) {
                   context.read<ThemeCubit>().changeUseMaterial3(value);
                 },
+              ),
+              ListTile(
+                leading: const Icon(Icons.language),
+                title: Text(S.of(context).appLanguage),
+                subtitle: Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Wrap(
+                    spacing: 8.0, // Spacing between chips
+                    runSpacing: 4.0, // Spacing between rows of chips
+                    children: S.delegate.supportedLocales
+                        .map(
+                          (locale) => ChoiceChip(
+                            selected: state.locale?.languageCode ==
+                                locale.languageCode,
+                            label: Text(locale.languageCode),
+                            onSelected: (value) {
+                              context.read<ThemeCubit>().changeLocale(locale);
+                            },
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
               ),
             ],
           ),

@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appColor": MessageLookupByLibrary.simpleMessage("لون التطبيق"),
+        "appLanguage": MessageLookupByLibrary.simpleMessage("لغة التطبيق"),
         "appTheme": MessageLookupByLibrary.simpleMessage("مظهر التطبيق"),
         "appTitle": MessageLookupByLibrary.simpleMessage("مدونة الصلاة"),
         "calender": MessageLookupByLibrary.simpleMessage("التقويم"),
@@ -61,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "prayer_obligatory": MessageLookupByLibrary.simpleMessage("الفروض"),
         "select": MessageLookupByLibrary.simpleMessage("تعيين"),
         "selectColor": MessageLookupByLibrary.simpleMessage("اختر لونا"),
+        "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "statistics": MessageLookupByLibrary.simpleMessage("إحصائيات"),
         "timesDone": MessageLookupByLibrary.simpleMessage("مرات القضاء"),
         "timesMissed": MessageLookupByLibrary.simpleMessage("مرات الفائت"),

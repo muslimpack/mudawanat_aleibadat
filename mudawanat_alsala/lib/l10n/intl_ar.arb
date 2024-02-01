@@ -1,5 +1,6 @@
 {
   "appColor": "لون التطبيق",
+  "appLanguage": "لغة التطبيق",
   "appTheme": "مظهر التطبيق",
   "appTitle": "مدونة الصلاة",
   "calender": "التقويم",
@@ -31,6 +32,7 @@
   "prayer_obligatory": "الفروض",
   "select": "تعيين",
   "selectColor": "اختر لونا",
+  "settings": "الإعدادات",
   "statistics": "إحصائيات",
   "timesDone": "مرات القضاء",
   "timesMissed": "مرات الفائت",
