@@ -429,6 +429,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Use Old Theme`
+  String get useOldTheme {
+    return Intl.message(
+      'Use Old Theme',
+      name: 'useOldTheme',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

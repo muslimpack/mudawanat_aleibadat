@@ -54,14 +54,23 @@ class _MyAppState extends State<MyApp> with WindowListener {
               GlobalCupertinoLocalizations.delegate,
             ],
             onGenerateTitle: (context) => S.of(context).appTitle,
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: state.color,
-                brightness: state.brightness,
-              ),
-              fontFamily: state.locale?.languageCode == "ar" ? "Cairo" : null,
-              useMaterial3: state.useMaterial3,
-            ),
+            theme: state.useOldTheme
+                ? ThemeData(
+                    useMaterial3: state.useMaterial3,
+                    brightness: state.brightness,
+                    colorSchemeSeed: state.color,
+                    fontFamily:
+                        state.locale?.languageCode == "ar" ? "Cairo" : null,
+                  )
+                : ThemeData(
+                    colorScheme: ColorScheme.fromSeed(
+                      seedColor: state.color,
+                      brightness: state.brightness,
+                    ),
+                    fontFamily:
+                        state.locale?.languageCode == "ar" ? "Cairo" : null,
+                    useMaterial3: state.useMaterial3,
+                  ),
             locale: state.locale,
             home: const HomeScreen(),
           );

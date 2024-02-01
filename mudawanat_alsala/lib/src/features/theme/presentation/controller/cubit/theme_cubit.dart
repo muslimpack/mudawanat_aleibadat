@@ -12,6 +12,7 @@ class ThemeCubit extends Cubit<ThemeState> {
             brightness: LocalStorageRepo.getBrightness(),
             color: LocalStorageRepo.getColor(),
             useMaterial3: LocalStorageRepo.getUseMaterial3(),
+            useOldTheme: LocalStorageRepo.getUseOldTheme(),
             locale: LocalStorageRepo.getLocale(),
           ),
         );
@@ -24,6 +25,11 @@ class ThemeCubit extends Cubit<ThemeState> {
   Future<void> changeUseMaterial3(bool useMaterial3) async {
     await LocalStorageRepo.setUseMaterial3(useMaterial3);
     emit(state.copyWith(useMaterial3: useMaterial3));
+  }
+
+  Future<void> changeUseOldTheme(bool useOldTheme) async {
+    await LocalStorageRepo.setUseOldTheme(useOldTheme);
+    emit(state.copyWith(useOldTheme: useOldTheme));
   }
 
   Future<void> changeColor(Color color) async {

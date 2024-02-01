@@ -73,6 +73,17 @@ class LocalStorageRepo {
     await _box.put(themeUseMaterial3Key, useMaterial3);
   }
 
+  static const String useOldThemeKey = "themeUseOldTheme";
+
+  static bool getUseOldTheme() {
+    final bool? useOldTheme = _box.get(useOldThemeKey) as bool?;
+    return useOldTheme ?? false;
+  }
+
+  static Future setUseOldTheme(bool useOldTheme) async {
+    await _box.put(useOldThemeKey, useOldTheme);
+  }
+
   static const String themeColorKey = "ThemeColor";
 
   static Color getColor() {

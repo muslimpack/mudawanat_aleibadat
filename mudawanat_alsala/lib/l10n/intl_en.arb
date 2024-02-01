@@ -36,5 +36,6 @@
   "statistics": "Statistics",
   "timesDone": "Done Times",
   "timesMissed": "Times Missed",
-  "useMaterial3": "Use Material3"
+  "useMaterial3": "Use Material3",
+  "useOldTheme": "Use Old Theme"
 }

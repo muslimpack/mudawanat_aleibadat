@@ -36,5 +36,6 @@
   "statistics": "إحصائيات",
   "timesDone": "مرات القضاء",
   "timesMissed": "مرات الفائت",
-  "useMaterial3": "استخدام Material3"
+  "useMaterial3": "استخدام Material3",
+  "useOldTheme": "استخدم المظهر القديم"
 }

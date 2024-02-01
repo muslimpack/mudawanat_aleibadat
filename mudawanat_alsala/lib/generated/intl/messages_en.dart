@@ -66,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
         "timesDone": MessageLookupByLibrary.simpleMessage("Done Times"),
         "timesMissed": MessageLookupByLibrary.simpleMessage("Times Missed"),
-        "useMaterial3": MessageLookupByLibrary.simpleMessage("Use Material3")
+        "useMaterial3": MessageLookupByLibrary.simpleMessage("Use Material3"),
+        "useOldTheme": MessageLookupByLibrary.simpleMessage("Use Old Theme")
       };
 }
