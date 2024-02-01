@@ -1,0 +1,5 @@
+- Track your daily worship on a calendar linked to the days
+- Monthly calendar
+- Weekly calendar
+- Daily calendar
+- Summary to your worship

@@ -1,0 +1,44 @@
+Categories:
+  - LifeStyle
+License: GPL-3.0-only
+AuthorName: Hassan Eltantawy
+AuthorEmail: hasaneltantawy@gmail.com
+AuthorWebSite: https://github.com/7eltantawy
+SourceCode: https://github.com/muslimpack/mudawanat_aleibadat
+IssueTracker: https://github.com/muslimpack/mudawanat_aleibadat/issues
+Changelog: https://github.com/muslimpack/mudawanat_aleibadat/releases
+
+AutoName: مدونة العبادات
+
+RepoType: git
+Repo: https://github.com/muslimpack/mudawanat_aleibadat.git
+
+Builds:
+  - versionName: 0.1.0
+    versionCode: 1
+    # commit:
+    subdir: mudawanat_aleibadat
+    output: build/app/outputs/flutter-apk/app-release.apk
+    srclibs:
+      - flutter@3.10.0
+    rm:
+      - mudawanat_aleibadat/ios
+      - mudawanat_aleibadat/web
+      - mudawanat_aleibadat/windows
+      - mudawanat_aleibadat/linux
+      - mudawanat_aleibadat/macos
+    prebuild:
+      - export PUB_CACHE=$(pwd)/.pub-cache
+      - $$flutter$$/bin/flutter config --no-analytics
+      - $$flutter$$/bin/flutter pub get
+    scandelete:
+      - mudawanat_aleibadat/.pub-cache
+    build:
+      - export PUB_CACHE=$(pwd)/.pub-cache
+      - $$flutter$$/bin/flutter build apk --release
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+UpdateCheckData: mudawanat_aleibadat/pubspec.yaml|version:\s.+\+(\d+)|.|version:\s(.+)\+
+CurrentVersion: 0.1.0
+CurrentVersionCode: 1
