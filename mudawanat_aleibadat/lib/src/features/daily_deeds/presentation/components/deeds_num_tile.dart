@@ -7,7 +7,7 @@ class DeedsNumTile extends StatefulWidget {
   final Widget? info;
   final int value;
   final bool showCounter;
-  final List<int>? numbers;
+  final List<double>? numbers;
   final ValueChanged<int>? onChanged;
   const DeedsNumTile({
     super.key,
@@ -69,7 +69,7 @@ class _DeedsNumTileState extends State<DeedsNumTile> {
                 if (widget.numbers != null)
                   ValueSelector(
                     value: value.toDouble(),
-                    numbers: widget.numbers!.map((e) => e.toDouble()).toList(),
+                    numbers: widget.numbers!,
                     onChanged: _onChanged,
                   ),
               ],
