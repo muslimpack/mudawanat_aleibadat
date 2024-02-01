@@ -8,6 +8,7 @@ class DailyDeedsStatisticsController extends GetxController {
   bool isLoading = true;
   final List<StatsElement> obligatoryElements = [];
   final List<StatsElement> additionalElements = [];
+  final List<StatsElement> awradElements = [];
   late StatsElement fastingElement;
   static const String fastingColumn = "fasting";
   static const List<String> obligatoryColumn = [
@@ -29,6 +30,10 @@ class DailyDeedsStatisticsController extends GetxController {
     "ishaaAfter",
     "nightPrayer",
   ];
+  static const List<String> awradColumn = [
+    "quran",
+    "azkar",
+  ];
 
   @override
   void onInit() {
@@ -41,6 +46,7 @@ class DailyDeedsStatisticsController extends GetxController {
     await loadFasting();
     await loadObligatory();
     await loadAdditional();
+    await loadAwrad();
     isLoading = false;
     update();
   }
@@ -117,6 +123,34 @@ class DailyDeedsStatisticsController extends GetxController {
     }
   }
 
+  Future loadAwrad() async {
+    for (final element in awradColumn) {
+      final String label = element;
+      final double percentage;
+      final int times;
+      final int count;
+
+      if (totalDays == 0) {
+        percentage = 1;
+        times = 0;
+        count = 0;
+      } else {
+        count = await dailyDeedsRepo.sumColumn(label);
+        times = await dailyDeedsRepo.countNonZeroValues(label);
+        percentage = times / totalDays;
+      }
+
+      awradElements.add(
+        StatsElement(
+          label: readableColumnName(label),
+          times: times,
+          percentage: percentage,
+          count: count,
+        ),
+      );
+    }
+  }
+
   String readableColumnName(String column) {
     switch (column) {
       case "fasting":
@@ -166,6 +200,12 @@ class DailyDeedsStatisticsController extends GetxController {
 
       case "nightPrayer":
         return S.current.prayer_night_prayer;
+
+      case "quran":
+        return S.current.awrad_quran;
+
+      case "azkar":
+        return S.current.awrad_azkar;
 
       default:
         return "";

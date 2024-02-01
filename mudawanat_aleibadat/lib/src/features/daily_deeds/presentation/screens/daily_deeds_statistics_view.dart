@@ -40,15 +40,17 @@ class DailyDeedsStatisticsView extends StatelessWidget {
                           children: [
                             StatsCardHeader.labels(
                               labels: [
-                                S.of(context).prayer_name,
-                                S.of(context).timesMissed,
+                                "",
+                                S.of(context).timesDone,
+                                S.of(context).count,
                               ],
                             ),
-                            ...controller.obligatoryElements.map(
+                            ...controller.awradElements.map(
                               (e) => StatsTile(
                                 label: e.label,
                                 times: e.times,
                                 value: e.percentage,
+                                count: e.count,
                               ),
                             ),
                           ],
@@ -70,6 +72,28 @@ class DailyDeedsStatisticsView extends StatelessWidget {
                               label: controller.fastingElement.label,
                               times: controller.fastingElement.times,
                               value: 1,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            StatsCardHeader.labels(
+                              labels: [
+                                S.of(context).prayer_name,
+                                S.of(context).timesMissed,
+                              ],
+                            ),
+                            ...controller.obligatoryElements.map(
+                              (e) => StatsTile(
+                                label: e.label,
+                                times: e.times,
+                                value: e.percentage,
+                              ),
                             ),
                           ],
                         ),
