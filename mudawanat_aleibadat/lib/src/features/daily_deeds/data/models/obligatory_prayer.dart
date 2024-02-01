@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:mudawanat_aleibadat/src/core/extension/extension_bool.dart';
 
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 class DailyObligatoryPrayers {
   final bool fajr;
   final bool dhuhr;
