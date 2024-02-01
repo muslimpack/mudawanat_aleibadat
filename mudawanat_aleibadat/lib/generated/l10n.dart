@@ -100,6 +100,36 @@ class S {
     );
   }
 
+  /// `Awrad`
+  String get awrad {
+    return Intl.message(
+      'Awrad',
+      name: 'awrad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wird AlAzkar`
+  String get awrad_azkar {
+    return Intl.message(
+      'Wird AlAzkar',
+      name: 'awrad_azkar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wird AlQuran`
+  String get awrad_quran {
+    return Intl.message(
+      'Wird AlQuran',
+      name: 'awrad_quran',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Calender`
   String get calender {
     return Intl.message(

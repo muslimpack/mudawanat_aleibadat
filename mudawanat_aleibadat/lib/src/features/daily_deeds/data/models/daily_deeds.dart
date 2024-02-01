@@ -9,7 +9,7 @@ import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/obligat
 class DailyDeeds {
   final DailyAdditionalPrayers additionalPrayers;
   final DailyObligatoryPrayers obligatoryPrayers;
-  final DailyAwrad wird;
+  final DailyAwrad awrad;
   final bool fasting;
   final DateTime date;
 
@@ -17,14 +17,14 @@ class DailyDeeds {
     required this.additionalPrayers,
     required this.obligatoryPrayers,
     required this.fasting,
-    required this.wird,
+    required this.awrad,
     required this.date,
   });
 
   DailyDeeds.empty({
     this.fasting = false,
     required this.date,
-  })  : wird = DailyAwrad.empty(),
+  })  : awrad = DailyAwrad.empty(),
         additionalPrayers = DailyAdditionalPrayers.empty(),
         obligatoryPrayers = DailyObligatoryPrayers.empty();
 
@@ -40,13 +40,13 @@ class DailyDeeds {
       obligatoryPrayers: obligatoryPrayers ?? this.obligatoryPrayers,
       fasting: fasting ?? this.fasting,
       date: date ?? this.date,
-      wird: wird ?? this.wird,
+      awrad: wird ?? awrad,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      ...wird.toMap(),
+      ...awrad.toMap(),
       ...additionalPrayers.toMap(),
       ...obligatoryPrayers.toMap(),
       'fasting': fasting.toInt(),
@@ -62,7 +62,7 @@ class DailyDeeds {
       obligatoryPrayers: DailyObligatoryPrayers.fromMap(
         map,
       ),
-      wird: DailyAwrad.fromMap(
+      awrad: DailyAwrad.fromMap(
         map,
       ),
       fasting: map['fasting'] == 1,

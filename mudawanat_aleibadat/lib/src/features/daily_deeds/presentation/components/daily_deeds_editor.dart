@@ -4,7 +4,7 @@ import 'package:mudawanat_aleibadat/generated/l10n.dart';
 import 'package:mudawanat_aleibadat/src/core/shared/loading.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/daily_deeds_repo.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/daily_deeds.dart';
-import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/count_selector.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/deeds_num_tile.dart';
 
 class DailyDeedsEditor extends StatefulWidget {
   final DailyDeeds? dailyDeeds;
@@ -57,7 +57,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
             content: ConstrainedBox(
               constraints: const BoxConstraints(maxHeight: 450),
               child: DefaultTabController(
-                length: 3,
+                length: 4,
                 child: Scaffold(
                   appBar: AppBar(
                     leading: const SizedBox(),
@@ -78,6 +78,9 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                           ),
                           Tab(
                             text: S.of(context).prayer_additional,
+                          ),
+                          Tab(
+                            text: S.of(context).awrad,
                           ),
                         ],
                       ),
@@ -184,11 +187,11 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                               ],
                             ),
 
-                            /// obligatoryPrayers
+                            /// AdditionalPrayers
                             ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
-                                PrayerCountSelector(
+                                DeedsNumTile(
                                   numbers: const [0, 2],
                                   value: dailyDeeds.additionalPrayers.fajrPre,
                                   title: Text(S.of(context).prayer_fajr_pre),
@@ -202,7 +205,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                     });
                                   },
                                 ),
-                                PrayerCountSelector(
+                                DeedsNumTile(
                                   numbers: const [0, 2, 4, 6, 8],
                                   value: dailyDeeds.additionalPrayers.doha,
                                   title: Text(S.of(context).prayer_doha),
@@ -216,7 +219,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                     });
                                   },
                                 ),
-                                PrayerCountSelector(
+                                DeedsNumTile(
                                   numbers: const [0, 4],
                                   value: dailyDeeds.additionalPrayers.dhuhrPre,
                                   title: Text(S.of(context).prayer_dhuhr_pre),
@@ -230,7 +233,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                     });
                                   },
                                 ),
-                                PrayerCountSelector(
+                                DeedsNumTile(
                                   numbers: const [0, 2, 4],
                                   value:
                                       dailyDeeds.additionalPrayers.dhuhrAfter,
@@ -245,7 +248,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                     });
                                   },
                                 ),
-                                PrayerCountSelector(
+                                DeedsNumTile(
                                   numbers: const [0, 4],
                                   value: dailyDeeds.additionalPrayers.asrPre,
                                   title: Text(S.of(context).prayer_asr_pre),
@@ -259,7 +262,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                     });
                                   },
                                 ),
-                                PrayerCountSelector(
+                                DeedsNumTile(
                                   numbers: const [0, 2],
                                   value:
                                       dailyDeeds.additionalPrayers.maghribPre,
@@ -274,7 +277,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                     });
                                   },
                                 ),
-                                PrayerCountSelector(
+                                DeedsNumTile(
                                   numbers: const [0, 2],
                                   value:
                                       dailyDeeds.additionalPrayers.maghribAfter,
@@ -290,7 +293,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                     });
                                   },
                                 ),
-                                PrayerCountSelector(
+                                DeedsNumTile(
                                   numbers: const [0, 2],
                                   value: dailyDeeds.additionalPrayers.ishaaPre,
                                   title: Text(S.of(context).prayer_ishaa_pre),
@@ -304,7 +307,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                     });
                                   },
                                 ),
-                                PrayerCountSelector(
+                                DeedsNumTile(
                                   numbers: const [0, 2],
                                   value:
                                       dailyDeeds.additionalPrayers.ishaaAfter,
@@ -319,7 +322,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                     });
                                   },
                                 ),
-                                PrayerCountSelector(
+                                DeedsNumTile(
                                   numbers: const [
                                     0,
                                     1,
@@ -334,6 +337,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                     19,
                                     21,
                                   ],
+                                  showCounter: true,
                                   value:
                                       dailyDeeds.additionalPrayers.nightPrayer,
                                   title:
@@ -350,9 +354,44 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                 ),
                               ],
                             ),
+
+                            /// Awrad
+                            ListView(
+                              physics: const BouncingScrollPhysics(),
+                              children: [
+                                SwitchListTile(
+                                  value: dailyDeeds.awrad.azkar,
+                                  title: Text(S.of(context).awrad_azkar),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      dailyDeeds = dailyDeeds.copyWith(
+                                        wird: dailyDeeds.awrad
+                                            .copyWith(azkar: value),
+                                      );
+                                    });
+                                  },
+                                ),
+                                DeedsNumTile(
+                                  value: dailyDeeds.awrad.quran,
+                                  title: Text(S.of(context).awrad_quran),
+                                  showCounter: true,
+                                  numbers: const [2, 4, 5, 10, 15, 22],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      dailyDeeds = dailyDeeds.copyWith(
+                                        wird: dailyDeeds.awrad
+                                            .copyWith(quran: value),
+                                      );
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
+
+                      /// Footer
                       const Divider(),
                       Row(
                         mainAxisSize: MainAxisSize.min,

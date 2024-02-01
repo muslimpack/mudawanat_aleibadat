@@ -103,6 +103,7 @@ class DailyDeedsController extends GetxController {
     if (dateTimeToEdit == null) return;
 
     final DailyDeeds? result = await showDialog(
+      barrierDismissible: false,
       context: Get.context!,
       builder: (BuildContext context) {
         return DailyDeedsEditor.byDateTime(
