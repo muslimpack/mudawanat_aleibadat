@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mudawanat_alsala/src/features/daily_deeds/presentation/screens/daily_deeds_dashboard.dart';
 import 'package:mudawanat_alsala/src/features/theme/presentation/screens/theme_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -30,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      body: DailyDeedsDashBoard(),
     );
   }
 }

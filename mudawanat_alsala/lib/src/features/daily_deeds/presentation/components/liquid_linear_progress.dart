@@ -20,6 +20,7 @@ class CircularLiquidProgress extends StatelessWidget {
         child: LiquidCircularProgressIndicator(
           value: value,
           borderWidth: 2,
+          borderColor: Theme.of(context).primaryColor,
           center: Text(
             child ?? "",
             style: const TextStyle(
