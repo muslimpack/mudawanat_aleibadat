@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class ValueCounter extends StatefulWidget {
   final double value;
+  final double? min;
+  final double? max;
   final bool allowReset;
   final double increaseBy;
 
@@ -12,6 +14,8 @@ class ValueCounter extends StatefulWidget {
     this.increaseBy = 1,
     this.onChanged,
     this.allowReset = false,
+    this.min,
+    this.max,
   });
 
   @override
@@ -29,10 +33,27 @@ class _ValueCounterState extends State<ValueCounter> {
 
   @override
   void didChangeDependencies() {
-    setState(() {
-      value = widget.value;
-    });
+    value = widget.value;
     super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant ValueCounter oldWidget) {
+    value = widget.value;
+    super.didUpdateWidget(oldWidget);
+  }
+
+  void _onChanged(double value) {
+    setState(() {
+      this.value = value;
+      if (widget.min != null && this.value < widget.min!) {
+        this.value = widget.min!;
+      }
+      if (widget.max != null && this.value > widget.max!) {
+        this.value = widget.max!;
+      }
+      widget.onChanged?.call(this.value);
+    });
   }
 
   @override
@@ -42,10 +63,7 @@ class _ValueCounterState extends State<ValueCounter> {
       children: [
         IconButton(
           onPressed: () {
-            setState(() {
-              value += widget.increaseBy;
-              widget.onChanged?.call(value);
-            });
+            _onChanged(value + widget.increaseBy);
           },
           icon: const Icon(Icons.add),
         ),
@@ -60,20 +78,14 @@ class _ValueCounterState extends State<ValueCounter> {
         ),
         IconButton(
           onPressed: () {
-            setState(() {
-              value -= widget.increaseBy;
-              widget.onChanged?.call(value);
-            });
+            _onChanged(value - widget.increaseBy);
           },
           icon: const Icon(Icons.exposure_minus_1_outlined),
         ),
         if (widget.allowReset)
           IconButton(
             onPressed: () {
-              setState(() {
-                value = 0;
-                widget.onChanged?.call(value);
-              });
+              _onChanged(0);
             },
             icon: const Icon(Icons.refresh_outlined),
           ),

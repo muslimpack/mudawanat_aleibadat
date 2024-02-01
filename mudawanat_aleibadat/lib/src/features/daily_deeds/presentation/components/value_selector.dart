@@ -25,10 +25,14 @@ class _ValueSelectorState extends State<ValueSelector> {
 
   @override
   void didChangeDependencies() {
-    setState(() {
-      selectedCount = widget.value;
-    });
+    selectedCount = widget.value;
     super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant ValueSelector oldWidget) {
+    selectedCount = widget.value;
+    super.didUpdateWidget(oldWidget);
   }
 
   @override

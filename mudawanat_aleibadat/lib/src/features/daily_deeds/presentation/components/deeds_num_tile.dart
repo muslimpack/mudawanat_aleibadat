@@ -33,10 +33,14 @@ class _DeedsNumTileState extends State<DeedsNumTile> {
 
   @override
   void didChangeDependencies() {
-    setState(() {
-      value = widget.value;
-    });
+    value = widget.value;
     super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant DeedsNumTile oldWidget) {
+    value = widget.value;
+    super.didUpdateWidget(oldWidget);
   }
 
   void _onChanged(double value) {
@@ -58,6 +62,7 @@ class _DeedsNumTileState extends State<DeedsNumTile> {
               children: [
                 if (widget.showCounter)
                   ValueCounter(
+                    min: 0,
                     value: value.toDouble(),
                     onChanged: _onChanged,
                   ),

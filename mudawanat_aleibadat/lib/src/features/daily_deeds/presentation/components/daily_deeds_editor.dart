@@ -375,7 +375,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                   value: dailyDeeds.awrad.quran,
                                   title: Text(S.of(context).awrad_quran),
                                   showCounter: true,
-                                  numbers: const [2, 4, 5, 10, 15, 22],
+                                  numbers: const [0, 2, 4, 5, 10, 15, 22],
                                   onChanged: (value) {
                                     setState(() {
                                       dailyDeeds = dailyDeeds.copyWith(
