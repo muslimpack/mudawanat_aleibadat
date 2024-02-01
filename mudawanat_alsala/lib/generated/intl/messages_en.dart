@@ -25,9 +25,45 @@ class MessageLookup extends MessageLookupByLibrary {
         "appColor": MessageLookupByLibrary.simpleMessage("App Color"),
         "appTheme": MessageLookupByLibrary.simpleMessage("App Theme"),
         "appTitle": MessageLookupByLibrary.simpleMessage("Mudawanat Alsala"),
+        "calender": MessageLookupByLibrary.simpleMessage("Calender"),
+        "close": MessageLookupByLibrary.simpleMessage("Close"),
+        "count": MessageLookupByLibrary.simpleMessage("Count"),
+        "dailyDeeds": MessageLookupByLibrary.simpleMessage("Daily Deeds"),
         "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+        "done": MessageLookupByLibrary.simpleMessage("Done"),
+        "fasting": MessageLookupByLibrary.simpleMessage("Fasting"),
+        "general": MessageLookupByLibrary.simpleMessage("General"),
+        "missedDeeds": MessageLookupByLibrary.simpleMessage("Missed Deeds"),
+        "prayer_additional":
+            MessageLookupByLibrary.simpleMessage("Additional Prayers"),
+        "prayer_asr": MessageLookupByLibrary.simpleMessage("Asr"),
+        "prayer_asr_pre": MessageLookupByLibrary.simpleMessage("Asr Pre"),
+        "prayer_dhuhr": MessageLookupByLibrary.simpleMessage("Dhuhr"),
+        "prayer_dhuhr_after":
+            MessageLookupByLibrary.simpleMessage("Dhuhr After"),
+        "prayer_dhuhr_pre": MessageLookupByLibrary.simpleMessage("Dhuhr Pre"),
+        "prayer_doha": MessageLookupByLibrary.simpleMessage("Doha"),
+        "prayer_fajr": MessageLookupByLibrary.simpleMessage("Fajr"),
+        "prayer_fajr_pre": MessageLookupByLibrary.simpleMessage("Fajr Pre"),
+        "prayer_ishaa": MessageLookupByLibrary.simpleMessage("Ishaa"),
+        "prayer_ishaa_after":
+            MessageLookupByLibrary.simpleMessage("Ishaa After"),
+        "prayer_ishaa_pre": MessageLookupByLibrary.simpleMessage("Ishaa Pre"),
+        "prayer_maghrib": MessageLookupByLibrary.simpleMessage("Maghrib"),
+        "prayer_maghrib_after":
+            MessageLookupByLibrary.simpleMessage("Maghrib After"),
+        "prayer_maghrib_pre":
+            MessageLookupByLibrary.simpleMessage("Maghrib Pre"),
+        "prayer_name": MessageLookupByLibrary.simpleMessage("Prayer Name"),
+        "prayer_night_prayer":
+            MessageLookupByLibrary.simpleMessage("Night Prayer"),
+        "prayer_obligatory":
+            MessageLookupByLibrary.simpleMessage("Obligatory Prayers"),
         "select": MessageLookupByLibrary.simpleMessage("Select"),
         "selectColor": MessageLookupByLibrary.simpleMessage("Select Color"),
+        "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
+        "timesDone": MessageLookupByLibrary.simpleMessage("Done Times"),
+        "timesMissed": MessageLookupByLibrary.simpleMessage("Times Missed"),
         "useMaterial3": MessageLookupByLibrary.simpleMessage("Use Material3")
       };
 }

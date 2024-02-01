@@ -25,9 +25,45 @@ class MessageLookup extends MessageLookupByLibrary {
         "appColor": MessageLookupByLibrary.simpleMessage("لون التطبيق"),
         "appTheme": MessageLookupByLibrary.simpleMessage("مظهر التطبيق"),
         "appTitle": MessageLookupByLibrary.simpleMessage("مدونة الصلاة"),
+        "calender": MessageLookupByLibrary.simpleMessage("التقويم"),
+        "close": MessageLookupByLibrary.simpleMessage("اغلاق"),
+        "count": MessageLookupByLibrary.simpleMessage("الإجمالي"),
+        "dailyDeeds": MessageLookupByLibrary.simpleMessage("أعمال اليوم"),
         "darkMode": MessageLookupByLibrary.simpleMessage("المظهر الليلي"),
+        "done": MessageLookupByLibrary.simpleMessage("تم"),
+        "fasting": MessageLookupByLibrary.simpleMessage("الصوم"),
+        "general": MessageLookupByLibrary.simpleMessage("عام"),
+        "missedDeeds": MessageLookupByLibrary.simpleMessage("الأعمال الفائتة"),
+        "prayer_additional": MessageLookupByLibrary.simpleMessage("النوافل"),
+        "prayer_asr": MessageLookupByLibrary.simpleMessage("العصر"),
+        "prayer_asr_pre": MessageLookupByLibrary.simpleMessage("العصر القبليه"),
+        "prayer_dhuhr": MessageLookupByLibrary.simpleMessage("الظهر"),
+        "prayer_dhuhr_after":
+            MessageLookupByLibrary.simpleMessage("الظهر القبليه"),
+        "prayer_dhuhr_pre":
+            MessageLookupByLibrary.simpleMessage("الظهر البعديه"),
+        "prayer_doha": MessageLookupByLibrary.simpleMessage("الضحى"),
+        "prayer_fajr": MessageLookupByLibrary.simpleMessage("الفجر"),
+        "prayer_fajr_pre": MessageLookupByLibrary.simpleMessage("ركعتا الفجر"),
+        "prayer_ishaa": MessageLookupByLibrary.simpleMessage("العشاء"),
+        "prayer_ishaa_after":
+            MessageLookupByLibrary.simpleMessage("العشاء البعديه"),
+        "prayer_ishaa_pre":
+            MessageLookupByLibrary.simpleMessage("العشاء القبليه"),
+        "prayer_maghrib": MessageLookupByLibrary.simpleMessage("المغرب"),
+        "prayer_maghrib_after":
+            MessageLookupByLibrary.simpleMessage("المغرب البعدية"),
+        "prayer_maghrib_pre":
+            MessageLookupByLibrary.simpleMessage("المغرب القبلية"),
+        "prayer_name": MessageLookupByLibrary.simpleMessage("اسم الصلاة"),
+        "prayer_night_prayer":
+            MessageLookupByLibrary.simpleMessage("قيام الليل"),
+        "prayer_obligatory": MessageLookupByLibrary.simpleMessage("الفروض"),
         "select": MessageLookupByLibrary.simpleMessage("تعيين"),
         "selectColor": MessageLookupByLibrary.simpleMessage("اختر لونا"),
+        "statistics": MessageLookupByLibrary.simpleMessage("إحصائيات"),
+        "timesDone": MessageLookupByLibrary.simpleMessage("مرات القضاء"),
+        "timesMissed": MessageLookupByLibrary.simpleMessage("مرات الفائت"),
         "useMaterial3":
             MessageLookupByLibrary.simpleMessage("استخدام Material3")
       };
