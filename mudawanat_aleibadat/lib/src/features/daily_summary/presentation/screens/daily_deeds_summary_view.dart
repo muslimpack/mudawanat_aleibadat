@@ -7,8 +7,8 @@ import 'package:mudawanat_aleibadat/src/features/daily_summary/presentation/comp
 import 'package:mudawanat_aleibadat/src/features/daily_summary/presentation/components/stats_tile.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_summary/presentation/controller/deeds_summary_controller.dart';
 
-class DailyDeedsStatisticsView extends StatelessWidget {
-  const DailyDeedsStatisticsView({super.key});
+class DailyDeedsSummaryView extends StatelessWidget {
+  const DailyDeedsSummaryView({super.key});
 
   @override
   Widget build(BuildContext context) {

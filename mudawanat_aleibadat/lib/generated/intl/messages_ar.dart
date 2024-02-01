@@ -68,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectColor": MessageLookupByLibrary.simpleMessage("اختر لونا"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "statistics": MessageLookupByLibrary.simpleMessage("إحصائيات"),
+        "summary": MessageLookupByLibrary.simpleMessage("ملخص"),
         "timesDone": MessageLookupByLibrary.simpleMessage("مرات القضاء"),
         "timesMissed": MessageLookupByLibrary.simpleMessage("مرات الفائت"),
         "useMaterial3":

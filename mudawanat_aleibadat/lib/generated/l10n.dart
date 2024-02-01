@@ -440,6 +440,16 @@ class S {
     );
   }
 
+  /// `Summary`
+  String get summary {
+    return Intl.message(
+      'Summary',
+      name: 'summary',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Done Times`
   String get timesDone {
     return Intl.message(
