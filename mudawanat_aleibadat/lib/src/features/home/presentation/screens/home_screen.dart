@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mudawanat_aleibadat/generated/l10n.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/screens/daily_deeds_calender_view.dart';
-import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/screens/daily_deeds_statistics_view.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_summary/presentation/screens/daily_deeds_statistics_view.dart';
 import 'package:mudawanat_aleibadat/src/features/theme/presentation/screens/theme_screen.dart';
 
 class HomeScreen extends StatefulWidget {
