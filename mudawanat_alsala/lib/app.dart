@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mudawanat_alsala/generated/l10n.dart';
+import 'package:mudawanat_alsala/scroll_behavior.dart';
 import 'package:mudawanat_alsala/src/core/repos/local_storage_repo.dart';
 import 'package:mudawanat_alsala/src/features/home/presentation/screens/home_screen.dart';
 import 'package:mudawanat_alsala/src/features/theme/presentation/controller/cubit/theme_cubit.dart';
@@ -46,6 +47,7 @@ class _MyAppState extends State<MyApp> with WindowListener {
             /// to force update GetMaterialApp
             key: GlobalKey(),
             debugShowCheckedModeBanner: false,
+            scrollBehavior: AppScrollBehavior(),
             supportedLocales: S.delegate.supportedLocales,
             localizationsDelegates: const [
               S.delegate,
