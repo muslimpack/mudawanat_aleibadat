@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mudawanat_aleibadat/generated/l10n.dart';
-import 'package:mudawanat_aleibadat/src/core/shared/loading.dart';
-import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/components/plot_card.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/controller/deeds_statistics_controller.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/screens/additional_stats_view.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/screens/awrad_stats_view.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/screens/obligatory_stats_view.dart';
 
 class DailyDeedsStatisticsView extends StatelessWidget {
   const DailyDeedsStatisticsView({super.key});
@@ -36,64 +37,9 @@ class DailyDeedsStatisticsView extends StatelessWidget {
                 Expanded(
                   child: TabBarView(
                     children: [
-                      if (controller.isLoading)
-                        const Loading()
-                      else
-                        ListView(
-                          padding: const EdgeInsets.all(15),
-                          children: [
-                            PlotCard(
-                              label: S.of(context).awrad_quran,
-                              height: 150,
-                              spots: controller.quranSpots,
-                            ),
-                            PlotCard(
-                              height: 150,
-                              label: S.of(context).awrad_azkar,
-                              spots: controller.azkarSpots,
-                            ),
-                          ],
-                        ),
-                      if (controller.isLoading)
-                        const Loading()
-                      else
-                        ListView(
-                          padding: const EdgeInsets.all(15),
-                          children: [
-                            PlotCard(
-                              height: 150,
-                              label: S.of(context).prayer_obligatory,
-                              spots: controller.obligatorySpots,
-                            ),
-                            ...controller.obligatorySeparatedSpots.map(
-                              (e) => PlotCard(
-                                height: 150,
-                                label: e.label,
-                                spots: e.spots,
-                              ),
-                            ),
-                          ],
-                        ),
-                      if (controller.isLoading)
-                        const Loading()
-                      else
-                        ListView(
-                          padding: const EdgeInsets.all(15),
-                          children: [
-                            PlotCard(
-                              height: 150,
-                              label: S.of(context).prayer_additional,
-                              spots: controller.additionalSpots,
-                            ),
-                            ...controller.additionalSeparatedSpots.map(
-                              (e) => PlotCard(
-                                height: 150,
-                                label: e.label,
-                                spots: e.spots,
-                              ),
-                            ),
-                          ],
-                        ),
+                      AwradStatsView(controller: controller),
+                      ObligatoryStatsView(controller: controller),
+                      AdditionalStatsView(controller: controller),
                     ],
                   ),
                 ),
