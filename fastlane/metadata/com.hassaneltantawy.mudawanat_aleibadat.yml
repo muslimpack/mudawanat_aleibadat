@@ -16,7 +16,7 @@ Repo: https://github.com/muslimpack/mudawanat_aleibadat.git
 Builds:
   - versionName: 0.1.0
     versionCode: 1
-    # commit:
+    commit: 8413150628e4054de74a350ce05e5a95c56b2e21
     subdir: mudawanat_aleibadat
     output: build/app/outputs/flutter-apk/app-release.apk
     srclibs:
