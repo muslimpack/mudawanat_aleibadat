@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:mudawanat_aleibadat/generated/l10n.dart';
+import 'package:mudawanat_aleibadat/src/core/extension/extension_string.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/daily_deeds_repo.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_summary/data/models/stats_model.dart';
 
@@ -64,7 +64,7 @@ class DeedsSummaryController extends GetxController {
     }
 
     fastingElement = StatsElement(
-      label: readableColumnName(fastingColumn),
+      label: fastingColumn.readableColumnName(),
       times: count,
       percentage: percentage,
     );
@@ -87,7 +87,7 @@ class DeedsSummaryController extends GetxController {
 
       obligatoryElements.add(
         StatsElement(
-          label: readableColumnName(label),
+          label: label.readableColumnName(),
           times: totalDays - times,
           percentage: percentage,
         ),
@@ -114,7 +114,7 @@ class DeedsSummaryController extends GetxController {
 
       additionalElements.add(
         StatsElement(
-          label: readableColumnName(label),
+          label: label.readableColumnName(),
           times: times,
           percentage: percentage,
           count: count,
@@ -142,73 +142,12 @@ class DeedsSummaryController extends GetxController {
 
       awradElements.add(
         StatsElement(
-          label: readableColumnName(label),
+          label: label.readableColumnName(),
           times: times,
           percentage: percentage,
           count: count,
         ),
       );
-    }
-  }
-
-  String readableColumnName(String column) {
-    switch (column) {
-      case "fasting":
-        return S.current.fasting;
-
-      case "fajr":
-        return S.current.prayer_fajr;
-
-      case "dhuhr":
-        return S.current.prayer_dhuhr;
-
-      case "asr":
-        return S.current.prayer_asr;
-
-      case "maghrib":
-        return S.current.prayer_maghrib;
-
-      case "ishaa":
-        return S.current.prayer_ishaa;
-
-      case "fajrPre":
-        return S.current.prayer_fajr_pre;
-
-      case "dhuhrPre":
-        return S.current.prayer_dhuhr_pre;
-
-      case "dhuhrAfter":
-        return S.current.prayer_dhuhr_after;
-
-      case "asrPre":
-        return S.current.prayer_asr_pre;
-
-      case "maghribPre":
-        return S.current.prayer_maghrib_pre;
-
-      case "maghribAfter":
-        return S.current.prayer_maghrib_after;
-
-      case "ishaaPre":
-        return S.current.prayer_ishaa_pre;
-
-      case "ishaaAfter":
-        return S.current.prayer_ishaa_after;
-
-      case "doha":
-        return S.current.prayer_doha;
-
-      case "nightPrayer":
-        return S.current.prayer_night_prayer;
-
-      case "quran":
-        return S.current.awrad_quran;
-
-      case "azkar":
-        return S.current.awrad_azkar;
-
-      default:
-        return "";
     }
   }
 }
