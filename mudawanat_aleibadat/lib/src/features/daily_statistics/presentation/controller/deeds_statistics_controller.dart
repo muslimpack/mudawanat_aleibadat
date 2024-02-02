@@ -8,6 +8,7 @@ class DeedsStatisticsController extends GetxController {
   late final int totalDays;
   bool isLoading = true;
   final List<PlotCardItem> additionalSeparatedSpots = [];
+  final List<PlotCardItem> obligatorySeparatedSpots = [];
   final List<FlSpot> obligatorySpots = [];
   final List<FlSpot> additionalSpots = [];
   final List<FlSpot> quranSpots = [];
@@ -62,6 +63,20 @@ class DeedsStatisticsController extends GetxController {
         FlSpot(key.millisecondsSinceEpoch.toDouble(), value.toDouble()),
       );
     });
+
+    for (final element in obligatoryColumn) {
+      final spots = <FlSpot>[];
+      final map = await dailyDeedsRepo.getMapDateColumn([element]);
+
+      map.forEach((key, value) {
+        spots.add(
+          FlSpot(key.millisecondsSinceEpoch.toDouble(), value.toDouble()),
+        );
+      });
+
+      obligatorySeparatedSpots
+          .add(PlotCardItem(label: element.readableColumnName(), spots: spots));
+    }
   }
 
   Future loadAdditional() async {
@@ -75,7 +90,7 @@ class DeedsStatisticsController extends GetxController {
 
     for (final element in additionalColumn) {
       final spots = <FlSpot>[];
-      final map = await dailyDeedsRepo.getMapDateColumn(additionalColumn);
+      final map = await dailyDeedsRepo.getMapDateColumn([element]);
 
       map.forEach((key, value) {
         spots.add(
