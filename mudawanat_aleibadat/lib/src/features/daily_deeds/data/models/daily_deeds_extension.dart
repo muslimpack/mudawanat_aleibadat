@@ -22,14 +22,38 @@ extension DailyDeedsExtension on DailyDeeds {
       ...obligatoryPrayersSlots(),
       ...additionalPrayersSlots(),
       ...fastSlots(),
+      ...awradSlots(),
     ]..sort((a, b) => a.order.compareTo(b.order));
+  }
+
+  List<Slot> awradSlots() {
+    return [
+      Slot(
+        id: date,
+        order: 1,
+        title: S.current.awrad_quran,
+        from: date,
+        to: date,
+        isAllDay: true,
+        background: getColorByInt(awrad.quran),
+      ),
+      Slot(
+        id: date,
+        order: 2,
+        title: S.current.awrad_azkar,
+        from: date,
+        to: date,
+        isAllDay: true,
+        background: getColor(awrad.azkar),
+      ),
+    ];
   }
 
   List<Slot> fastSlots() {
     return [
       Slot(
         id: date,
-        order: 1,
+        order: 3,
         title: S.current.fasting,
         from: date,
         to: date,
