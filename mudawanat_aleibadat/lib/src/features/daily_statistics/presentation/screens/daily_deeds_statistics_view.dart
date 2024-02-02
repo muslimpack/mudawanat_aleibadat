@@ -1,4 +1,3 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mudawanat_aleibadat/generated/l10n.dart';
@@ -20,12 +19,7 @@ class DailyDeedsStatisticsView extends StatelessWidget {
               PlotCard(
                 label: S.of(context).awrad_quran,
                 height: 150,
-                spots: const [
-                  FlSpot(0, 3),
-                  FlSpot(2, 4),
-                  FlSpot(6, 4),
-                  FlSpot(7, 5),
-                ],
+                spots: controller.quranSpots,
               ),
               PlotCard(
                 height: 150,
@@ -40,12 +34,7 @@ class DailyDeedsStatisticsView extends StatelessWidget {
               PlotCard(
                 height: 150,
                 label: S.of(context).awrad_azkar,
-                spots: const [
-                  FlSpot(2, 3),
-                  FlSpot(2, 4),
-                  FlSpot(6, 4),
-                  FlSpot(7, 5),
-                ],
+                spots: controller.azkarSpots,
               ),
             ],
           ),

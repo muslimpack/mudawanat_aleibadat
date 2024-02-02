@@ -75,7 +75,19 @@ class DeedsStatisticsController extends GetxController {
   }
 
   Future loadAwrad() async {
-    // for (final element in awradColumn) {}
+    final quranMap = await dailyDeedsRepo.getMapDateColumn(["quran"]);
+    quranMap.forEach((key, value) {
+      quranSpots.add(
+        FlSpot(key.millisecondsSinceEpoch.toDouble(), value.toDouble()),
+      );
+    });
+
+    final azkarMap = await dailyDeedsRepo.getMapDateColumn(["azkar"]);
+    azkarMap.forEach((key, value) {
+      azkarSpots.add(
+        FlSpot(key.millisecondsSinceEpoch.toDouble(), value.toDouble()),
+      );
+    });
   }
 
   String readableColumnName(String column) {

@@ -31,24 +31,26 @@ class PlotCard extends StatelessWidget {
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
-          const Divider(),
           SizedBox(
             width: width,
             height: height,
-            child: LineChart(
-              LineChartData(
-                titlesData: const FlTitlesData(show: false),
-                borderData: FlBorderData(
-                  show: true,
-                  border: Border.all(width: 0),
-                ),
-                lineBarsData: [
-                  LineChartBarData(
-                    color: uniqueColor,
-                    spots: spots,
-                    // isCurved: true,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: LineChart(
+                LineChartData(
+                  titlesData: const FlTitlesData(show: false),
+                  borderData: FlBorderData(
+                    show: true,
+                    border: Border.all(width: 0),
                   ),
-                ],
+                  lineBarsData: [
+                    LineChartBarData(
+                      color: uniqueColor,
+                      spots: spots,
+                      // isCurved: true,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
