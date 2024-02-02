@@ -1,16 +1,17 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get.dart';
+import 'package:mudawanat_aleibadat/src/core/extension/extension_string.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/daily_deeds_repo.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_summary/data/models/stats_model.dart';
 
 class DeedsStatisticsController extends GetxController {
   late final int totalDays;
   bool isLoading = true;
+  final List<PlotCardItem> additionalSeparatedSpots = [];
   final List<FlSpot> obligatorySpots = [];
   final List<FlSpot> additionalSpots = [];
   final List<FlSpot> quranSpots = [];
   final List<FlSpot> azkarSpots = [];
-  // final List<FlSpot> awradElements = [];
   late StatsElement fastingElement;
   static const String fastingColumn = "fasting";
   static const List<String> obligatoryColumn = [
@@ -71,6 +72,20 @@ class DeedsStatisticsController extends GetxController {
         FlSpot(key.millisecondsSinceEpoch.toDouble(), value.toDouble()),
       );
     });
+
+    for (final element in additionalColumn) {
+      final spots = <FlSpot>[];
+      final map = await dailyDeedsRepo.getMapDateColumn(additionalColumn);
+
+      map.forEach((key, value) {
+        spots.add(
+          FlSpot(key.millisecondsSinceEpoch.toDouble(), value.toDouble()),
+        );
+      });
+
+      additionalSeparatedSpots
+          .add(PlotCardItem(label: element.readableColumnName(), spots: spots));
+    }
   }
 
   Future loadAwrad() async {
@@ -88,4 +103,11 @@ class DeedsStatisticsController extends GetxController {
       );
     });
   }
+}
+
+class PlotCardItem {
+  final String label;
+  final List<FlSpot> spots;
+
+  PlotCardItem({required this.label, required this.spots});
 }

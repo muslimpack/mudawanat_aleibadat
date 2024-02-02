@@ -36,6 +36,13 @@ class DailyDeedsStatisticsView extends StatelessWidget {
                 label: S.of(context).awrad_azkar,
                 spots: controller.azkarSpots,
               ),
+              ...controller.additionalSeparatedSpots.map(
+                (e) => PlotCard(
+                  height: 150,
+                  label: e.label,
+                  spots: e.spots,
+                ),
+              ),
             ],
           ),
         );
