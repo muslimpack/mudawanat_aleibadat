@@ -1,49 +1,56 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mudawanat_aleibadat/generated/l10n.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/components/plot_card.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/controller/deeds_statistics_controller.dart';
 
 class DailyDeedsStatisticsView extends StatelessWidget {
   const DailyDeedsStatisticsView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        padding: const EdgeInsets.all(15),
-        children: [
-          Card(
-            child: SizedBox(
-              height: 200,
-              child: LineChart(
-                LineChartData(
-                  titlesData: const FlTitlesData(show: false),
-                  gridData: FlGridData(),
-                  borderData: FlBorderData(
-                    show: true,
-                  ),
-                  lineBarsData: [
-                    LineChartBarData(
-                      color: Theme.of(context).colorScheme.primary,
-                      spots: [
-                        const FlSpot(0, 3),
-                        const FlSpot(1, 1),
-                        const FlSpot(2, 4),
-                        const FlSpot(3, 2),
-                        const FlSpot(4, 5),
-                        const FlSpot(5, 3),
-                        const FlSpot(6, 4),
-                        const FlSpot(6, 5),
-                        const FlSpot(7, 5),
-                        const FlSpot(8, 5),
-                      ],
-                      // isCurved: true,
-                    ),
-                  ],
-                ),
+    return GetBuilder(
+      init: DeedsStatisticsController(),
+      builder: (controller) {
+        return Scaffold(
+          body: ListView(
+            padding: const EdgeInsets.all(15),
+            children: [
+              PlotCard(
+                label: S.of(context).awrad_quran,
+                height: 150,
+                spots: const [
+                  FlSpot(0, 3),
+                  FlSpot(2, 4),
+                  FlSpot(6, 4),
+                  FlSpot(7, 5),
+                ],
               ),
-            ),
+              PlotCard(
+                height: 150,
+                label: S.of(context).prayer_obligatory,
+                spots: controller.obligatorySpots,
+              ),
+              PlotCard(
+                height: 150,
+                label: S.of(context).prayer_additional,
+                spots: controller.additionalSpots,
+              ),
+              PlotCard(
+                height: 150,
+                label: S.of(context).awrad_azkar,
+                spots: const [
+                  FlSpot(2, 3),
+                  FlSpot(2, 4),
+                  FlSpot(6, 4),
+                  FlSpot(7, 5),
+                ],
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get.dart';
 import 'package:mudawanat_aleibadat/generated/l10n.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/daily_deeds_repo.dart';
@@ -6,9 +7,11 @@ import 'package:mudawanat_aleibadat/src/features/daily_summary/data/models/stats
 class DeedsStatisticsController extends GetxController {
   late final int totalDays;
   bool isLoading = true;
-  final List<StatsElement> obligatoryElements = [];
-  final List<StatsElement> additionalElements = [];
-  final List<StatsElement> awradElements = [];
+  final List<FlSpot> obligatorySpots = [];
+  final List<FlSpot> additionalSpots = [];
+  final List<FlSpot> quranSpots = [];
+  final List<FlSpot> azkarSpots = [];
+  // final List<FlSpot> awradElements = [];
   late StatsElement fastingElement;
   static const String fastingColumn = "fasting";
   static const List<String> obligatoryColumn = [
@@ -43,7 +46,7 @@ class DeedsStatisticsController extends GetxController {
 
   Future loadData() async {
     totalDays = await dailyDeedsRepo.daysCount();
-    await loadFasting();
+
     await loadObligatory();
     await loadAdditional();
     await loadAwrad();
@@ -51,104 +54,28 @@ class DeedsStatisticsController extends GetxController {
     update();
   }
 
-  Future loadFasting() async {
-    final double percentage;
-    final int count;
-
-    if (totalDays == 0) {
-      percentage = 1;
-      count = 0;
-    } else {
-      count = await dailyDeedsRepo.countNonZeroValues(fastingColumn);
-      percentage = count / totalDays;
-    }
-
-    fastingElement = StatsElement(
-      label: readableColumnName(fastingColumn),
-      times: count,
-      percentage: percentage,
-    );
-  }
-
   Future loadObligatory() async {
-    for (final element in obligatoryColumn) {
-      final String label = element;
-      final double percentage;
-      final int times;
+    final map = await dailyDeedsRepo.getMapDateColumn(obligatoryColumn);
 
-      if (totalDays == 0) {
-        percentage = 1;
-        times = 0;
-      } else {
-        times = await dailyDeedsRepo.countNonZeroValues(label);
-
-        percentage = times / totalDays;
-      }
-
-      obligatoryElements.add(
-        StatsElement(
-          label: readableColumnName(label),
-          times: totalDays - times,
-          percentage: percentage,
-        ),
+    map.forEach((key, value) {
+      obligatorySpots.add(
+        FlSpot(key.millisecondsSinceEpoch.toDouble(), value.toDouble()),
       );
-    }
+    });
   }
 
   Future loadAdditional() async {
-    for (final element in additionalColumn) {
-      final String label = element;
-      final double percentage;
-      final int times;
-      final int count;
+    final map = await dailyDeedsRepo.getMapDateColumn(additionalColumn);
 
-      if (totalDays == 0) {
-        percentage = 1;
-        times = 0;
-        count = 0;
-      } else {
-        count = await dailyDeedsRepo.sumColumn(label);
-        times = await dailyDeedsRepo.countNonZeroValues(label);
-        percentage = times / totalDays;
-      }
-
-      additionalElements.add(
-        StatsElement(
-          label: readableColumnName(label),
-          times: times,
-          percentage: percentage,
-          count: count,
-        ),
+    map.forEach((key, value) {
+      additionalSpots.add(
+        FlSpot(key.millisecondsSinceEpoch.toDouble(), value.toDouble()),
       );
-    }
+    });
   }
 
   Future loadAwrad() async {
-    for (final element in awradColumn) {
-      final String label = element;
-      final double percentage;
-      final int times;
-      final int count;
-
-      if (totalDays == 0) {
-        percentage = 1;
-        times = 0;
-        count = 0;
-      } else {
-        count = await dailyDeedsRepo.sumColumn(label);
-        times = await dailyDeedsRepo.countNonZeroValues(label);
-        percentage = times / totalDays;
-      }
-
-      awradElements.add(
-        StatsElement(
-          label: readableColumnName(label),
-          times: times,
-          percentage: percentage,
-          count: count,
-        ),
-      );
-    }
+    // for (final element in awradColumn) {}
   }
 
   String readableColumnName(String column) {

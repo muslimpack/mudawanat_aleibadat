@@ -282,7 +282,7 @@ class DailyDeedsRepo {
     return count;
   }
 
-  Future<Map<DateTime, int>> getSumByDate(List<String> columnNames) async {
+  Future<Map<DateTime, int>> getMapDateColumn(List<String> columnNames) async {
     final Database db = await database;
 
     final List<Map<String, dynamic>> rows = await db.rawQuery('''
@@ -310,8 +310,6 @@ class DailyDeedsRepo {
 
       result[date] = sum;
     }
-
-    await db.close();
 
     return result;
   }
