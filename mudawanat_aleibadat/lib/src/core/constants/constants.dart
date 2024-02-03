@@ -1,2 +1,2 @@
 const String kHiveBoxName = "mudawanat_aleibadat";
-const String kAppVersion = "0.1.0";
+const String kAppVersion = "0.2.0";
