@@ -40,7 +40,11 @@ class PlotCard extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: LineChart(
                 LineChartData(
-                  titlesData: const FlTitlesData(show: false),
+                  titlesData: const FlTitlesData(
+                    topTitles: AxisTitles(),
+                    bottomTitles: AxisTitles(),
+                    rightTitles: AxisTitles(),
+                  ),
                   borderData: FlBorderData(
                     show: true,
                     border: Border.all(width: 0),
