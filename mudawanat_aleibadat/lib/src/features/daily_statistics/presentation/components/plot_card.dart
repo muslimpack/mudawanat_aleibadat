@@ -6,6 +6,7 @@ class PlotCard extends StatelessWidget {
   final String label;
   final double height;
   final double? width;
+  final double? maxY;
   final List<FlSpot> spots;
 
   const PlotCard({
@@ -14,6 +15,7 @@ class PlotCard extends StatelessWidget {
     required this.spots,
     this.height = 200,
     this.width,
+    this.maxY,
   });
 
   @override
@@ -43,6 +45,8 @@ class PlotCard extends StatelessWidget {
                     show: true,
                     border: Border.all(width: 0),
                   ),
+                  minY: 0,
+                  maxY: maxY,
                   lineBarsData: [
                     LineChartBarData(
                       color: uniqueColor,

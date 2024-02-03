@@ -17,12 +17,14 @@ class ObligatoryStatsView extends StatelessWidget {
             children: [
               PlotCard(
                 height: 150,
+                maxY: 5,
                 label: S.of(context).prayer_obligatory,
                 spots: controller.obligatorySpots,
               ),
               ...controller.obligatorySeparatedSpots.map(
                 (e) => PlotCard(
                   height: 150,
+                  maxY: 1,
                   label: e.label,
                   spots: e.spots,
                 ),
