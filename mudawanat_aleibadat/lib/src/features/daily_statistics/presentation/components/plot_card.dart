@@ -55,7 +55,10 @@ class PlotCard extends StatelessWidget {
                     LineChartBarData(
                       color: uniqueColor,
                       spots: spots,
-                      // isCurved: true,
+                      belowBarData: BarAreaData(
+                        show: true,
+                        color: uniqueColor.withOpacity(0.2),
+                      ),
                     ),
                   ],
                 ),
