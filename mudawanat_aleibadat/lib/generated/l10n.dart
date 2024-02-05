@@ -220,6 +220,16 @@ class S {
     );
   }
 
+  /// `More apps`
+  String get moreProductsFromUs {
+    return Intl.message(
+      'More apps',
+      name: 'moreProductsFromUs',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Additional Prayers`
   String get prayer_additional {
     return Intl.message(
@@ -425,6 +435,16 @@ class S {
     return Intl.message(
       'Settings',
       name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App source code`
+  String get sourceCodeLink {
+    return Intl.message(
+      'App source code',
+      name: 'sourceCodeLink',
       desc: '',
       args: [],
     );

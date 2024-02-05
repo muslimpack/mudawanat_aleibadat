@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fasting": MessageLookupByLibrary.simpleMessage("Fasting"),
         "general": MessageLookupByLibrary.simpleMessage("General"),
         "missedDeeds": MessageLookupByLibrary.simpleMessage("Missed Deeds"),
+        "moreProductsFromUs": MessageLookupByLibrary.simpleMessage("More apps"),
         "prayer_additional":
             MessageLookupByLibrary.simpleMessage("Additional Prayers"),
         "prayer_asr": MessageLookupByLibrary.simpleMessage("Asr"),
@@ -67,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "select": MessageLookupByLibrary.simpleMessage("Select"),
         "selectColor": MessageLookupByLibrary.simpleMessage("Select Color"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "sourceCodeLink":
+            MessageLookupByLibrary.simpleMessage("App source code"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
         "summary": MessageLookupByLibrary.simpleMessage("Summary"),
         "timesDone": MessageLookupByLibrary.simpleMessage("Done Times"),

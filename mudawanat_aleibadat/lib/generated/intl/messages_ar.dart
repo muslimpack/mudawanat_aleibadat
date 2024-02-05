@@ -39,6 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "fasting": MessageLookupByLibrary.simpleMessage("الصوم"),
         "general": MessageLookupByLibrary.simpleMessage("عام"),
         "missedDeeds": MessageLookupByLibrary.simpleMessage("الأعمال الفائتة"),
+        "moreProductsFromUs":
+            MessageLookupByLibrary.simpleMessage("المزيد من إصداراتنا"),
         "prayer_additional": MessageLookupByLibrary.simpleMessage("النوافل"),
         "prayer_asr": MessageLookupByLibrary.simpleMessage("العصر"),
         "prayer_asr_pre": MessageLookupByLibrary.simpleMessage("العصر القبليه"),
@@ -67,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "select": MessageLookupByLibrary.simpleMessage("تعيين"),
         "selectColor": MessageLookupByLibrary.simpleMessage("اختر لونا"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+        "sourceCodeLink":
+            MessageLookupByLibrary.simpleMessage("الكود المصدري للتطبيق"),
         "statistics": MessageLookupByLibrary.simpleMessage("إحصائيات"),
         "summary": MessageLookupByLibrary.simpleMessage("ملخص"),
         "timesDone": MessageLookupByLibrary.simpleMessage("مرات القضاء"),
