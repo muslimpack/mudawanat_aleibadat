@@ -13,6 +13,9 @@ class AppointmentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Slot meeting = calendarDetails.appointments.first as Slot;
+    final size =
+        Size(calendarDetails.bounds.width, calendarDetails.bounds.height);
+    final bool landscapeCard = size.aspectRatio > 1;
     return ColoredBox(
       color: meeting.background,
       child: Center(
@@ -20,10 +23,7 @@ class AppointmentCard extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: RotatedBox(
-              quarterTurns:
-                  calendarDetails.bounds.width > calendarDetails.bounds.height
-                      ? 3
-                      : 4,
+              quarterTurns: landscapeCard ? 0 : 3,
               child: Text(
                 meeting.title,
                 textAlign: TextAlign.center,
