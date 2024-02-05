@@ -2,7 +2,6 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-
 import 'package:mudawanat_aleibadat/src/core/extension/date_time.dart';
 import 'package:mudawanat_aleibadat/src/core/extension/extension_bool.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/additional_prayers.dart';
@@ -24,12 +23,12 @@ class DailyDeeds extends Equatable {
     required this.date,
   });
 
-  DailyDeeds.empty({
+  const DailyDeeds.empty({
     this.fasting = false,
     required this.date,
-  })  : awrad = DailyAwrad.empty(),
-        additionalPrayers = DailyAdditionalPrayers.empty(),
-        obligatoryPrayers = DailyObligatoryPrayers.empty();
+  })  : awrad = const DailyAwrad.empty(),
+        additionalPrayers = const DailyAdditionalPrayers.empty(),
+        obligatoryPrayers = const DailyObligatoryPrayers.empty();
 
   DailyDeeds copyWith({
     DailyAwrad? wird,
