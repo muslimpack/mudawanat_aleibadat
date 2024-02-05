@@ -170,8 +170,6 @@ class DailyDeedsRepo {
       return DailyDeeds.fromMap(maps[i]);
     });
 
-    appPrint("getDailyDeedsByDateRange ${deeds.length}");
-
     return deeds;
   }
 
