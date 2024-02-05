@@ -1,57 +1,58 @@
-import 'package:get/get.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:async';
+
+import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:mudawanat_aleibadat/src/core/constants/deeds_columns.dart';
 import 'package:mudawanat_aleibadat/src/core/extension/extension_string.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/daily_deeds_repo.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/controller/bloc/deeds_calender_bloc.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_summary/data/models/stats_model.dart';
 
-class DeedsSummaryController extends GetxController {
-  late final int totalDays;
-  bool isLoading = true;
-  final List<StatsElement> obligatoryElements = [];
-  final List<StatsElement> additionalElements = [];
-  final List<StatsElement> awradElements = [];
-  late StatsElement fastingElement;
-  static const String fastingColumn = "fasting";
-  static const List<String> obligatoryColumn = [
-    "fajr",
-    "dhuhr",
-    "asr",
-    "maghrib",
-    "ishaa",
-  ];
-  static const List<String> additionalColumn = [
-    "fajrPre",
-    "doha",
-    "dhuhrPre",
-    "dhuhrAfter",
-    "asrPre",
-    "maghribPre",
-    "maghribAfter",
-    "ishaaPre",
-    "ishaaAfter",
-    "nightPrayer",
-  ];
-  static const List<String> awradColumn = [
-    "quran",
-    "azkar",
-  ];
+part 'deeds_summary_state.dart';
 
-  @override
-  void onInit() {
-    loadData();
-    super.onInit();
+class DeedsSummaryCubit extends Cubit<DeedsSummaryState> {
+  final DeedsCalenderBloc deedsCalenderBloc;
+  late StreamSubscription deedsCalenderSubscription;
+
+  DeedsSummaryCubit(
+    this.deedsCalenderBloc,
+  ) : super(DeedsSummaryLoading()) {
+    deedsCalenderSubscription = deedsCalenderBloc.stream.listen((state) {
+      loadData();
+    });
   }
+  static const String fastingColumn = "fasting";
 
   Future loadData() async {
-    totalDays = await dailyDeedsRepo.daysCount();
-    await loadFasting();
-    await loadObligatory();
-    await loadAdditional();
-    await loadAwrad();
-    isLoading = false;
-    update();
+    final int totalDays = await dailyDeedsRepo.daysCount();
+
+    final List<Future> futures = [
+      _loadFasting(totalDays),
+      _loadObligatory(totalDays),
+      _loadAdditional(totalDays),
+      _loadAwrad(totalDays),
+    ];
+
+    final List results = await Future.wait(futures);
+
+    final fastingElement = results[0];
+    final obligatoryElements = results[1];
+    final additionalElements = results[2];
+    final awradElements = results[3];
+
+    emit(
+      DeedsSummaryLoaded(
+        totalDays: totalDays,
+        obligatoryElements: obligatoryElements as List<StatsElement>,
+        additionalElements: additionalElements as List<StatsElement>,
+        awradElements: awradElements as List<StatsElement>,
+        fastingElement: fastingElement as StatsElement,
+      ),
+    );
   }
 
-  Future loadFasting() async {
+  Future<StatsElement> _loadFasting(int totalDays) async {
     final double percentage;
     final int count;
 
@@ -63,14 +64,16 @@ class DeedsSummaryController extends GetxController {
       percentage = count / totalDays;
     }
 
-    fastingElement = StatsElement(
+    return StatsElement(
       label: fastingColumn.readableColumnName(),
       times: count,
       percentage: percentage,
     );
   }
 
-  Future loadObligatory() async {
+  Future<List<StatsElement>> _loadObligatory(int totalDays) async {
+    final List<StatsElement> elements = [];
+
     for (final element in obligatoryColumn) {
       final String label = element;
       final double percentage;
@@ -85,7 +88,7 @@ class DeedsSummaryController extends GetxController {
         percentage = times / totalDays;
       }
 
-      obligatoryElements.add(
+      elements.add(
         StatsElement(
           label: label.readableColumnName(),
           times: totalDays - times,
@@ -93,9 +96,12 @@ class DeedsSummaryController extends GetxController {
         ),
       );
     }
+    return elements;
   }
 
-  Future loadAdditional() async {
+  Future<List<StatsElement>> _loadAdditional(int totalDays) async {
+    final List<StatsElement> elements = [];
+
     for (final element in additionalColumn) {
       final String label = element;
       final double percentage;
@@ -112,7 +118,7 @@ class DeedsSummaryController extends GetxController {
         percentage = times / totalDays;
       }
 
-      additionalElements.add(
+      elements.add(
         StatsElement(
           label: label.readableColumnName(),
           times: times,
@@ -121,9 +127,11 @@ class DeedsSummaryController extends GetxController {
         ),
       );
     }
+    return elements;
   }
 
-  Future loadAwrad() async {
+  Future<List<StatsElement>> _loadAwrad(int totalDays) async {
+    final List<StatsElement> elements = [];
     for (final element in awradColumn) {
       final String label = element;
       final double percentage;
@@ -140,7 +148,7 @@ class DeedsSummaryController extends GetxController {
         percentage = times / totalDays;
       }
 
-      awradElements.add(
+      elements.add(
         StatsElement(
           label: label.readableColumnName(),
           times: times,
@@ -149,5 +157,13 @@ class DeedsSummaryController extends GetxController {
         ),
       );
     }
+
+    return elements;
+  }
+
+  @override
+  Future<void> close() {
+    deedsCalenderSubscription.cancel();
+    return super.close();
   }
 }

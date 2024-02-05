@@ -25,6 +25,7 @@ class DailyDeedsEditor extends StatefulWidget {
 
 class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
   bool isLoading = true;
+  late final DailyDeeds initialValue;
   late DailyDeeds dailyDeeds;
   @override
   void initState() {
@@ -32,6 +33,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
       loadData();
     } else {
       dailyDeeds = widget.dailyDeeds!;
+      initialValue = dailyDeeds;
       setState(() {
         isLoading = false;
       });
@@ -42,7 +44,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
   Future loadData() async {
     dailyDeeds = (await dailyDeedsRepo.getDailyDeedsByDate(widget.dateTime)) ??
         DailyDeeds.empty(date: widget.dateTime);
-
+    initialValue = dailyDeeds;
     setState(() {
       isLoading = false;
     });
@@ -375,7 +377,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                   value: dailyDeeds.awrad.quran,
                                   title: Text(S.of(context).awrad_quran),
                                   showCounter: true,
-                                  numbers: const [0, 2, 4, 5, 10, 15, 22],
+                                  numbers: const [0, 5, 10, 15, 20, 30, 40, 50],
                                   onChanged: (value) {
                                     setState(() {
                                       dailyDeeds = dailyDeeds.copyWith(
@@ -414,7 +416,11 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                 textAlign: TextAlign.center,
                               ),
                               onTap: () {
-                                Navigator.of(context).pop(dailyDeeds);
+                                if (dailyDeeds == initialValue) {
+                                  Navigator.of(context).pop();
+                                } else {
+                                  Navigator.of(context).pop(dailyDeeds);
+                                }
                               },
                             ),
                           ),

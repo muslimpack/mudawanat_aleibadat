@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mudawanat_aleibadat/generated/l10n.dart';
-import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/controller/deeds_statistics_controller.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/controller/cubit/deeds_statistics_cubit.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/screens/additional_stats_view.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/screens/awrad_stats_view.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/screens/obligatory_stats_view.dart';
@@ -11,9 +11,10 @@ class DailyDeedsStatisticsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder(
-      init: DeedsStatisticsController(),
-      builder: (controller) {
+    final cubit = context.read<DeedsStatisticsCubit>();
+    return BlocBuilder(
+      bloc: cubit,
+      builder: (context, state) {
         return DefaultTabController(
           length: 3,
           child: Scaffold(
@@ -37,9 +38,15 @@ class DailyDeedsStatisticsView extends StatelessWidget {
                 Expanded(
                   child: TabBarView(
                     children: [
-                      AwradStatsView(controller: controller),
-                      ObligatoryStatsView(controller: controller),
-                      AdditionalStatsView(controller: controller),
+                      AwradStatsView(
+                        cubit: cubit,
+                      ),
+                      ObligatoryStatsView(
+                        cubit: cubit,
+                      ),
+                      AdditionalStatsView(
+                        cubit: cubit,
+                      ),
                     ],
                   ),
                 ),
