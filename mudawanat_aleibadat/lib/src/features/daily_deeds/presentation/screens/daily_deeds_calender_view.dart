@@ -22,7 +22,6 @@ class _DailyDeedsCalenderViewState extends State<DailyDeedsCalenderView> {
             ? const Loading()
             : Scaffold(
                 body: SfCalendar(
-                  key: controller.sfCalendarKey,
                   controller: controller.controller,
                   initialDisplayDate: now,
                   initialSelectedDate: now,

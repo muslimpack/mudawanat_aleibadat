@@ -11,11 +11,10 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class DailyDeedsController extends GetxController {
   bool isLoading = true;
+  late final CalendarController controller;
   final Map<DateTime, bool> dataCollection = {};
   late final List<Slot> slots = [];
-  late final CalendarController controller;
   late CalendarDataSource dataSource;
-  Key sfCalendarKey = GlobalKey();
 
   @override
   void onInit() {
@@ -30,10 +29,6 @@ class DailyDeedsController extends GetxController {
   void onClose() {
     controller.dispose();
     super.onClose();
-  }
-
-  Map<DateTime, List<Appointment>> getAppointments() {
-    return {};
   }
 
   Future loadData() async {
