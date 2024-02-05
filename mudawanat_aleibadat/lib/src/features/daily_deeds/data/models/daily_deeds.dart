@@ -1,4 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+
+import 'package:equatable/equatable.dart';
 
 import 'package:mudawanat_aleibadat/src/core/extension/date_time.dart';
 import 'package:mudawanat_aleibadat/src/core/extension/extension_bool.dart';
@@ -6,14 +9,14 @@ import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/additio
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/daily_awrad.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/obligatory_prayer.dart';
 
-class DailyDeeds {
+class DailyDeeds extends Equatable {
   final DailyAdditionalPrayers additionalPrayers;
   final DailyObligatoryPrayers obligatoryPrayers;
   final DailyAwrad awrad;
   final bool fasting;
   final DateTime date;
 
-  DailyDeeds({
+  const DailyDeeds({
     required this.additionalPrayers,
     required this.obligatoryPrayers,
     required this.fasting,
@@ -74,4 +77,15 @@ class DailyDeeds {
 
   factory DailyDeeds.fromJson(String source) =>
       DailyDeeds.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  List<Object> get props {
+    return [
+      additionalPrayers,
+      obligatoryPrayers,
+      awrad,
+      fasting,
+      date,
+    ];
+  }
 }

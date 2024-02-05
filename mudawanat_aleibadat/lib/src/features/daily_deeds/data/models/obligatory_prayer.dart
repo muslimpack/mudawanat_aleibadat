@@ -1,22 +1,24 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
 import 'package:mudawanat_aleibadat/src/core/extension/extension_bool.dart';
 
-class DailyObligatoryPrayers {
+class DailyObligatoryPrayers extends Equatable {
   final bool fajr;
   final bool dhuhr;
   final bool asr;
   final bool maghrib;
   final bool ishaa;
 
-  DailyObligatoryPrayers({
+  const DailyObligatoryPrayers({
     required this.fajr,
     required this.dhuhr,
     required this.asr,
     required this.maghrib,
     required this.ishaa,
   });
-  DailyObligatoryPrayers.empty({
+  const DailyObligatoryPrayers.empty({
     this.fajr = false,
     this.dhuhr = false,
     this.asr = false,
@@ -66,4 +68,15 @@ class DailyObligatoryPrayers {
       DailyObligatoryPrayers.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
+
+  @override
+  List<Object> get props {
+    return [
+      fajr,
+      dhuhr,
+      asr,
+      maghrib,
+      ishaa,
+    ];
+  }
 }

@@ -1,6 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class DailyAdditionalPrayers {
+import 'package:equatable/equatable.dart';
+
+class DailyAdditionalPrayers extends Equatable {
   final int fajrPre;
   final int dhuhrPre;
   final int dhuhrAfter;
@@ -12,7 +15,7 @@ class DailyAdditionalPrayers {
   final int doha;
   final int nightPrayer;
 
-  DailyAdditionalPrayers({
+  const DailyAdditionalPrayers({
     required this.fajrPre,
     required this.dhuhrPre,
     required this.dhuhrAfter,
@@ -24,7 +27,7 @@ class DailyAdditionalPrayers {
     required this.doha,
     required this.nightPrayer,
   });
-  DailyAdditionalPrayers.empty({
+  const DailyAdditionalPrayers.empty({
     this.fajrPre = 0,
     this.dhuhrPre = 0,
     this.dhuhrAfter = 0,
@@ -99,4 +102,20 @@ class DailyAdditionalPrayers {
       DailyAdditionalPrayers.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
+
+  @override
+  List<Object> get props {
+    return [
+      fajrPre,
+      dhuhrPre,
+      dhuhrAfter,
+      asrPre,
+      maghribPre,
+      maghribAfter,
+      ishaaPre,
+      ishaaAfter,
+      doha,
+      nightPrayer,
+    ];
+  }
 }

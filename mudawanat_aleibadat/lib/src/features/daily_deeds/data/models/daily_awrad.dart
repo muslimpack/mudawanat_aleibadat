@@ -1,18 +1,19 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
 import 'package:mudawanat_aleibadat/src/core/extension/extension_bool.dart';
 
-class DailyAwrad {
+class DailyAwrad extends Equatable {
   final bool azkar;
   final int quran;
 
-  DailyAwrad({
+  const DailyAwrad({
     required this.azkar,
     required this.quran,
   });
 
-  DailyAwrad.empty({
+  const DailyAwrad.empty({
     this.azkar = false,
     this.quran = 0,
   });
@@ -45,4 +46,7 @@ class DailyAwrad {
 
   factory DailyAwrad.fromJson(String source) =>
       DailyAwrad.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  List<Object> get props => [azkar, quran];
 }
