@@ -5,6 +5,8 @@ import 'package:mudawanat_aleibadat/generated/l10n.dart';
 import 'package:mudawanat_aleibadat/scroll_behavior.dart';
 import 'package:mudawanat_aleibadat/src/core/repos/local_storage_repo.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/controller/bloc/deeds_calender_bloc.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/controller/cubit/deeds_statistics_cubit.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_summary/presentation/controller/cubit/deeds_summary_cubit.dart';
 import 'package:mudawanat_aleibadat/src/features/home/presentation/screens/home_screen.dart';
 import 'package:mudawanat_aleibadat/src/features/theme/presentation/controller/cubit/theme_cubit.dart';
 import 'package:window_manager/window_manager.dart';
@@ -41,7 +43,17 @@ class _MyAppState extends State<MyApp> with WindowListener {
       providers: [
         BlocProvider(create: (_) => ThemeCubit()),
         BlocProvider(
-          create: (_) => DeedsCalenderBloc()..add(DeedsCalenderStartEvent()),
+          create: (context) =>
+              DeedsCalenderBloc()..add(DeedsCalenderStartEvent()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              DeedsSummaryCubit(context.read<DeedsCalenderBloc>())..loadData(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              DeedsStatisticsCubit(context.read<DeedsCalenderBloc>())
+                ..loadData(),
         ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(

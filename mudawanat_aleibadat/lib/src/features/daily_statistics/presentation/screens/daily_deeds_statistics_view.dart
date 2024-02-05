@@ -11,57 +11,50 @@ class DailyDeedsStatisticsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => DeedsStatisticsCubit(),
-      child: Builder(
-        builder: (context) {
-          final cubit = context.read<DeedsStatisticsCubit>();
-          return BlocBuilder(
-            bloc: cubit..loadData(),
-            builder: (context, state) {
-              return DefaultTabController(
-                length: 3,
-                child: Scaffold(
-                  body: Column(
+    final cubit = context.read<DeedsStatisticsCubit>();
+    return BlocBuilder(
+      bloc: cubit,
+      builder: (context, state) {
+        return DefaultTabController(
+          length: 3,
+          child: Scaffold(
+            body: Column(
+              children: [
+                TabBar(
+                  tabAlignment: TabAlignment.center,
+                  isScrollable: true,
+                  tabs: <Widget>[
+                    Tab(
+                      text: S.of(context).awrad,
+                    ),
+                    Tab(
+                      text: S.of(context).prayer_obligatory,
+                    ),
+                    Tab(
+                      text: S.of(context).prayer_additional,
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: TabBarView(
                     children: [
-                      TabBar(
-                        tabAlignment: TabAlignment.center,
-                        isScrollable: true,
-                        tabs: <Widget>[
-                          Tab(
-                            text: S.of(context).awrad,
-                          ),
-                          Tab(
-                            text: S.of(context).prayer_obligatory,
-                          ),
-                          Tab(
-                            text: S.of(context).prayer_additional,
-                          ),
-                        ],
+                      AwradStatsView(
+                        cubit: cubit,
                       ),
-                      Expanded(
-                        child: TabBarView(
-                          children: [
-                            AwradStatsView(
-                              cubit: cubit,
-                            ),
-                            ObligatoryStatsView(
-                              cubit: cubit,
-                            ),
-                            AdditionalStatsView(
-                              cubit: cubit,
-                            ),
-                          ],
-                        ),
+                      ObligatoryStatsView(
+                        cubit: cubit,
+                      ),
+                      AdditionalStatsView(
+                        cubit: cubit,
                       ),
                     ],
                   ),
                 ),
-              );
-            },
-          );
-        },
-      ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

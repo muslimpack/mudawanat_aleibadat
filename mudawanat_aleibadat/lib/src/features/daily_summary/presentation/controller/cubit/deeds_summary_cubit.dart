@@ -1,14 +1,27 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mudawanat_aleibadat/src/core/constants/deeds_columns.dart';
 import 'package:mudawanat_aleibadat/src/core/extension/extension_string.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/daily_deeds_repo.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/controller/bloc/deeds_calender_bloc.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_summary/data/models/stats_model.dart';
 
 part 'deeds_summary_state.dart';
 
 class DeedsSummaryCubit extends Cubit<DeedsSummaryState> {
-  DeedsSummaryCubit() : super(DeedsSummaryLoading());
+  final DeedsCalenderBloc deedsCalenderBloc;
+  late StreamSubscription deedsCalenderSubscription;
+
+  DeedsSummaryCubit(
+    this.deedsCalenderBloc,
+  ) : super(DeedsSummaryLoading()) {
+    deedsCalenderSubscription = deedsCalenderBloc.stream.listen((state) {
+      loadData();
+    });
+  }
   static const String fastingColumn = "fasting";
 
   Future loadData() async {
@@ -146,5 +159,11 @@ class DeedsSummaryCubit extends Cubit<DeedsSummaryState> {
     }
 
     return elements;
+  }
+
+  @override
+  Future<void> close() {
+    deedsCalenderSubscription.cancel();
+    return super.close();
   }
 }

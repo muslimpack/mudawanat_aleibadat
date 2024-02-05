@@ -12,125 +12,123 @@ class DailyDeedsSummaryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => DeedsSummaryCubit(),
-      child: BlocBuilder(
-        bloc: DeedsSummaryCubit()..loadData(),
-        builder: (context, state) {
-          if (state is! DeedsSummaryLoaded) {
-            return const Loading();
-          }
-          return Scaffold(
-            body: ListView(
-              padding: const EdgeInsets.all(15),
-              children: [
-                Row(
-                  children: state.obligatoryElements
-                      .map(
-                        (e) => Expanded(
-                          child: CircularLiquidProgress(
-                            value: e.percentage,
-                            child: e.label,
-                          ),
+    final cubit = context.read<DeedsSummaryCubit>();
+    return BlocBuilder(
+      bloc: cubit,
+      builder: (context, state) {
+        if (state is! DeedsSummaryLoaded) {
+          return const Loading();
+        }
+        return Scaffold(
+          body: ListView(
+            padding: const EdgeInsets.all(15),
+            children: [
+              Row(
+                children: state.obligatoryElements
+                    .map(
+                      (e) => Expanded(
+                        child: CircularLiquidProgress(
+                          value: e.percentage,
+                          child: e.label,
                         ),
-                      )
-                      .toList(),
-                ),
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        StatsCardHeader.labels(
-                          labels: [
-                            "",
-                            S.of(context).timesDone,
-                            S.of(context).count,
-                          ],
+                      ),
+                    )
+                    .toList(),
+              ),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+                      StatsCardHeader.labels(
+                        labels: [
+                          "",
+                          S.of(context).timesDone,
+                          S.of(context).count,
+                        ],
+                      ),
+                      ...state.awradElements.map(
+                        (e) => StatsTile(
+                          label: e.label,
+                          times: e.times,
+                          value: e.percentage,
+                          count: e.count,
                         ),
-                        ...state.awradElements.map(
-                          (e) => StatsTile(
-                            label: e.label,
-                            times: e.times,
-                            value: e.percentage,
-                            count: e.count,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        StatsCardHeader.labels(
-                          labels: [
-                            "",
-                            S.of(context).count,
-                          ],
-                        ),
-                        StatsTile(
-                          label: state.fastingElement.label,
-                          times: state.fastingElement.times,
-                          value: 1,
-                        ),
-                      ],
-                    ),
+              ),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+                      StatsCardHeader.labels(
+                        labels: [
+                          "",
+                          S.of(context).count,
+                        ],
+                      ),
+                      StatsTile(
+                        label: state.fastingElement.label,
+                        times: state.fastingElement.times,
+                        value: 1,
+                      ),
+                    ],
                   ),
                 ),
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        StatsCardHeader.labels(
-                          labels: [
-                            S.of(context).prayer_name,
-                            S.of(context).timesMissed,
-                          ],
+              ),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+                      StatsCardHeader.labels(
+                        labels: [
+                          S.of(context).prayer_name,
+                          S.of(context).timesMissed,
+                        ],
+                      ),
+                      ...state.obligatoryElements.map(
+                        (e) => StatsTile(
+                          label: e.label,
+                          times: e.times,
+                          value: e.percentage,
                         ),
-                        ...state.obligatoryElements.map(
-                          (e) => StatsTile(
-                            label: e.label,
-                            times: e.times,
-                            value: e.percentage,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        StatsCardHeader.labels(
-                          labels: [
-                            S.of(context).prayer_name,
-                            S.of(context).timesDone,
-                            S.of(context).count,
-                          ],
+              ),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+                      StatsCardHeader.labels(
+                        labels: [
+                          S.of(context).prayer_name,
+                          S.of(context).timesDone,
+                          S.of(context).count,
+                        ],
+                      ),
+                      ...state.additionalElements.map(
+                        (e) => StatsTile(
+                          label: e.label,
+                          times: e.times,
+                          value: e.percentage,
+                          count: e.count,
                         ),
-                        ...state.additionalElements.map(
-                          (e) => StatsTile(
-                            label: e.label,
-                            times: e.times,
-                            value: e.percentage,
-                            count: e.count,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          );
-        },
-      ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

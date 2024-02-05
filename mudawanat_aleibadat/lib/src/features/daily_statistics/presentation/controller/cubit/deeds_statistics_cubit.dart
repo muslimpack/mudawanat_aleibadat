@@ -1,15 +1,25 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:mudawanat_aleibadat/src/core/constants/deeds_columns.dart';
 import 'package:mudawanat_aleibadat/src/core/extension/extension_string.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/daily_deeds_repo.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/controller/bloc/deeds_calender_bloc.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_statistics/data/models/plot_card_item.dart';
 
 part 'deeds_statistics_state.dart';
 
 class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
-  DeedsStatisticsCubit() : super(DeedsStatisticsLoading());
+  final DeedsCalenderBloc deedsCalenderBloc;
+  late StreamSubscription deedsCalenderSubscription;
+  DeedsStatisticsCubit(this.deedsCalenderBloc)
+      : super(DeedsStatisticsLoading()) {
+    deedsCalenderSubscription = deedsCalenderBloc.stream.listen((event) {
+      loadData();
+    });
+  }
 
   Future loadData() async {
     final totalDays = await dailyDeedsRepo.daysCount();
@@ -131,5 +141,11 @@ class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
     });
 
     return spots;
+  }
+
+  @override
+  Future<void> close() {
+    deedsCalenderSubscription.cancel();
+    return super.close();
   }
 }
