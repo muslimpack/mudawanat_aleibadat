@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:mudawanat_aleibadat/src/core/constants/deeds_columns.dart';
 import 'package:mudawanat_aleibadat/src/core/extension/extension_string.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/daily_deeds_repo.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_summary/data/models/stats_model.dart';
@@ -9,29 +10,6 @@ part 'deeds_summary_state.dart';
 class DeedsSummaryCubit extends Cubit<DeedsSummaryState> {
   DeedsSummaryCubit() : super(DeedsSummaryLoading());
   static const String fastingColumn = "fasting";
-  static const List<String> obligatoryColumn = [
-    "fajr",
-    "dhuhr",
-    "asr",
-    "maghrib",
-    "ishaa",
-  ];
-  static const List<String> additionalColumn = [
-    "fajrPre",
-    "doha",
-    "dhuhrPre",
-    "dhuhrAfter",
-    "asrPre",
-    "maghribPre",
-    "maghribAfter",
-    "ishaaPre",
-    "ishaaAfter",
-    "nightPrayer",
-  ];
-  static const List<String> awradColumn = [
-    "quran",
-    "azkar",
-  ];
 
   Future loadData() async {
     final int totalDays = await dailyDeedsRepo.daysCount();
