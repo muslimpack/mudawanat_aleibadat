@@ -10,9 +10,7 @@ import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/sf
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/daily_deeds.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/daily_deeds_extension.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/slot.dart';
-import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/appointment_card.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/daily_deeds_editor.dart';
-import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/months_cell_card.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 part 'deeds_calender_event.dart';
@@ -123,19 +121,6 @@ class DeedsCalenderBloc extends Bloc<DeedsCalenderEvent, DeedsCalenderState> {
         details: event.details,
         scaffoldKey: event.scaffoldKey,
       ),
-    );
-  }
-
-  Widget monthCellBuilder(BuildContext context, MonthCellDetails details) {
-    return MonthCellCard(monthDetails: details);
-  }
-
-  Widget appointmentBuilder(
-    BuildContext context,
-    CalendarAppointmentDetails calendarAppointmentDetails,
-  ) {
-    return AppointmentCard(
-      calendarDetails: calendarAppointmentDetails,
     );
   }
 
