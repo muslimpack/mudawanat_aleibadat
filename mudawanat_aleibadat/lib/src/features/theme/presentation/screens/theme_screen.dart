@@ -85,9 +85,11 @@ class ThemeScreen extends StatelessWidget {
               SwitchListTile(
                 value: state.useOldTheme,
                 title: Text(S.of(context).useOldTheme),
-                onChanged: (value) {
-                  context.read<ThemeCubit>().changeUseOldTheme(value);
-                },
+                onChanged: state.useMaterial3
+                    ? null
+                    : (value) {
+                        context.read<ThemeCubit>().changeUseOldTheme(value);
+                      },
               ),
               const Divider(),
               ListTile(
