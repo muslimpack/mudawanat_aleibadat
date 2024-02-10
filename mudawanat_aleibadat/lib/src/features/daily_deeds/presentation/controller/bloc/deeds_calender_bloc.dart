@@ -32,6 +32,9 @@ class DeedsCalenderBloc extends Bloc<DeedsCalenderEvent, DeedsCalenderState> {
     Emitter<DeedsCalenderState> emit,
   ) async {
     controller = CalendarController();
+
+    await dailyDeedsRepo.addMissingDays();
+
     add(DeedsCalenderLoadDataEvent());
   }
 
@@ -51,7 +54,6 @@ class DeedsCalenderBloc extends Bloc<DeedsCalenderEvent, DeedsCalenderState> {
       dataCollection = {};
       slots = [];
     }
-    await dailyDeedsRepo.addMissingDays();
 
     final loadedDeeds = await dailyDeedsRepo.getDailyDeedsByDateRange(
       DateTime.now().subtract(

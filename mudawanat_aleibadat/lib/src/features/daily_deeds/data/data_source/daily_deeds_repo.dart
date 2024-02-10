@@ -107,6 +107,16 @@ class DailyDeedsRepo {
     );
   }
 
+  Future<void> deleteDailyDeeds(DateTime date) async {
+    final Database db = await database;
+
+    await db.delete(
+      tableName,
+      where: "date = ?",
+      whereArgs: [date.dateOnly],
+    );
+  }
+
   Future<void> insertList(List<DailyDeeds> list) async {
     final Database db = await database;
 
@@ -215,29 +225,43 @@ class DailyDeedsRepo {
   Future addMissingDays() async {
     final DateTime? dbLastAdded = await getLastAddedDate();
 
-    final DateTime now = DateTime.now().dateOnly;
+    final List<DateTime> dates;
 
-    if (dbLastAdded != null && dbLastAdded == now) return;
-
-    final DateTime lastAdded = dbLastAdded ?? now;
-
-    final List<DateTime> dates = [];
-
-    dates.add(lastAdded);
-    while (dates.last.isBefore(now)) {
-      dates.add(dates.last.add(const Duration(days: 1)));
-    }
-    if (lastAdded.dateOnly != now && dates.last != now) {
-      dates.add(DateTime.now());
+    if (dbLastAdded == null) {
+      dates = [DateTime.now().dateOnly];
+    } else {
+      dates = _missingDays(dbLastAdded);
     }
 
-    appPrint("Missing Days: ${dates.length}");
+    appPrint("LastDate: $dbLastAdded || Missing Days: ${dates.length}");
+    appPrint("Missing Days:");
+    for (final date in dates) {
+      appPrint(date);
+    }
 
     await insertList(
       dates.map((e) {
         return DailyDeeds.empty(date: e.dateOnly);
       }).toList(),
     );
+  }
+
+  List<DateTime> _missingDays(DateTime lastAddedDate) {
+    // Get the current date
+    final DateTime currentDate = DateTime.now();
+
+    if (lastAddedDate == currentDate) return [];
+
+    final List<DateTime> missingDates = [];
+
+    // Iterate from lastAddedDate to currentDate and add each date to the list
+    for (DateTime date = lastAddedDate.add(const Duration(days: 1));
+        date.isBefore(currentDate);
+        date = date.add(const Duration(days: 1))) {
+      missingDates.add(date);
+    }
+
+    return missingDates;
   }
 
   Future<int> sumColumn(String columnName) async {
