@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mudawanat_aleibadat/generated/l10n.dart';
 import 'package:mudawanat_aleibadat/src/core/constants/constants.dart';
-import 'package:mudawanat_aleibadat/src/core/utils/open_url.dart';
 import 'package:mudawanat_aleibadat/src/features/theme/presentation/controller/cubit/theme_cubit.dart';
 
 class ThemeScreen extends StatelessWidget {
@@ -115,25 +113,25 @@ class ThemeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const Divider(),
-              ListTile(
-                leading: const Icon(FontAwesomeIcons.googlePlay),
-                title: Text(S.of(context).moreProductsFromUs),
-                onTap: () {
-                  openURL(
-                    "https://play.google.com/store/apps/dev?id=4949997098744780639",
-                  );
-                },
-              ),
-              ListTile(
-                leading: const Icon(FontAwesomeIcons.github),
-                title: Text(S.of(context).sourceCodeLink),
-                onTap: () {
-                  openURL(
-                    "https://github.com/muslimpack/mudawanat_aleibadat",
-                  );
-                },
-              ),
+              // const Divider(),
+              // ListTile(
+              //   leading: const Icon(FontAwesomeIcons.googlePlay),
+              //   title: Text(S.of(context).moreProductsFromUs),
+              //   onTap: () {
+              //     openURL(
+              //       "https://play.google.com/store/apps/dev?id=4949997098744780639",
+              //     );
+              //   },
+              // ),
+              // ListTile(
+              //   leading: const Icon(FontAwesomeIcons.github),
+              //   title: Text(S.of(context).sourceCodeLink),
+              //   onTap: () {
+              //     openURL(
+              //       "https://github.com/muslimpack/mudawanat_aleibadat",
+              //     );
+              //   },
+              // ),
               const Divider(),
               ListTile(
                 title: Text(S.of(context).appVersion),
