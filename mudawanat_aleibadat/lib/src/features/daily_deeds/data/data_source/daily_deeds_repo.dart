@@ -65,6 +65,8 @@ class DailyDeedsRepo {
             date INTEGER PRIMARY KEY,
             lastUpdated INTEGER,
             fasting INTEGER,
+            
+            -- additional
             fajrPre INTEGER,
             dhuhrPre INTEGER,
             dhuhrAfter INTEGER,
@@ -75,11 +77,15 @@ class DailyDeedsRepo {
             ishaaAfter INTEGER,
             doha INTEGER,
             nightPrayer INTEGER,
+            
+            -- obligatory
             fajr INTEGER,
             dhuhr INTEGER,
             asr INTEGER,
             maghrib INTEGER,
             ishaa INTEGER,
+            
+            -- awrad
             quran INTEGER,
             azkar INTEGER
           )
@@ -95,7 +101,8 @@ class DailyDeedsRepo {
       await db.execute('''
       ALTER TABLE daily_deeds
       ADD COLUMN lastUpdated INTEGER;
-
+      ''');
+      await db.execute('''
       UPDATE daily_deeds
       SET lastUpdated = date;
       ''');
