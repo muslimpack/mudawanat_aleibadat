@@ -94,6 +94,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                         child: TabBarView(
                           physics: const BouncingScrollPhysics(),
                           children: [
+                            /// General
                             ListView(
                               physics: const BouncingScrollPhysics(),
                               children: [
