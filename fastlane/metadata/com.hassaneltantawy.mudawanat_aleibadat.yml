@@ -14,9 +14,9 @@ RepoType: git
 Repo: https://github.com/muslimpack/mudawanat_aleibadat.git
 
 Builds:
-  - versionName: 0.3.02
-    versionCode: 5
-    commit: 448e4dae6f0d5425585daa65d19913537d5be958
+  - versionName: 0.4.01
+    versionCode: 7
+    commit: 31604c69d3043d9794c15e12e633edb77f26391d
     subdir: mudawanat_aleibadat
     output: build/app/outputs/flutter-apk/app-release.apk
     srclibs:
@@ -40,5 +40,5 @@ Builds:
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
 UpdateCheckData: mudawanat_aleibadat/pubspec.yaml|version:\s.+\+(\d+)|.|version:\s(.+)\+
-CurrentVersion: 0.3.02
-CurrentVersionCode: 5
+CurrentVersion: 0.4.01
+CurrentVersionCode: 7
