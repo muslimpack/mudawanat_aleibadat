@@ -35,6 +35,10 @@ Future<void> initServices() async {
       center: true,
     );
     windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.setTitleBarStyle(
+        TitleBarStyle.hidden,
+        windowButtonVisibility: false,
+      );
       await windowManager.show();
       await windowManager.focus();
     });

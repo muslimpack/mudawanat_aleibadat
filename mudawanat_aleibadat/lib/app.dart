@@ -3,12 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mudawanat_aleibadat/generated/l10n.dart';
 import 'package:mudawanat_aleibadat/scroll_behavior.dart';
+import 'package:mudawanat_aleibadat/src/core/extension/extension_platform.dart';
 import 'package:mudawanat_aleibadat/src/core/repos/local_storage_repo.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/controller/bloc/deeds_calender_bloc.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/controller/cubit/deeds_statistics_cubit.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_summary/presentation/controller/cubit/deeds_summary_cubit.dart';
 import 'package:mudawanat_aleibadat/src/features/home/presentation/screens/home_screen.dart';
 import 'package:mudawanat_aleibadat/src/features/theme/presentation/controller/cubit/theme_cubit.dart';
+import 'package:mudawanat_aleibadat/src/features/ui/presentation/components/desktop_window_wrapper.dart';
 import 'package:window_manager/window_manager.dart';
 
 class MyApp extends StatefulWidget {
@@ -87,6 +89,12 @@ class _MyAppState extends State<MyApp> with WindowListener {
                     useMaterial3: state.useMaterial3,
                   ),
             locale: state.locale,
+            builder: (context, child) {
+              if (PlatformExtension.isDesktop) {
+                return DesktopWindowWrapper(child: child);
+              }
+              return child ?? const SizedBox();
+            },
             home: const HomeScreen(),
           );
         },

@@ -4,7 +4,11 @@ import 'package:flutter/foundation.dart';
 
 extension PlatformExtension on Platform {
   static bool get isDesktop {
-    return Platform.isWindows || Platform.isMacOS || Platform.isLinux;
+    return [
+      TargetPlatform.windows,
+      TargetPlatform.linux,
+      TargetPlatform.macOS,
+    ].contains(defaultTargetPlatform);
   }
 
   static bool get isDesktopOrWeb {
