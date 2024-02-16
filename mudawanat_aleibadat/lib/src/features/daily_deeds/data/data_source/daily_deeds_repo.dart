@@ -99,11 +99,11 @@ class DailyDeedsRepo {
   ) async {
     if (oldVersion < 2) {
       await db.execute('''
-      ALTER TABLE daily_deeds
-      ADD COLUMN lastUpdated INTEGER;
+      ALTER TABLE $tableName
+      ADD COLUMN lastUpdated INTEGER DEFAULT ;
       ''');
       await db.execute('''
-      UPDATE daily_deeds
+      UPDATE $tableName
       SET lastUpdated = date;
       ''');
     }
