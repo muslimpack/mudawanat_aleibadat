@@ -114,6 +114,17 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                     });
                                   },
                                 ),
+                                ListTile(
+                                  title: Text(
+                                    S.of(context).last_update,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  subtitle: Text(
+                                    DateFormat('E - dd / MM / yyyy - hh:mm')
+                                        .format(dailyDeeds.lastUpdated),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
                               ],
                             ),
 
@@ -367,7 +378,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                   onChanged: (value) {
                                     setState(() {
                                       dailyDeeds = dailyDeeds.copyWith(
-                                        wird: dailyDeeds.awrad
+                                        awrad: dailyDeeds.awrad
                                             .copyWith(azkar: value),
                                       );
                                     });
@@ -381,7 +392,7 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                   onChanged: (value) {
                                     setState(() {
                                       dailyDeeds = dailyDeeds.copyWith(
-                                        wird: dailyDeeds.awrad
+                                        awrad: dailyDeeds.awrad
                                             .copyWith(quran: value),
                                       );
                                     });
@@ -419,7 +430,11 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                 if (dailyDeeds == initialValue) {
                                   Navigator.of(context).pop();
                                 } else {
-                                  Navigator.of(context).pop(dailyDeeds);
+                                  Navigator.of(context).pop(
+                                    dailyDeeds.copyWith(
+                                      lastUpdated: DateTime.now(),
+                                    ),
+                                  );
                                 }
                               },
                             ),

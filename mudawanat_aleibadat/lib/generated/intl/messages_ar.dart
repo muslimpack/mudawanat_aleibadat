@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "done": MessageLookupByLibrary.simpleMessage("تم"),
         "fasting": MessageLookupByLibrary.simpleMessage("الصوم"),
         "general": MessageLookupByLibrary.simpleMessage("عام"),
+        "last_update": MessageLookupByLibrary.simpleMessage("آخر تحديث"),
         "missedDeeds": MessageLookupByLibrary.simpleMessage("الأعمال الفائتة"),
         "moreProductsFromUs":
             MessageLookupByLibrary.simpleMessage("المزيد من إصداراتنا"),

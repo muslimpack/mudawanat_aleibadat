@@ -14,6 +14,7 @@ class DailyDeeds extends Equatable {
   final DailyAwrad awrad;
   final bool fasting;
   final DateTime date;
+  final DateTime lastUpdated;
 
   const DailyDeeds({
     required this.additionalPrayers,
@@ -21,6 +22,7 @@ class DailyDeeds extends Equatable {
     required this.fasting,
     required this.awrad,
     required this.date,
+    required this.lastUpdated,
   });
 
   const DailyDeeds.empty({
@@ -28,21 +30,24 @@ class DailyDeeds extends Equatable {
     required this.date,
   })  : awrad = const DailyAwrad.empty(),
         additionalPrayers = const DailyAdditionalPrayers.empty(),
-        obligatoryPrayers = const DailyObligatoryPrayers.empty();
+        obligatoryPrayers = const DailyObligatoryPrayers.empty(),
+        lastUpdated = date;
 
   DailyDeeds copyWith({
-    DailyAwrad? wird,
+    DailyAwrad? awrad,
     DailyAdditionalPrayers? additionalPrayers,
     DailyObligatoryPrayers? obligatoryPrayers,
     bool? fasting,
     DateTime? date,
+    DateTime? lastUpdated,
   }) {
     return DailyDeeds(
       additionalPrayers: additionalPrayers ?? this.additionalPrayers,
       obligatoryPrayers: obligatoryPrayers ?? this.obligatoryPrayers,
       fasting: fasting ?? this.fasting,
       date: date ?? this.date,
-      awrad: wird ?? awrad,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      awrad: awrad ?? this.awrad,
     );
   }
 
@@ -53,6 +58,7 @@ class DailyDeeds extends Equatable {
       ...obligatoryPrayers.toMap(),
       'fasting': fasting.toInt(),
       'date': date.dateOnly.millisecondsSinceEpoch,
+      'lastUpdated': lastUpdated.millisecondsSinceEpoch,
     };
   }
 
@@ -69,6 +75,8 @@ class DailyDeeds extends Equatable {
       ),
       fasting: map['fasting'] == 1,
       date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int).dateOnly,
+      lastUpdated:
+          DateTime.fromMillisecondsSinceEpoch(map['lastUpdated'] as int),
     );
   }
 
@@ -85,6 +93,7 @@ class DailyDeeds extends Equatable {
       awrad,
       fasting,
       date,
+      lastUpdated,
     ];
   }
 }

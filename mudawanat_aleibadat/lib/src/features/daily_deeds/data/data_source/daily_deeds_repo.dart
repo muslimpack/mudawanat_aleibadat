@@ -15,7 +15,9 @@ class DailyDeedsRepo {
   static const String dbName = 'daily_deeds.db';
   static const String tableName = 'daily_deeds';
 
-  static const int dbVersion = 1;
+  /// 1 => initial database
+  /// 2 => add lastUpdated column
+  static const int dbVersion = 2;
 
   /* ************* Singleton Constructor ************* */
 
@@ -61,6 +63,7 @@ class DailyDeedsRepo {
     await db.execute('''
           CREATE TABLE $tableName (
             date INTEGER PRIMARY KEY,
+            lastUpdated INTEGER,
             fasting INTEGER,
             fajrPre INTEGER,
             dhuhrPre INTEGER,
@@ -87,7 +90,17 @@ class DailyDeedsRepo {
     Database db,
     int oldVersion,
     int newVersion,
-  ) async {}
+  ) async {
+    if (oldVersion < 2) {
+      await db.execute('''
+      ALTER TABLE daily_deeds
+      ADD COLUMN lastUpdated INTEGER;
+
+      UPDATE daily_deeds
+      SET lastUpdated = date;
+      ''');
+    }
+  }
 
   FutureOr<void> _onDowngrade(
     Database db,

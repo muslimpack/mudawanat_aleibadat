@@ -210,6 +210,16 @@ class S {
     );
   }
 
+  /// `Last Update`
+  String get last_update {
+    return Intl.message(
+      'Last Update',
+      name: 'last_update',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Missed Deeds`
   String get missedDeeds {
     return Intl.message(
