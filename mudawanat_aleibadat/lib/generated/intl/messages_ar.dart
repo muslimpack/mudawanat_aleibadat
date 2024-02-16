@@ -47,9 +47,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "prayer_asr_pre": MessageLookupByLibrary.simpleMessage("العصر القبليه"),
         "prayer_dhuhr": MessageLookupByLibrary.simpleMessage("الظهر"),
         "prayer_dhuhr_after":
-            MessageLookupByLibrary.simpleMessage("الظهر القبليه"),
-        "prayer_dhuhr_pre":
             MessageLookupByLibrary.simpleMessage("الظهر البعديه"),
+        "prayer_dhuhr_pre":
+            MessageLookupByLibrary.simpleMessage("الظهر القبليه"),
         "prayer_doha": MessageLookupByLibrary.simpleMessage("الضحى"),
         "prayer_fajr": MessageLookupByLibrary.simpleMessage("الفجر"),
         "prayer_fajr_pre": MessageLookupByLibrary.simpleMessage("ركعتا الفجر"),
