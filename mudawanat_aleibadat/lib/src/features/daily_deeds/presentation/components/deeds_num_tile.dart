@@ -57,22 +57,25 @@ class _DeedsNumTileState extends State<DeedsNumTile> {
         children: [
           ListTile(
             title: widget.title,
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                if (widget.showCounter)
-                  ValueCounter(
-                    min: 0,
-                    value: value.toDouble(),
-                    onChanged: _onChanged,
-                  ),
-                if (widget.numbers != null)
-                  ValueSelector(
-                    value: value.toDouble(),
-                    numbers: widget.numbers!,
-                    onChanged: _onChanged,
-                  ),
-              ],
+            subtitle: Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (widget.showCounter)
+                    ValueCounter(
+                      min: 0,
+                      value: value.toDouble(),
+                      onChanged: _onChanged,
+                    ),
+                  if (widget.numbers != null)
+                    ValueSelector(
+                      value: value.toDouble(),
+                      numbers: widget.numbers!,
+                      onChanged: _onChanged,
+                    ),
+                ],
+              ),
             ),
           ),
           if (widget.info != null) widget.info!,
