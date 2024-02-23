@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mudawanat_aleibadat/src/core/utils/color_generator.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/value_counter.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/value_selector.dart';
 
@@ -50,9 +51,24 @@ class _DeedsNumTileState extends State<DeedsNumTile> {
     });
   }
 
+  String getKey() {
+    if (widget.title is Text) {
+      final text = (widget.title as Text).data;
+      final key = text ?? widget.title.toString();
+
+      return key + key;
+    }
+    return widget.title.hashCode.toString();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final color = ColorGenerator.highContrastByKey(
+      key: getKey(),
+    );
     return Card(
+      clipBehavior: Clip.hardEdge,
+      color: color.withOpacity(.1),
       child: Column(
         children: [
           ListTile(
