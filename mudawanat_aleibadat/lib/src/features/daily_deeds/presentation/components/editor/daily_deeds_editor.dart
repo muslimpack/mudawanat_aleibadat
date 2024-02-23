@@ -9,6 +9,7 @@ import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/daily_d
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/deeds_num_tile.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/deeds_reward_builder.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/deeds_switch_tile.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/editor/obligatory_prayer_editor.dart';
 
 class DailyDeedsEditor extends StatefulWidget {
   final DailyDeeds? dailyDeeds;
@@ -130,96 +131,13 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                         ),
 
                         /// obligatoryPrayers
-                        ListView(
-                          padding: const EdgeInsets.all(15),
-                          physics: const BouncingScrollPhysics(),
-                          children: [
-                            DeedsSwitchTile(
-                              value: dailyDeeds.obligatoryPrayers.fajr,
-                              title: Text(S.of(context).prayer_fajr),
-                              info: DeedsRewardBuilder(
-                                rewards: DeedsReward.obligatoryPrayers
-                                    .getRandomItem<String>(),
-                              ),
-                              onChanged: (value) {
-                                setState(() {
-                                  dailyDeeds = dailyDeeds.copyWith(
-                                    obligatoryPrayers: dailyDeeds
-                                        .obligatoryPrayers
-                                        .copyWith(fajr: value),
-                                  );
-                                });
-                              },
-                            ),
-                            DeedsSwitchTile(
-                              value: dailyDeeds.obligatoryPrayers.dhuhr,
-                              title: Text(S.of(context).prayer_dhuhr),
-                              info: DeedsRewardBuilder(
-                                rewards: DeedsReward.obligatoryPrayers
-                                    .getRandomItem<String>(),
-                              ),
-                              onChanged: (value) {
-                                setState(() {
-                                  dailyDeeds = dailyDeeds.copyWith(
-                                    obligatoryPrayers: dailyDeeds
-                                        .obligatoryPrayers
-                                        .copyWith(dhuhr: value),
-                                  );
-                                });
-                              },
-                            ),
-                            DeedsSwitchTile(
-                              value: dailyDeeds.obligatoryPrayers.asr,
-                              title: Text(S.of(context).prayer_asr),
-                              info: DeedsRewardBuilder(
-                                rewards: DeedsReward.obligatoryPrayers
-                                    .getRandomItem<String>(),
-                              ),
-                              onChanged: (value) {
-                                setState(() {
-                                  dailyDeeds = dailyDeeds.copyWith(
-                                    obligatoryPrayers: dailyDeeds
-                                        .obligatoryPrayers
-                                        .copyWith(asr: value),
-                                  );
-                                });
-                              },
-                            ),
-                            DeedsSwitchTile(
-                              value: dailyDeeds.obligatoryPrayers.maghrib,
-                              title: Text(S.of(context).prayer_maghrib),
-                              info: DeedsRewardBuilder(
-                                rewards: DeedsReward.obligatoryPrayers
-                                    .getRandomItem<String>(),
-                              ),
-                              onChanged: (value) {
-                                setState(() {
-                                  dailyDeeds = dailyDeeds.copyWith(
-                                    obligatoryPrayers: dailyDeeds
-                                        .obligatoryPrayers
-                                        .copyWith(maghrib: value),
-                                  );
-                                });
-                              },
-                            ),
-                            DeedsSwitchTile(
-                              value: dailyDeeds.obligatoryPrayers.ishaa,
-                              title: Text(S.of(context).prayer_ishaa),
-                              info: DeedsRewardBuilder(
-                                rewards: DeedsReward.obligatoryPrayers
-                                    .getRandomItem<String>(),
-                              ),
-                              onChanged: (value) {
-                                setState(() {
-                                  dailyDeeds = dailyDeeds.copyWith(
-                                    obligatoryPrayers: dailyDeeds
-                                        .obligatoryPrayers
-                                        .copyWith(ishaa: value),
-                                  );
-                                });
-                              },
-                            ),
-                          ],
+                        ObligatoryPrayerEditor(
+                          dailyDeeds: dailyDeeds,
+                          onChanged: (value) {
+                            setState(() {
+                              dailyDeeds = value;
+                            });
+                          },
                         ),
 
                         /// AdditionalPrayers
