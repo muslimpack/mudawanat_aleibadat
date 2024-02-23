@@ -156,13 +156,14 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                           padding: const EdgeInsets.all(15),
                           physics: const BouncingScrollPhysics(),
                           children: [
-                            DeedsSwitchTile(
+                            DeedsNumTile(
                               value: dailyDeeds.awrad.azkar,
                               title: Text(S.of(context).awrad_azkar),
                               info: DeedsRewardBuilder(
                                 rewards:
                                     DeedsReward.azkar.getRandomItem<String>(),
                               ),
+                              numbers: const [0, 1, 2, 3, 4, 5],
                               onChanged: (value) {
                                 setState(() {
                                   dailyDeeds = dailyDeeds.copyWith(

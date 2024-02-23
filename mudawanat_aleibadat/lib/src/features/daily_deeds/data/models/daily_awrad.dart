@@ -2,10 +2,9 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-import 'package:mudawanat_aleibadat/src/core/extension/extension_bool.dart';
 
 class DailyAwrad extends Equatable {
-  final bool azkar;
+  final int azkar;
   final int quran;
 
   const DailyAwrad({
@@ -14,12 +13,12 @@ class DailyAwrad extends Equatable {
   });
 
   const DailyAwrad.empty({
-    this.azkar = false,
+    this.azkar = 0,
     this.quran = 0,
   });
 
   DailyAwrad copyWith({
-    bool? azkar,
+    int? azkar,
     int? quran,
   }) {
     return DailyAwrad(
@@ -30,14 +29,14 @@ class DailyAwrad extends Equatable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azkar': azkar.toInt(),
+      'azkar': azkar,
       'quran': quran,
     };
   }
 
   factory DailyAwrad.fromMap(Map<String, dynamic> map) {
     return DailyAwrad(
-      azkar: map['azkar'] == 1,
+      azkar: map['azkar'] as int,
       quran: map['quran'] as int,
     );
   }

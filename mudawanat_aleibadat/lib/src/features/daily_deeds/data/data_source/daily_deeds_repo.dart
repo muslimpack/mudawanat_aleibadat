@@ -17,7 +17,7 @@ class DailyDeedsRepo {
 
   /// 1 => initial database
   /// 2 => add lastUpdated column
-  static const int dbVersion = 2;
+  static const int dbVersion = 3;
 
   /* ************* Singleton Constructor ************* */
 
@@ -97,6 +97,7 @@ class DailyDeedsRepo {
     int oldVersion,
     int newVersion,
   ) async {
+    ///
     if (oldVersion < 2) {
       await db.execute('''
       ALTER TABLE $tableName
@@ -105,6 +106,14 @@ class DailyDeedsRepo {
       await db.execute('''
       UPDATE $tableName
       SET lastUpdated = date;
+      ''');
+    }
+
+    ///
+    if (oldVersion < 3) {
+      await db.execute('''
+      UPDATE $tableName
+      SET azkar = azkar * 5;
       ''');
     }
   }

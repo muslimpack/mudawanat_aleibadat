@@ -44,7 +44,7 @@ extension DailyDeedsExtension on DailyDeeds {
         from: date,
         to: date,
         isAllDay: true,
-        background: getColor(awrad.azkar),
+        background: getColorByInt(awrad.azkar),
       ),
     ];
   }
