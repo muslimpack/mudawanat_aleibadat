@@ -7,7 +7,7 @@ import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/daily_d
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/deeds_reward_builder.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/deeds_switch_tile.dart';
 
-class ObligatoryPrayerEditor extends StatelessWidget {
+class ObligatoryPrayerEditor extends StatefulWidget {
   final DailyDeeds dailyDeeds;
   final ValueChanged<DailyDeeds> onChanged;
   const ObligatoryPrayerEditor({
@@ -17,83 +17,88 @@ class ObligatoryPrayerEditor extends StatelessWidget {
   });
 
   @override
+  State<ObligatoryPrayerEditor> createState() => _ObligatoryPrayerEditorState();
+}
+
+class _ObligatoryPrayerEditorState extends State<ObligatoryPrayerEditor> {
+  final rewards = DeedsReward.obligatoryPrayers.getRandomItem<String>();
+  @override
   Widget build(BuildContext context) {
-    final rewards = DeedsReward.obligatoryPrayers.getRandomItem<String>();
     return ListView(
       padding: const EdgeInsets.all(15),
       physics: const BouncingScrollPhysics(),
       children: [
         DeedsSwitchTile(
-          value: dailyDeeds.obligatoryPrayers.fajr,
+          value: widget.dailyDeeds.obligatoryPrayers.fajr,
           title: Text(S.of(context).prayer_fajr),
           info: DeedsRewardBuilder(
             rewards: rewards,
           ),
           onChanged: (value) {
-            onChanged.call(
-              dailyDeeds.copyWith(
+            widget.onChanged.call(
+              widget.dailyDeeds.copyWith(
                 obligatoryPrayers:
-                    dailyDeeds.obligatoryPrayers.copyWith(fajr: value),
+                    widget.dailyDeeds.obligatoryPrayers.copyWith(fajr: value),
               ),
             );
           },
         ),
         DeedsSwitchTile(
-          value: dailyDeeds.obligatoryPrayers.dhuhr,
+          value: widget.dailyDeeds.obligatoryPrayers.dhuhr,
           title: Text(S.of(context).prayer_dhuhr),
           info: DeedsRewardBuilder(
             rewards: rewards,
           ),
           onChanged: (value) {
-            onChanged.call(
-              dailyDeeds.copyWith(
+            widget.onChanged.call(
+              widget.dailyDeeds.copyWith(
                 obligatoryPrayers:
-                    dailyDeeds.obligatoryPrayers.copyWith(dhuhr: value),
+                    widget.dailyDeeds.obligatoryPrayers.copyWith(dhuhr: value),
               ),
             );
           },
         ),
         DeedsSwitchTile(
-          value: dailyDeeds.obligatoryPrayers.asr,
+          value: widget.dailyDeeds.obligatoryPrayers.asr,
           title: Text(S.of(context).prayer_asr),
           info: DeedsRewardBuilder(
             rewards: rewards,
           ),
           onChanged: (value) {
-            onChanged.call(
-              dailyDeeds.copyWith(
+            widget.onChanged.call(
+              widget.dailyDeeds.copyWith(
                 obligatoryPrayers:
-                    dailyDeeds.obligatoryPrayers.copyWith(asr: value),
+                    widget.dailyDeeds.obligatoryPrayers.copyWith(asr: value),
               ),
             );
           },
         ),
         DeedsSwitchTile(
-          value: dailyDeeds.obligatoryPrayers.maghrib,
+          value: widget.dailyDeeds.obligatoryPrayers.maghrib,
           title: Text(S.of(context).prayer_maghrib),
           info: DeedsRewardBuilder(
             rewards: rewards,
           ),
           onChanged: (value) {
-            onChanged.call(
-              dailyDeeds.copyWith(
-                obligatoryPrayers:
-                    dailyDeeds.obligatoryPrayers.copyWith(maghrib: value),
+            widget.onChanged.call(
+              widget.dailyDeeds.copyWith(
+                obligatoryPrayers: widget.dailyDeeds.obligatoryPrayers
+                    .copyWith(maghrib: value),
               ),
             );
           },
         ),
         DeedsSwitchTile(
-          value: dailyDeeds.obligatoryPrayers.ishaa,
+          value: widget.dailyDeeds.obligatoryPrayers.ishaa,
           title: Text(S.of(context).prayer_ishaa),
           info: DeedsRewardBuilder(
             rewards: rewards,
           ),
           onChanged: (value) {
-            onChanged.call(
-              dailyDeeds.copyWith(
+            widget.onChanged.call(
+              widget.dailyDeeds.copyWith(
                 obligatoryPrayers:
-                    dailyDeeds.obligatoryPrayers.copyWith(ishaa: value),
+                    widget.dailyDeeds.obligatoryPrayers.copyWith(ishaa: value),
               ),
             );
           },
