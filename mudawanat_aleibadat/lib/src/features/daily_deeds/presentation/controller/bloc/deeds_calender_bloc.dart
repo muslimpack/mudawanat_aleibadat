@@ -10,7 +10,7 @@ import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/sf
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/daily_deeds.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/daily_deeds_extension.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/slot.dart';
-import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/daily_deeds_editor.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/editor/daily_deeds_editor.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 part 'deeds_calender_event.dart';
