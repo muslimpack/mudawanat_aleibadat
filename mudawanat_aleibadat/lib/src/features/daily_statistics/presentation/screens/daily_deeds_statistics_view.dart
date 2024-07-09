@@ -29,6 +29,7 @@ class DailyDeedsStatisticsView extends StatelessWidget {
                   children: [
                     Expanded(
                       child: TabBar(
+                        dividerHeight: 0,
                         tabAlignment: TabAlignment.center,
                         isScrollable: true,
                         tabs: <Widget>[
@@ -64,6 +65,7 @@ class DailyDeedsStatisticsView extends StatelessWidget {
                     ),
                   ],
                 ),
+                const Divider(height: 0),
                 Expanded(
                   child: TabBarView(
                     children: [
