@@ -8,6 +8,7 @@ import 'package:mudawanat_aleibadat/src/core/extension/extension_string.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/daily_deeds_repo.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/controller/bloc/deeds_calender_bloc.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_statistics/data/models/plot_card_item.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_statistics/data/models/stats_range.dart';
 
 part 'deeds_statistics_state.dart';
 
@@ -37,6 +38,7 @@ class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
 
     emit(
       DeedsStatisticsLoaded(
+        timeRange: StatsRange.all,
         totalDays: totalDays,
         additionalSeparatedSpots: results[0] as List<PlotCardItem>,
         obligatorySeparatedSpots: results[1] as List<PlotCardItem>,
@@ -141,6 +143,13 @@ class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
     });
 
     return spots;
+  }
+
+  Future changeTimeRange(StatsRange timeRange) async {
+    final state = this.state;
+    if (state is! DeedsStatisticsLoaded) return;
+
+    emit(state.copyWith(timeRange: timeRange));
   }
 
   @override

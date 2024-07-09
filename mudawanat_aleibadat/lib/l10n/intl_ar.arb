@@ -45,5 +45,10 @@
   "timesDone": "مرات القضاء",
   "timesMissed": "مرات الفائت",
   "useMaterial3": "استخدام Material3",
-  "useOldTheme": "استخدم المظهر القديم"
+  "useOldTheme": "استخدم المظهر القديم",
+  "statsRangeLast365Days": "آخر 365 يوما",
+  "statsRangeLast180Days": "آخر 180 يوما",
+  "statsRangeLast30Days": "آخر 30 يوما",
+  "statsRangeLast7Days": "آخر 7 أيام",
+  "statsRangeAll": "جميع الأوقات"
 }

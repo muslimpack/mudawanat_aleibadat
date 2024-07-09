@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'deeds_statistics_cubit.dart';
 
 sealed class DeedsStatisticsState extends Equatable {
@@ -11,6 +12,7 @@ final class DeedsStatisticsLoading extends DeedsStatisticsState {}
 
 final class DeedsStatisticsLoaded extends DeedsStatisticsState {
   final int totalDays;
+  final StatsRange timeRange;
   final List<PlotCardItem> additionalSeparatedSpots;
   final List<PlotCardItem> obligatorySeparatedSpots;
   final List<FlSpot> obligatorySpots;
@@ -25,6 +27,7 @@ final class DeedsStatisticsLoaded extends DeedsStatisticsState {
     required this.additionalSpots,
     required this.quranSpots,
     required this.azkarSpots,
+    required this.timeRange,
   });
 
   @override
@@ -37,11 +40,13 @@ final class DeedsStatisticsLoaded extends DeedsStatisticsState {
       additionalSpots,
       quranSpots,
       azkarSpots,
+      timeRange,
     ];
   }
 
   DeedsStatisticsLoaded copyWith({
     int? totalDays,
+    StatsRange? timeRange,
     List<PlotCardItem>? additionalSeparatedSpots,
     List<PlotCardItem>? obligatorySeparatedSpots,
     List<FlSpot>? obligatorySpots,
@@ -51,6 +56,7 @@ final class DeedsStatisticsLoaded extends DeedsStatisticsState {
   }) {
     return DeedsStatisticsLoaded(
       totalDays: totalDays ?? this.totalDays,
+      timeRange: timeRange ?? this.timeRange,
       additionalSeparatedSpots:
           additionalSeparatedSpots ?? this.additionalSeparatedSpots,
       obligatorySeparatedSpots:
