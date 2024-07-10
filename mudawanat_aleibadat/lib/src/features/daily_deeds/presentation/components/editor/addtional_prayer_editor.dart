@@ -63,7 +63,7 @@ class _AdditionalPrayerEditorState extends State<AdditionalPrayerEditor> {
           },
         ),
         DeedsNumTile(
-          numbers: const [0, 4],
+          numbers: const [0, 2, 4],
           value: widget.dailyDeeds.additionalPrayers.dhuhrPre,
           title: Text(S.of(context).prayer_dhuhr_pre),
           info: DeedsRewardBuilder(
@@ -95,7 +95,7 @@ class _AdditionalPrayerEditorState extends State<AdditionalPrayerEditor> {
           },
         ),
         DeedsNumTile(
-          numbers: const [0, 4],
+          numbers: const [0, 2, 4],
           value: widget.dailyDeeds.additionalPrayers.asrPre,
           title: Text(S.of(context).prayer_asr_pre),
           onChanged: (value) {
