@@ -333,19 +333,29 @@ class DailyDeedsRepo {
     return count;
   }
 
-  Future<Map<DateTime, int>> getMapDateColumn(List<String> columnNames) async {
+  Future<Map<DateTime, int>> getMapDateColumn(
+    List<String> columnNames, [
+    int? days,
+  ]) async {
     final Database db = await database;
-
+    final daysCondition = days != null
+        ? """
+(
+  SELECT *
+  FROM $tableName
+  ORDER BY date DESC
+  limit $days
+) AS subquery
+    """
+        : tableName;
+    appPrint(daysCondition);
     final List<Map<String, dynamic>> rows = await db.rawQuery('''
       SELECT
         date,
         ${columnNames.map((col) => 'COALESCE(SUM($col), 0) AS $col').join(', ')}
-      FROM
-        $tableName
-      GROUP BY
-        date
-      ORDER BY
-        date;
+      FROM $daysCondition
+      GROUP BY date
+      ORDER BY date
     ''');
 
     final Map<DateTime, int> result = {};

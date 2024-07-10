@@ -54,8 +54,7 @@ class _MyAppState extends State<MyApp> with WindowListener {
         ),
         BlocProvider(
           create: (context) =>
-              DeedsStatisticsCubit(context.read<DeedsCalenderBloc>())
-                ..loadData(),
+              DeedsStatisticsCubit(context.read<DeedsCalenderBloc>())..init(),
         ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
