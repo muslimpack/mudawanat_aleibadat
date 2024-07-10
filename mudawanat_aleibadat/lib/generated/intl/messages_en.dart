@@ -73,6 +73,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("App source code"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
         "summary": MessageLookupByLibrary.simpleMessage("Summary"),
+        "timeRangeAll": MessageLookupByLibrary.simpleMessage("All Times"),
+        "timeRangeLast180Days":
+            MessageLookupByLibrary.simpleMessage("Last 180 Days"),
+        "timeRangeLast30Days":
+            MessageLookupByLibrary.simpleMessage("Last 30 Days"),
+        "timeRangeLast365Days":
+            MessageLookupByLibrary.simpleMessage("Last 365 Days"),
+        "timeRangeLast7Days":
+            MessageLookupByLibrary.simpleMessage("Last 7 Days"),
         "timesDone": MessageLookupByLibrary.simpleMessage("Done Times"),
         "timesMissed": MessageLookupByLibrary.simpleMessage("Times Missed"),
         "useMaterial3": MessageLookupByLibrary.simpleMessage("Use Material3"),

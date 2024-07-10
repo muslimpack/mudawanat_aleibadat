@@ -519,6 +519,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Last 365 Days`
+  String get timeRangeLast365Days {
+    return Intl.message(
+      'Last 365 Days',
+      name: 'timeRangeLast365Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last 180 Days`
+  String get timeRangeLast180Days {
+    return Intl.message(
+      'Last 180 Days',
+      name: 'timeRangeLast180Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last 30 Days`
+  String get timeRangeLast30Days {
+    return Intl.message(
+      'Last 30 Days',
+      name: 'timeRangeLast30Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last 7 Days`
+  String get timeRangeLast7Days {
+    return Intl.message(
+      'Last 7 Days',
+      name: 'timeRangeLast7Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Times`
+  String get timeRangeAll {
+    return Intl.message(
+      'All Times',
+      name: 'timeRangeAll',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
