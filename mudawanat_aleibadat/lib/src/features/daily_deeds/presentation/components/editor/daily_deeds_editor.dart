@@ -181,7 +181,17 @@ class _DailyDeedsEditorState extends State<DailyDeedsEditor> {
                                     DeedsReward.quran.getRandomItem<String>(),
                               ),
                               showCounter: true,
-                              numbers: const [0, 5, 10, 15, 20, 30, 40, 50],
+                              numbers: const [
+                                0,
+                                5,
+                                10,
+                                15,
+                                20,
+                                30,
+                                40,
+                                50,
+                                100,
+                              ],
                               onChanged: (value) {
                                 setState(() {
                                   dailyDeeds = dailyDeeds.copyWith(
