@@ -46,9 +46,9 @@
   "timesMissed": "Times Missed",
   "useMaterial3": "Use Material3",
   "useOldTheme": "Use Old Theme",
-  "statsRangeLast365Days": "Last 365 Days",
-  "statsRangeLast180Days": "Last 180 Days",
-  "statsRangeLast30Days": "Last 30D ays",
-  "statsRangeLast7Days": "Last 7 Days",
-  "statsRangeAll": "All"
+  "timeRangeLast365Days": "Last 365 Days",
+  "timeRangeLast180Days": "Last 180 Days",
+  "timeRangeLast30Days": "Last 30 Days",
+  "timeRangeLast7Days": "Last 7 Days",
+  "timeRangeAll": "All Times"
 }

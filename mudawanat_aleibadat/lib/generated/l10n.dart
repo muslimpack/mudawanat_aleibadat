@@ -521,50 +521,50 @@ class S {
   }
 
   /// `Last 365 Days`
-  String get statsRangeLast365Days {
+  String get timeRangeLast365Days {
     return Intl.message(
       'Last 365 Days',
-      name: 'statsRangeLast365Days',
+      name: 'timeRangeLast365Days',
       desc: '',
       args: [],
     );
   }
 
   /// `Last 180 Days`
-  String get statsRangeLast180Days {
+  String get timeRangeLast180Days {
     return Intl.message(
       'Last 180 Days',
-      name: 'statsRangeLast180Days',
+      name: 'timeRangeLast180Days',
       desc: '',
       args: [],
     );
   }
 
-  /// `Last 30D ays`
-  String get statsRangeLast30Days {
+  /// `Last 30 Days`
+  String get timeRangeLast30Days {
     return Intl.message(
-      'Last 30D ays',
-      name: 'statsRangeLast30Days',
+      'Last 30 Days',
+      name: 'timeRangeLast30Days',
       desc: '',
       args: [],
     );
   }
 
   /// `Last 7 Days`
-  String get statsRangeLast7Days {
+  String get timeRangeLast7Days {
     return Intl.message(
       'Last 7 Days',
-      name: 'statsRangeLast7Days',
+      name: 'timeRangeLast7Days',
       desc: '',
       args: [],
     );
   }
 
-  /// `All`
-  String get statsRangeAll {
+  /// `All Times`
+  String get timeRangeAll {
     return Intl.message(
-      'All',
-      name: 'statsRangeAll',
+      'All Times',
+      name: 'timeRangeAll',
       desc: '',
       args: [],
     );

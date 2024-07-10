@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mudawanat_aleibadat/src/core/constants/constants.dart';
 import 'package:mudawanat_aleibadat/src/core/utils/print.dart';
-import 'package:mudawanat_aleibadat/src/features/daily_statistics/data/models/stats_range.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_statistics/data/models/time_range.dart';
 
 class LocalStorageRepo {
   static late final Box _box;
@@ -112,13 +112,13 @@ class LocalStorageRepo {
   ///* ******* timeRange ******* */
 
   static const String _statisticsTimeRangeKey = "statisticsTimeRange";
-  static StatsRange getStatisticsTimeRange() {
+  static TimeRange getStatisticsTimeRange() {
     final value = _box.get(_statisticsTimeRangeKey) as String?;
-    if (value == null) return StatsRange.all;
-    return StatsRange.values.byName(value);
+    if (value == null) return TimeRange.all;
+    return TimeRange.values.byName(value);
   }
 
-  static Future changeStatisticsTimeRange(StatsRange timeRange) async {
+  static Future changeStatisticsTimeRange(TimeRange timeRange) async {
     return _box.put(_statisticsTimeRangeKey, timeRange.name);
   }
 }

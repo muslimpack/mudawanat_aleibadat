@@ -12,7 +12,7 @@ final class DeedsStatisticsLoading extends DeedsStatisticsState {}
 
 final class DeedsStatisticsLoaded extends DeedsStatisticsState {
   final int totalDays;
-  final StatsRange timeRange;
+  final TimeRange timeRange;
   final List<PlotCardItem> additionalSeparatedSpots;
   final List<PlotCardItem> obligatorySeparatedSpots;
   final List<FlSpot> obligatorySpots;
@@ -46,7 +46,7 @@ final class DeedsStatisticsLoaded extends DeedsStatisticsState {
 
   DeedsStatisticsLoaded copyWith({
     int? totalDays,
-    StatsRange? timeRange,
+    TimeRange? timeRange,
     List<PlotCardItem>? additionalSeparatedSpots,
     List<PlotCardItem>? obligatorySeparatedSpots,
     List<FlSpot>? obligatorySpots,

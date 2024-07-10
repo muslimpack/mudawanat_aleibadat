@@ -9,7 +9,7 @@ import 'package:mudawanat_aleibadat/src/core/repos/local_storage_repo.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/daily_deeds_repo.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/controller/bloc/deeds_calender_bloc.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_statistics/data/models/plot_card_item.dart';
-import 'package:mudawanat_aleibadat/src/features/daily_statistics/data/models/stats_range.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_statistics/data/models/time_range.dart';
 
 part 'deeds_statistics_state.dart';
 
@@ -24,11 +24,11 @@ class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
   }
 
   Future init() async {
-    final StatsRange timeRange = LocalStorageRepo.getStatisticsTimeRange();
+    final TimeRange timeRange = LocalStorageRepo.getStatisticsTimeRange();
     await loadData(timeRange);
   }
 
-  Future loadData(StatsRange timeRange) async {
+  Future loadData(TimeRange timeRange) async {
     final totalDays = await dailyDeedsRepo.daysCount();
 
     final List<Future> futures = [
@@ -56,7 +56,7 @@ class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
     );
   }
 
-  Future<List<FlSpot>> _loadObligatory(StatsRange timeRange) async {
+  Future<List<FlSpot>> _loadObligatory(TimeRange timeRange) async {
     final List<FlSpot> spots = [];
     final map = await dailyDeedsRepo.getMapDateColumn(
       obligatoryColumn,
@@ -73,7 +73,7 @@ class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
   }
 
   Future<List<PlotCardItem>> _loadSeparatedObligatory(
-    StatsRange timeRange,
+    TimeRange timeRange,
   ) async {
     final List<PlotCardItem> spots = [];
 
@@ -98,7 +98,7 @@ class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
     return spots;
   }
 
-  Future<List<FlSpot>> _loadAdditional(StatsRange timeRange) async {
+  Future<List<FlSpot>> _loadAdditional(TimeRange timeRange) async {
     final List<FlSpot> spots = [];
     final map = await dailyDeedsRepo.getMapDateColumn(
       additionalColumn,
@@ -115,7 +115,7 @@ class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
   }
 
   Future<List<PlotCardItem>> _loadSeparatedAdditional(
-    StatsRange timeRange,
+    TimeRange timeRange,
   ) async {
     final List<PlotCardItem> spots = [];
 
@@ -138,7 +138,7 @@ class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
     return spots;
   }
 
-  Future<List<FlSpot>> _loadQuranData(StatsRange timeRange) async {
+  Future<List<FlSpot>> _loadQuranData(TimeRange timeRange) async {
     final List<FlSpot> spots = [];
     final quranMap = await dailyDeedsRepo
         .getMapDateColumn(["quran"], timeRange.daysNumber());
@@ -151,7 +151,7 @@ class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
     return spots;
   }
 
-  Future<List<FlSpot>> _loadAzkarData(StatsRange timeRange) async {
+  Future<List<FlSpot>> _loadAzkarData(TimeRange timeRange) async {
     final List<FlSpot> spots = [];
 
     final azkarMap = await dailyDeedsRepo
@@ -165,7 +165,7 @@ class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
     return spots;
   }
 
-  Future changeTimeRange(StatsRange timeRange) async {
+  Future changeTimeRange(TimeRange timeRange) async {
     final state = this.state;
     if (state is! DeedsStatisticsLoaded) return;
 

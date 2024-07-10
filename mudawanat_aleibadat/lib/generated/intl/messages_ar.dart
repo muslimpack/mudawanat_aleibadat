@@ -73,16 +73,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "sourceCodeLink":
             MessageLookupByLibrary.simpleMessage("الكود المصدري للتطبيق"),
         "statistics": MessageLookupByLibrary.simpleMessage("إحصائيات"),
-        "statsRangeAll": MessageLookupByLibrary.simpleMessage("جميع الأوقات"),
-        "statsRangeLast180Days":
-            MessageLookupByLibrary.simpleMessage("آخر 180 يوما"),
-        "statsRangeLast30Days":
-            MessageLookupByLibrary.simpleMessage("آخر 30 يوما"),
-        "statsRangeLast365Days":
-            MessageLookupByLibrary.simpleMessage("آخر 365 يوما"),
-        "statsRangeLast7Days":
-            MessageLookupByLibrary.simpleMessage("آخر 7 أيام"),
         "summary": MessageLookupByLibrary.simpleMessage("ملخص"),
+        "timeRangeAll": MessageLookupByLibrary.simpleMessage("جميع الأوقات"),
+        "timeRangeLast180Days":
+            MessageLookupByLibrary.simpleMessage("آخر 180 يوما"),
+        "timeRangeLast30Days":
+            MessageLookupByLibrary.simpleMessage("آخر 30 يوما"),
+        "timeRangeLast365Days":
+            MessageLookupByLibrary.simpleMessage("آخر 365 يوما"),
+        "timeRangeLast7Days":
+            MessageLookupByLibrary.simpleMessage("آخر 7 أيام"),
         "timesDone": MessageLookupByLibrary.simpleMessage("مرات القضاء"),
         "timesMissed": MessageLookupByLibrary.simpleMessage("مرات الفائت"),
         "useMaterial3":

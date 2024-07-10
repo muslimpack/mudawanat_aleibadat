@@ -348,7 +348,6 @@ class DailyDeedsRepo {
 ) AS subquery
     """
         : tableName;
-    appPrint(daysCondition);
     final List<Map<String, dynamic>> rows = await db.rawQuery('''
       SELECT
         date,

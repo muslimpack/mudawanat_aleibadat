@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mudawanat_aleibadat/generated/l10n.dart';
 import 'package:mudawanat_aleibadat/src/core/shared/loading.dart';
-import 'package:mudawanat_aleibadat/src/features/daily_statistics/data/models/stats_range.dart';
+import 'package:mudawanat_aleibadat/src/features/daily_statistics/data/models/time_range.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/controller/cubit/deeds_statistics_cubit.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/screens/additional_stats_view.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/screens/awrad_stats_view.dart';
@@ -45,7 +45,7 @@ class DailyDeedsStatisticsView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    DropdownButton<StatsRange?>(
+                    DropdownButton<TimeRange?>(
                       value: state.timeRange,
                       underline: const SizedBox(),
                       onChanged: (value) {
@@ -54,7 +54,7 @@ class DailyDeedsStatisticsView extends StatelessWidget {
                             .read<DeedsStatisticsCubit>()
                             .changeTimeRange(value);
                       },
-                      items: StatsRange.values
+                      items: TimeRange.values
                           .map(
                             (e) => DropdownMenuItem(
                               value: e,
