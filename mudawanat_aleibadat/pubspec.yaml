@@ -3,7 +3,7 @@ description: "Track your daily deeds."
 
 publish_to: "none"
 
-version: 0.6.0+9
+version: 0.6.01+10
 
 environment:
   sdk: ">=3.5.1 <4.0.0"
