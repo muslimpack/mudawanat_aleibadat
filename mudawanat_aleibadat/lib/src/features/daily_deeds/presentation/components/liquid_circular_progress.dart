@@ -24,7 +24,7 @@ class CircularLiquidProgress extends StatelessWidget {
           // valueColor: AlwaysStoppedAnimation(valueColor),
           borderWidth: 2,
           borderColor: Theme.of(context).primaryColor,
-          backgroundColor: valueColor.withOpacity(.3),
+          backgroundColor: valueColor.withAlpha((.3 * 255).toInt()),
           center: FittedBox(
             child: Padding(
               padding: const EdgeInsets.all(5),

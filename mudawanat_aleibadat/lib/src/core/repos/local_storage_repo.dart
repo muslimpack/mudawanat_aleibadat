@@ -19,15 +19,15 @@ class LocalStorageRepo {
     return _box.get(appFolderPathKey) as String?;
   }
 
-  static Future<void> changeAppFolderPath({required String value}) async =>
+  static Future<void> changeAppFolderPath({required String value}) =>
       _box.put(appFolderPathKey, value);
 
   ///* ******* desktop Window Size ******* */
   static const String desktopWindowSizeKey = "desktopWindowSize";
   static Size? get desktopWindowSize {
     try {
-      final data = jsonDecode(_box.get(desktopWindowSizeKey) as String? ?? "{}")
-          as Map<String, dynamic>;
+      final data =
+          jsonDecode(_box.get(desktopWindowSizeKey) as String? ?? "{}") as Map<String, dynamic>;
 
       final double width = (data['width'] as num).toDouble();
       final double height = (data['height'] as num).toDouble();
@@ -40,7 +40,7 @@ class LocalStorageRepo {
     return null;
   }
 
-  static Future<void> changeDesktopWindowSize(Size value) async {
+  static Future<void> changeDesktopWindowSize(Size value) {
     final screenSize = {
       'width': value.width,
       'height': value.height,
@@ -54,9 +54,7 @@ class LocalStorageRepo {
 
   static Brightness getBrightness() {
     final String? brightness = _box.get(brightnessKey) as String?;
-    return brightness == Brightness.light.toString()
-        ? Brightness.light
-        : Brightness.dark;
+    return brightness == Brightness.light.toString() ? Brightness.light : Brightness.dark;
   }
 
   static Future setBrightness(Brightness brightness) async {
@@ -93,7 +91,7 @@ class LocalStorageRepo {
   }
 
   static Future setColor(Color color) async {
-    await _box.put(themeColorKey, color.value);
+    await _box.put(themeColorKey, color.toARGB32());
   }
 
   ///* ******* app language ******* */
@@ -105,7 +103,7 @@ class LocalStorageRepo {
     return Locale(value);
   }
 
-  static Future changeLocale(Locale locale) async {
+  static Future changeLocale(Locale locale) {
     return _box.put(_localeKey, locale.languageCode);
   }
 
@@ -118,7 +116,7 @@ class LocalStorageRepo {
     return TimeRange.values.byName(value);
   }
 
-  static Future changeStatisticsTimeRange(TimeRange timeRange) async {
+  static Future changeStatisticsTimeRange(TimeRange timeRange) {
     return _box.put(_statisticsTimeRangeKey, timeRange.name);
   }
 }

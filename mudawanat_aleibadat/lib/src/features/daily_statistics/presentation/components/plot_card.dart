@@ -22,7 +22,7 @@ class PlotCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final uniqueColor = ColorGenerator.highContrastByKey(key: label + label);
     return Card(
-      color: uniqueColor.withOpacity(.2),
+      color: uniqueColor.withAlpha((.2 * 255).toInt()),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -57,7 +57,7 @@ class PlotCard extends StatelessWidget {
                       spots: spots,
                       belowBarData: BarAreaData(
                         show: true,
-                        color: uniqueColor.withOpacity(0.2),
+                        color: uniqueColor.withAlpha((.2 * 255).toInt()),
                       ),
                     ),
                   ],

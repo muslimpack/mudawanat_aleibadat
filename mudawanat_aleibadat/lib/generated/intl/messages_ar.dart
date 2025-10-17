@@ -22,72 +22,71 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "appColor": MessageLookupByLibrary.simpleMessage("لون التطبيق"),
-        "appLanguage": MessageLookupByLibrary.simpleMessage("لغة التطبيق"),
-        "appTheme": MessageLookupByLibrary.simpleMessage("مظهر التطبيق"),
-        "appTitle": MessageLookupByLibrary.simpleMessage("مدونة العبادات"),
-        "appVersion": MessageLookupByLibrary.simpleMessage("إصدار التطبيق"),
-        "awrad": MessageLookupByLibrary.simpleMessage("أوراد"),
-        "awrad_azkar": MessageLookupByLibrary.simpleMessage("أذكار"),
-        "awrad_quran": MessageLookupByLibrary.simpleMessage("ورد القرآن"),
-        "calender": MessageLookupByLibrary.simpleMessage("التقويم"),
-        "close": MessageLookupByLibrary.simpleMessage("اغلاق"),
-        "count": MessageLookupByLibrary.simpleMessage("الإجمالي"),
-        "dailyDeeds": MessageLookupByLibrary.simpleMessage("أعمال اليوم"),
-        "darkMode": MessageLookupByLibrary.simpleMessage("المظهر الليلي"),
-        "done": MessageLookupByLibrary.simpleMessage("تم"),
-        "fasting": MessageLookupByLibrary.simpleMessage("الصوم"),
-        "general": MessageLookupByLibrary.simpleMessage("عام"),
-        "last_update": MessageLookupByLibrary.simpleMessage("آخر تحديث"),
-        "missedDeeds": MessageLookupByLibrary.simpleMessage("الأعمال الفائتة"),
-        "moreProductsFromUs":
-            MessageLookupByLibrary.simpleMessage("المزيد من إصداراتنا"),
-        "prayer_additional": MessageLookupByLibrary.simpleMessage("النوافل"),
-        "prayer_asr": MessageLookupByLibrary.simpleMessage("العصر"),
-        "prayer_asr_pre": MessageLookupByLibrary.simpleMessage("العصر القبليه"),
-        "prayer_dhuhr": MessageLookupByLibrary.simpleMessage("الظهر"),
-        "prayer_dhuhr_after":
-            MessageLookupByLibrary.simpleMessage("الظهر البعديه"),
-        "prayer_dhuhr_pre":
-            MessageLookupByLibrary.simpleMessage("الظهر القبليه"),
-        "prayer_doha": MessageLookupByLibrary.simpleMessage("الضحى"),
-        "prayer_fajr": MessageLookupByLibrary.simpleMessage("الفجر"),
-        "prayer_fajr_pre": MessageLookupByLibrary.simpleMessage("ركعتا الفجر"),
-        "prayer_ishaa": MessageLookupByLibrary.simpleMessage("العشاء"),
-        "prayer_ishaa_after":
-            MessageLookupByLibrary.simpleMessage("العشاء البعديه"),
-        "prayer_ishaa_pre":
-            MessageLookupByLibrary.simpleMessage("العشاء القبليه"),
-        "prayer_maghrib": MessageLookupByLibrary.simpleMessage("المغرب"),
-        "prayer_maghrib_after":
-            MessageLookupByLibrary.simpleMessage("المغرب البعدية"),
-        "prayer_maghrib_pre":
-            MessageLookupByLibrary.simpleMessage("المغرب القبلية"),
-        "prayer_name": MessageLookupByLibrary.simpleMessage("اسم الصلاة"),
-        "prayer_night_prayer":
-            MessageLookupByLibrary.simpleMessage("قيام الليل"),
-        "prayer_obligatory": MessageLookupByLibrary.simpleMessage("الفروض"),
-        "select": MessageLookupByLibrary.simpleMessage("تعيين"),
-        "selectColor": MessageLookupByLibrary.simpleMessage("اختر لونا"),
-        "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
-        "sourceCodeLink":
-            MessageLookupByLibrary.simpleMessage("الكود المصدري للتطبيق"),
-        "statistics": MessageLookupByLibrary.simpleMessage("إحصائيات"),
-        "summary": MessageLookupByLibrary.simpleMessage("ملخص"),
-        "timeRangeAll": MessageLookupByLibrary.simpleMessage("جميع الأوقات"),
-        "timeRangeLast180Days":
-            MessageLookupByLibrary.simpleMessage("آخر 180 يوما"),
-        "timeRangeLast30Days":
-            MessageLookupByLibrary.simpleMessage("آخر 30 يوما"),
-        "timeRangeLast365Days":
-            MessageLookupByLibrary.simpleMessage("آخر 365 يوما"),
-        "timeRangeLast7Days":
-            MessageLookupByLibrary.simpleMessage("آخر 7 أيام"),
-        "timesDone": MessageLookupByLibrary.simpleMessage("مرات القضاء"),
-        "timesMissed": MessageLookupByLibrary.simpleMessage("مرات الفائت"),
-        "useMaterial3":
-            MessageLookupByLibrary.simpleMessage("استخدام Material3"),
-        "useOldTheme":
-            MessageLookupByLibrary.simpleMessage("استخدم المظهر القديم")
-      };
+    "appColor": MessageLookupByLibrary.simpleMessage("لون التطبيق"),
+    "appLanguage": MessageLookupByLibrary.simpleMessage("لغة التطبيق"),
+    "appTheme": MessageLookupByLibrary.simpleMessage("مظهر التطبيق"),
+    "appTitle": MessageLookupByLibrary.simpleMessage("مدونة العبادات"),
+    "appVersion": MessageLookupByLibrary.simpleMessage("إصدار التطبيق"),
+    "awrad": MessageLookupByLibrary.simpleMessage("أوراد"),
+    "awrad_azkar": MessageLookupByLibrary.simpleMessage("أذكار"),
+    "awrad_quran": MessageLookupByLibrary.simpleMessage("ورد القرآن"),
+    "calender": MessageLookupByLibrary.simpleMessage("التقويم"),
+    "close": MessageLookupByLibrary.simpleMessage("اغلاق"),
+    "count": MessageLookupByLibrary.simpleMessage("الإجمالي"),
+    "dailyDeeds": MessageLookupByLibrary.simpleMessage("أعمال اليوم"),
+    "darkMode": MessageLookupByLibrary.simpleMessage("المظهر الليلي"),
+    "done": MessageLookupByLibrary.simpleMessage("تم"),
+    "fasting": MessageLookupByLibrary.simpleMessage("الصوم"),
+    "general": MessageLookupByLibrary.simpleMessage("عام"),
+    "last_update": MessageLookupByLibrary.simpleMessage("آخر تحديث"),
+    "missedDeeds": MessageLookupByLibrary.simpleMessage("الأعمال الفائتة"),
+    "moreProductsFromUs": MessageLookupByLibrary.simpleMessage(
+      "المزيد من إصداراتنا",
+    ),
+    "prayer_additional": MessageLookupByLibrary.simpleMessage("النوافل"),
+    "prayer_asr": MessageLookupByLibrary.simpleMessage("العصر"),
+    "prayer_asr_pre": MessageLookupByLibrary.simpleMessage("العصر القبليه"),
+    "prayer_dhuhr": MessageLookupByLibrary.simpleMessage("الظهر"),
+    "prayer_dhuhr_after": MessageLookupByLibrary.simpleMessage("الظهر البعديه"),
+    "prayer_dhuhr_pre": MessageLookupByLibrary.simpleMessage("الظهر القبليه"),
+    "prayer_doha": MessageLookupByLibrary.simpleMessage("الضحى"),
+    "prayer_fajr": MessageLookupByLibrary.simpleMessage("الفجر"),
+    "prayer_fajr_pre": MessageLookupByLibrary.simpleMessage("ركعتا الفجر"),
+    "prayer_ishaa": MessageLookupByLibrary.simpleMessage("العشاء"),
+    "prayer_ishaa_after": MessageLookupByLibrary.simpleMessage(
+      "العشاء البعديه",
+    ),
+    "prayer_ishaa_pre": MessageLookupByLibrary.simpleMessage("العشاء القبليه"),
+    "prayer_maghrib": MessageLookupByLibrary.simpleMessage("المغرب"),
+    "prayer_maghrib_after": MessageLookupByLibrary.simpleMessage(
+      "المغرب البعدية",
+    ),
+    "prayer_maghrib_pre": MessageLookupByLibrary.simpleMessage(
+      "المغرب القبلية",
+    ),
+    "prayer_name": MessageLookupByLibrary.simpleMessage("اسم الصلاة"),
+    "prayer_night_prayer": MessageLookupByLibrary.simpleMessage("قيام الليل"),
+    "prayer_obligatory": MessageLookupByLibrary.simpleMessage("الفروض"),
+    "select": MessageLookupByLibrary.simpleMessage("تعيين"),
+    "selectColor": MessageLookupByLibrary.simpleMessage("اختر لونا"),
+    "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+    "sourceCodeLink": MessageLookupByLibrary.simpleMessage(
+      "الكود المصدري للتطبيق",
+    ),
+    "statistics": MessageLookupByLibrary.simpleMessage("إحصائيات"),
+    "summary": MessageLookupByLibrary.simpleMessage("ملخص"),
+    "timeRangeAll": MessageLookupByLibrary.simpleMessage("جميع الأوقات"),
+    "timeRangeLast180Days": MessageLookupByLibrary.simpleMessage(
+      "آخر 180 يوما",
+    ),
+    "timeRangeLast30Days": MessageLookupByLibrary.simpleMessage("آخر 30 يوما"),
+    "timeRangeLast365Days": MessageLookupByLibrary.simpleMessage(
+      "آخر 365 يوما",
+    ),
+    "timeRangeLast7Days": MessageLookupByLibrary.simpleMessage("آخر 7 أيام"),
+    "timesDone": MessageLookupByLibrary.simpleMessage("مرات القضاء"),
+    "timesMissed": MessageLookupByLibrary.simpleMessage("مرات الفائت"),
+    "useMaterial3": MessageLookupByLibrary.simpleMessage("استخدام Material3"),
+    "useOldTheme": MessageLookupByLibrary.simpleMessage("استخدم المظهر القديم"),
+  };
 }

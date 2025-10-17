@@ -58,7 +58,7 @@ class DailyDeedsRepo {
     );
   }
 
-  FutureOr<void> _onCreate(Database db, int version) async {
+  Future<void> _onCreate(Database db, int version) async {
     appPrint("Creating $tableName Database");
     await db.execute('''
           CREATE TABLE $tableName (
@@ -92,7 +92,7 @@ class DailyDeedsRepo {
         ''');
   }
 
-  FutureOr<void> _onUpgrade(
+  Future<void> _onUpgrade(
     Database db,
     int oldVersion,
     int newVersion,
@@ -118,7 +118,7 @@ class DailyDeedsRepo {
     }
   }
 
-  FutureOr<void> _onDowngrade(
+  Future<void> _onDowngrade(
     Database db,
     int oldVersion,
     int newVersion,
@@ -236,8 +236,7 @@ class DailyDeedsRepo {
     final Database db = await database;
 
     // Use the aggregate function MAX to get the maximum date from the 'daily_deeds' table
-    final maps =
-        await db.rawQuery('SELECT MAX(date) as maxDate FROM $tableName');
+    final maps = await db.rawQuery('SELECT MAX(date) as maxDate FROM $tableName');
 
     appPrint(maps);
 
@@ -360,8 +359,7 @@ class DailyDeedsRepo {
     final Map<DateTime, int> result = {};
 
     for (final Map<String, dynamic> row in rows) {
-      final DateTime date =
-          DateTime.fromMillisecondsSinceEpoch(row['date'] as int);
+      final DateTime date = DateTime.fromMillisecondsSinceEpoch(row['date'] as int);
       int sum = 0;
 
       for (final String columnName in columnNames) {

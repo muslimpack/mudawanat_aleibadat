@@ -68,7 +68,7 @@ class _DeedsNumTileState extends State<DeedsNumTile> {
     );
     return Card(
       clipBehavior: Clip.hardEdge,
-      color: color.withOpacity(.1),
+      color: color.withAlpha((.1 * 255).toInt()),
       child: Column(
         children: [
           ListTile(

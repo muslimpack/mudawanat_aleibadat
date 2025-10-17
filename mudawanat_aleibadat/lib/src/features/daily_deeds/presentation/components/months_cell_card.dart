@@ -11,19 +11,18 @@ class MonthCellCard extends StatelessWidget {
   final MonthCellDetails monthDetails;
   @override
   Widget build(BuildContext context) {
-    if (monthDetails.appointments.length < 5 &&
-        monthDetails.date.isBefore(DateTime.now())) {
+    if (monthDetails.appointments.length < 5 && monthDetails.date.isBefore(DateTime.now())) {
       return Container(
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.grey.withOpacity(.2),
+            color: Colors.grey.withAlpha((.2 * 255).toInt()),
             width: .5,
           ),
         ),
         padding: const EdgeInsets.all(5),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.yellow.withOpacity(.1),
+            color: Colors.yellow.withAlpha((.1 * 255).toInt()),
           ),
           child: Text(
             monthDetails.date.day.toString(),
@@ -36,8 +35,7 @@ class MonthCellCard extends StatelessWidget {
       );
     }
 
-    final List<Widget> slots =
-        monthDetails.appointments.fold([], (previousValue, e) {
+    final List<Widget> slots = monthDetails.appointments.fold([], (previousValue, e) {
       if (e is! Slot) return previousValue;
       final meeting = e;
 
@@ -67,7 +65,7 @@ class MonthCellCard extends StatelessWidget {
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         border: Border.all(
-          color: Colors.grey.withOpacity(.2),
+          color: Colors.grey.withAlpha((.2 * 255).toInt()),
           width: .5,
         ),
       ),

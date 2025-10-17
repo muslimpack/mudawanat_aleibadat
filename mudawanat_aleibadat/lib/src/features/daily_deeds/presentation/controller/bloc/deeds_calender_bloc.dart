@@ -27,7 +27,7 @@ class DeedsCalenderBloc extends Bloc<DeedsCalenderEvent, DeedsCalenderState> {
     on<DeedsCalenderEditEvent>(_edit);
   }
 
-  FutureOr<void> _start(
+  Future<void> _start(
     DeedsCalenderStartEvent event,
     Emitter<DeedsCalenderState> emit,
   ) async {
@@ -38,7 +38,7 @@ class DeedsCalenderBloc extends Bloc<DeedsCalenderEvent, DeedsCalenderState> {
     add(DeedsCalenderLoadDataEvent());
   }
 
-  FutureOr<void> _loadData(
+  Future<void> _loadData(
     DeedsCalenderLoadDataEvent event,
     Emitter<DeedsCalenderState> emit,
   ) async {
@@ -84,7 +84,7 @@ class DeedsCalenderBloc extends Bloc<DeedsCalenderEvent, DeedsCalenderState> {
     );
   }
 
-  FutureOr<void> _onTap(
+  Future<void> _onTap(
     DeedsCalenderOnTapEvent event,
     Emitter<DeedsCalenderState> emit,
   ) async {
@@ -105,7 +105,7 @@ class DeedsCalenderBloc extends Bloc<DeedsCalenderEvent, DeedsCalenderState> {
     );
   }
 
-  FutureOr<void> _onLongTap(
+  Future<void> _onLongTap(
     DeedsCalenderOnLongTapEvent event,
     Emitter<DeedsCalenderState> emit,
   ) async {
@@ -138,7 +138,7 @@ class DeedsCalenderBloc extends Bloc<DeedsCalenderEvent, DeedsCalenderState> {
     );
   }
 
-  FutureOr<void> _edit(
+  Future<void> _edit(
     DeedsCalenderEditEvent event,
     Emitter<DeedsCalenderState> emit,
   ) async {
