@@ -6,7 +6,6 @@ import 'package:mudawanat_aleibadat/src/core/extension/extension_platform.dart';
 import 'package:mudawanat_aleibadat/src/core/managers/file_manager.dart';
 import 'package:mudawanat_aleibadat/src/core/repos/local_storage_repo.dart';
 import 'package:mudawanat_aleibadat/src/core/utils/app_bloc_observer.dart';
-import 'package:mudawanat_aleibadat/src/core/utils/device_bars.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:window_manager/window_manager.dart';
@@ -24,8 +23,6 @@ Future<void> initServices() async {
   await initHive();
   await LocalStorageRepo.init();
   await FileManager.init();
-
-  deviceBarsTransparent();
 
   if (PlatformExtension.isDesktop) {
     await windowManager.ensureInitialized();
