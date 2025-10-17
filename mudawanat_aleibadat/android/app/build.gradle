@@ -47,6 +47,8 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
+    flavorDimensions "default"
+
     defaultConfig {
         applicationId "com.hassaneltantawy.mudawanat_aleibadat"
         // You can update the following values to match your application needs.
@@ -68,6 +70,17 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
+        }
+    }
+
+    productFlavors {
+        prod {
+            dimension "default"
+        }
+        dev {
+            dimension "default"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
         }
     }
 }
