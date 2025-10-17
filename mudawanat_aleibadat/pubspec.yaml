@@ -43,8 +43,7 @@ flutter:
   generate: true
 
   assets:
-    - assets/images/
-    - assets/sounds/
+    - assets/fonts/
 
   fonts:
     - family: Cairo
