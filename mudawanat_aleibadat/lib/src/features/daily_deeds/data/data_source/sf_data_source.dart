@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mudawanat_aleibadat/generated/l10n.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/daily_deeds_repo.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/daily_deeds.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/daily_deeds_extension.dart';
@@ -48,9 +49,11 @@ class SlotsDataSource extends CalendarDataSource {
 
 class SlotsDataSourceLoadMore extends SlotsDataSource {
   final Map<DateTime, bool> dataCollection;
+  final S s;
   SlotsDataSourceLoadMore(
     super.source,
     this.dataCollection,
+    this.s,
   );
 
   @override
@@ -78,7 +81,7 @@ class SlotsDataSourceLoadMore extends SlotsDataSource {
     dataCollection.addAll(map);
 
     /// Create Slots of Deeds
-    final List<Slot> slots = deedsToAdd.convertToSlot();
+    final List<Slot> slots = deedsToAdd.convertToSlot(s);
 
     /// Add to sfCalender
     appointments!.addAll(slots);
