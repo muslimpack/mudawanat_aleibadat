@@ -2,24 +2,30 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ruqayyah (debug, choose flavor)",
+      "name": "mudawana (debug, flavor)",
       "request": "launch",
       "type": "dart",
-      "args": ["--flavor", "${input:flavor}"]
+      // "args": ["--flavor", "${input:flavor}"]
     },
     {
-      "name": "ruqayyah (profile, choose flavor)",
+      "name": "mudawana (profile, flavor)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile",
-      "args": ["--flavor", "${input:flavor}"]
+      "args": [
+        "--flavor",
+        "${input:flavor}"
+      ]
     },
     {
-      "name": "ruqayyah (release, choose flavor)",
+      "name": "mudawana (release, flavor)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release",
-      "args": ["--flavor", "${input:flavor}"]
+      "args": [
+        "--flavor",
+        "${input:flavor}"
+      ]
     }
   ],
   "inputs": [
@@ -27,7 +33,10 @@
       "id": "flavor",
       "type": "pickString",
       "description": "Select a build flavor",
-      "options": ["dev", "prod"],
+      "options": [
+        "dev",
+        "prod"
+      ],
       "default": "dev"
     }
   ]
