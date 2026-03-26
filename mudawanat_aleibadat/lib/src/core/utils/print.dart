@@ -7,7 +7,7 @@ void appPrint(Object? object) {
 void printColor(Object? object, {int color = 0}) {
   developer.log(
     colorText(object, color: color),
-    name: colorText("[Mudawanat]", color: color),
+    name: colorText("Mudawanat", color: color),
   );
 }
 
