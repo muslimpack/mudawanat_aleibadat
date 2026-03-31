@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mudawanat_aleibadat/generated/l10n.dart';
+import 'package:mudawanat_aleibadat/src/core/extension/extension_string.dart';
 import 'package:mudawanat_aleibadat/src/core/shared/loading.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/components/liquid_circular_progress.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_summary/presentation/components/stats_card_header.dart';
@@ -29,7 +30,7 @@ class DailyDeedsSummaryView extends StatelessWidget {
                       (e) => Expanded(
                         child: CircularLiquidProgress(
                           value: e.percentage,
-                          child: e.label,
+                          child: e.label.readableColumnName(S.of(context)),
                         ),
                       ),
                     )
@@ -49,7 +50,7 @@ class DailyDeedsSummaryView extends StatelessWidget {
                       ),
                       ...state.awradElements.map(
                         (e) => StatsTile(
-                          label: e.label,
+                          label: e.label.readableColumnName(S.of(context)),
                           times: e.times,
                           value: e.percentage,
                           count: e.count,
@@ -71,7 +72,8 @@ class DailyDeedsSummaryView extends StatelessWidget {
                         ],
                       ),
                       StatsTile(
-                        label: state.fastingElement.label,
+                        label: state.fastingElement.label
+                            .readableColumnName(S.of(context)),
                         times: state.fastingElement.times,
                         value: 1,
                       ),
@@ -92,7 +94,7 @@ class DailyDeedsSummaryView extends StatelessWidget {
                       ),
                       ...state.obligatoryElements.map(
                         (e) => StatsTile(
-                          label: e.label,
+                          label: e.label.readableColumnName(S.of(context)),
                           times: e.times,
                           value: e.percentage,
                         ),
@@ -115,7 +117,7 @@ class DailyDeedsSummaryView extends StatelessWidget {
                       ),
                       ...state.additionalElements.map(
                         (e) => StatsTile(
-                          label: e.label,
+                          label: e.label.readableColumnName(S.of(context)),
                           times: e.times,
                           value: e.percentage,
                           count: e.count,

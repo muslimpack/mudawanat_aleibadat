@@ -1,61 +1,61 @@
 import 'package:mudawanat_aleibadat/generated/l10n.dart';
 
 extension StringExtension on String {
-  String readableColumnName() {
+  String readableColumnName(S s) {
     switch (this) {
       case "fasting":
-        return S.current.fasting;
+        return s.fasting;
 
       case "fajr":
-        return S.current.prayer_fajr;
+        return s.prayer_fajr;
 
       case "dhuhr":
-        return S.current.prayer_dhuhr;
+        return s.prayer_dhuhr;
 
       case "asr":
-        return S.current.prayer_asr;
+        return s.prayer_asr;
 
       case "maghrib":
-        return S.current.prayer_maghrib;
+        return s.prayer_maghrib;
 
       case "ishaa":
-        return S.current.prayer_ishaa;
+        return s.prayer_ishaa;
 
       case "fajrPre":
-        return S.current.prayer_fajr_pre;
+        return s.prayer_fajr_pre;
 
       case "dhuhrPre":
-        return S.current.prayer_dhuhr_pre;
+        return s.prayer_dhuhr_pre;
 
       case "dhuhrAfter":
-        return S.current.prayer_dhuhr_after;
+        return s.prayer_dhuhr_after;
 
       case "asrPre":
-        return S.current.prayer_asr_pre;
+        return s.prayer_asr_pre;
 
       case "maghribPre":
-        return S.current.prayer_maghrib_pre;
+        return s.prayer_maghrib_pre;
 
       case "maghribAfter":
-        return S.current.prayer_maghrib_after;
+        return s.prayer_maghrib_after;
 
       case "ishaaPre":
-        return S.current.prayer_ishaa_pre;
+        return s.prayer_ishaa_pre;
 
       case "ishaaAfter":
-        return S.current.prayer_ishaa_after;
+        return s.prayer_ishaa_after;
 
       case "doha":
-        return S.current.prayer_doha;
+        return s.prayer_doha;
 
       case "nightPrayer":
-        return S.current.prayer_night_prayer;
+        return s.prayer_night_prayer;
 
       case "quran":
-        return S.current.awrad_quran;
+        return s.awrad_quran;
 
       case "azkar":
-        return S.current.awrad_azkar;
+        return s.awrad_azkar;
 
       default:
         return "";

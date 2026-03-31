@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:mudawanat_aleibadat/src/core/constants/deeds_columns.dart';
-import 'package:mudawanat_aleibadat/src/core/extension/extension_string.dart';
 import 'package:mudawanat_aleibadat/src/core/repos/local_storage_repo.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/data_source/daily_deeds_repo.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/presentation/controller/bloc/deeds_calender_bloc.dart';
@@ -90,7 +89,7 @@ class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
 
       spots.add(
         PlotCardItem(
-          label: element.readableColumnName(),
+          label: element,
           spots: spots0,
         ),
       );
@@ -131,7 +130,7 @@ class DeedsStatisticsCubit extends Cubit<DeedsStatisticsState> {
       });
 
       spots.add(
-        PlotCardItem(label: element.readableColumnName(), spots: spots0),
+        PlotCardItem(label: element, spots: spots0),
       );
     }
 

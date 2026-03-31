@@ -11,27 +11,23 @@ final class DeedsCalenderLoadingState extends DeedsCalenderState {}
 
 final class DeedsCalenderLoadedState extends DeedsCalenderState {
   final Map<DateTime, bool> dataCollection;
-  final List<Slot> slots;
-  final CalendarDataSource dataSource;
+  final List<DailyDeeds> deeds;
 
   const DeedsCalenderLoadedState({
     required this.dataCollection,
-    required this.slots,
-    required this.dataSource,
+    required this.deeds,
   });
 
   DeedsCalenderLoadedState copyWith({
     Map<DateTime, bool>? dataCollection,
-    List<Slot>? slots,
-    CalendarDataSource? dataSource,
+    List<DailyDeeds>? deeds,
   }) {
     return DeedsCalenderLoadedState(
       dataCollection: dataCollection ?? this.dataCollection,
-      slots: slots ?? this.slots,
-      dataSource: dataSource ?? this.dataSource,
+      deeds: deeds ?? this.deeds,
     );
   }
 
   @override
-  List<Object> get props => [dataCollection, slots, dataSource];
+  List<Object> get props => [dataCollection, deeds];
 }

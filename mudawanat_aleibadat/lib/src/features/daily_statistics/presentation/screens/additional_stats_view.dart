@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mudawanat_aleibadat/generated/l10n.dart';
+import 'package:mudawanat_aleibadat/src/core/extension/extension_string.dart';
 import 'package:mudawanat_aleibadat/src/core/shared/loading.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/components/plot_card.dart';
 import 'package:mudawanat_aleibadat/src/features/daily_statistics/presentation/controller/cubit/deeds_statistics_cubit.dart';
@@ -25,7 +26,7 @@ class AdditionalStatsView extends StatelessWidget {
         ...state.additionalSeparatedSpots.map(
           (e) => PlotCard(
             height: 150,
-            label: e.label,
+            label: e.label.readableColumnName(S.of(context)),
             spots: e.spots,
           ),
         ),

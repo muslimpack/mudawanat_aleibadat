@@ -6,9 +6,9 @@ import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/daily_d
 import 'package:mudawanat_aleibadat/src/features/daily_deeds/data/models/slot.dart';
 
 extension DailyDeedsListExtension on List<DailyDeeds> {
-  List<Slot> convertToSlot() {
+  List<Slot> convertToSlot(S s) {
     return map(
-      (e) => e.allSlots(),
+      (e) => e.allSlots(s),
     ).fold(
       <Slot>[],
       (previousValue, element) => previousValue..addAll(element),
@@ -17,21 +17,21 @@ extension DailyDeedsListExtension on List<DailyDeeds> {
 }
 
 extension DailyDeedsExtension on DailyDeeds {
-  List<Slot> allSlots() {
+  List<Slot> allSlots(S s) {
     return [
-      ...obligatoryPrayersSlots(),
-      ...additionalPrayersSlots(),
-      ...fastSlots(),
-      ...awradSlots(),
+      ...obligatoryPrayersSlots(s),
+      ...additionalPrayersSlots(s),
+      ...fastSlots(s),
+      ...awradSlots(s),
     ]..sort((a, b) => a.order.compareTo(b.order));
   }
 
-  List<Slot> awradSlots() {
+  List<Slot> awradSlots(S s) {
     return [
       Slot(
         id: date,
         order: 1,
-        title: S.current.awrad_quran,
+        title: s.awrad_quran,
         from: date,
         to: date,
         isAllDay: true,
@@ -40,7 +40,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 2,
-        title: S.current.awrad_azkar,
+        title: s.awrad_azkar,
         from: date,
         to: date,
         isAllDay: true,
@@ -49,12 +49,12 @@ extension DailyDeedsExtension on DailyDeeds {
     ];
   }
 
-  List<Slot> fastSlots() {
+  List<Slot> fastSlots(S s) {
     return [
       Slot(
         id: date,
         order: 3,
-        title: S.current.fasting,
+        title: s.fasting,
         from: date,
         to: date,
         isAllDay: true,
@@ -63,7 +63,7 @@ extension DailyDeedsExtension on DailyDeeds {
     ];
   }
 
-  List<Slot> obligatoryPrayersSlots() {
+  List<Slot> obligatoryPrayersSlots(S s) {
     final PrayerTime prayerTime = PrayerTime.instance;
     final List<Slot> slots = <Slot>[];
     final DateTime today = date;
@@ -72,7 +72,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 5,
-        title: S.current.prayer_fajr,
+        title: s.prayer_fajr,
         from: today.setTime(prayerTime.fajr),
         to: today.setTime(
           prayerTime.fajr.add(prayerTime.fajrDuration),
@@ -85,7 +85,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 10,
-        title: S.current.prayer_dhuhr,
+        title: s.prayer_dhuhr,
         from: today.setTime(prayerTime.dhuhr),
         to: today.setTime(
           prayerTime.dhuhr.add(prayerTime.dhuhrDuration),
@@ -97,7 +97,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 15,
-        title: S.current.prayer_asr,
+        title: s.prayer_asr,
         from: today.setTime(prayerTime.asr),
         to: today.setTime(
           prayerTime.asr.add(prayerTime.asrDuration),
@@ -109,7 +109,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 20,
-        title: S.current.prayer_maghrib,
+        title: s.prayer_maghrib,
         from: today.setTime(prayerTime.maghrib),
         to: today.setTime(
           prayerTime.maghrib.add(prayerTime.maghribDuration),
@@ -121,7 +121,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 25,
-        title: S.current.prayer_ishaa,
+        title: s.prayer_ishaa,
         from: today.setTime(prayerTime.isha),
         to: today.setTime(
           prayerTime.isha.add(prayerTime.ishaDuration),
@@ -133,7 +133,7 @@ extension DailyDeedsExtension on DailyDeeds {
     return slots;
   }
 
-  List<Slot> additionalPrayersSlots() {
+  List<Slot> additionalPrayersSlots(S s) {
     final PrayerTime prayerTime = PrayerTime.instance;
     final List<Slot> slots = <Slot>[];
     final DateTime today = date;
@@ -142,7 +142,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 4,
-        title: S.current.prayer_fajr_pre,
+        title: s.prayer_fajr_pre,
         from: today.setTime(prayerTime.fajr),
         to: today.setTime(
           prayerTime.fajr.add(prayerTime.fajrDuration),
@@ -155,7 +155,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 6,
-        title: S.current.prayer_doha,
+        title: s.prayer_doha,
         from: today.setTime(prayerTime.doha),
         to: today.setTime(
           prayerTime.doha.add(prayerTime.dohaDuration),
@@ -168,7 +168,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 9,
-        title: S.current.prayer_dhuhr_pre,
+        title: s.prayer_dhuhr_pre,
         from: today.setTime(prayerTime.dhuhr),
         to: today.setTime(
           prayerTime.dhuhr.add(prayerTime.dhuhrDuration),
@@ -181,7 +181,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 11,
-        title: S.current.prayer_dhuhr_after,
+        title: s.prayer_dhuhr_after,
         from: today.setTime(prayerTime.dhuhr),
         to: today.setTime(
           prayerTime.dhuhr.add(prayerTime.dhuhrDuration),
@@ -194,7 +194,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 14,
-        title: S.current.prayer_asr_pre,
+        title: s.prayer_asr_pre,
         from: today.setTime(prayerTime.asr),
         to: today.setTime(
           prayerTime.asr.add(prayerTime.asrDuration),
@@ -207,7 +207,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 19,
-        title: S.current.prayer_maghrib_pre,
+        title: s.prayer_maghrib_pre,
         from: today.setTime(prayerTime.maghrib),
         to: today.setTime(
           prayerTime.maghrib.add(prayerTime.maghribDuration),
@@ -220,7 +220,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 21,
-        title: S.current.prayer_maghrib_after,
+        title: s.prayer_maghrib_after,
         from: today.setTime(prayerTime.maghrib),
         to: today.setTime(
           prayerTime.maghrib.add(prayerTime.maghribDuration),
@@ -233,7 +233,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 24,
-        title: S.current.prayer_ishaa_pre,
+        title: s.prayer_ishaa_pre,
         from: today.setTime(prayerTime.isha),
         to: today.setTime(prayerTime.isha.add(prayerTime.ishaDuration)),
         background: getColorByInt(additionalPrayers.ishaaPre),
@@ -244,7 +244,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 26,
-        title: S.current.prayer_ishaa_after,
+        title: s.prayer_ishaa_after,
         from: today.setTime(prayerTime.isha),
         to: today.setTime(prayerTime.isha.add(prayerTime.ishaDuration)),
         background: getColorByInt(additionalPrayers.ishaaAfter),
@@ -255,7 +255,7 @@ extension DailyDeedsExtension on DailyDeeds {
       Slot(
         id: date,
         order: 27,
-        title: S.current.prayer_night_prayer,
+        title: s.prayer_night_prayer,
         from: today.setTime(prayerTime.midnight),
         to: today.add(const Duration(days: 1)).setTime(prayerTime.fajr),
         background: getColorByInt(additionalPrayers.nightPrayer),

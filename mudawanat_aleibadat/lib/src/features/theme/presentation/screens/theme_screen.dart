@@ -135,7 +135,7 @@ class ThemeScreen extends StatelessWidget {
               const Divider(),
               ListTile(
                 title: Text(S.of(context).appVersion),
-                subtitle: const Text(kAppVersion),
+                subtitle: Text(kAppVersion),
               ),
             ],
           ),

@@ -11,6 +11,7 @@ import 'package:mudawanat_aleibadat/src/features/daily_summary/presentation/cont
 import 'package:mudawanat_aleibadat/src/features/home/presentation/screens/home_screen.dart';
 import 'package:mudawanat_aleibadat/src/features/theme/presentation/controller/cubit/theme_cubit.dart';
 import 'package:mudawanat_aleibadat/src/features/ui/presentation/components/desktop_window_wrapper.dart';
+import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 import 'package:window_manager/window_manager.dart';
 
 class MyApp extends StatefulWidget {
@@ -65,6 +66,7 @@ class _MyAppState extends State<MyApp> with WindowListener {
             supportedLocales: S.delegate.supportedLocales,
             localizationsDelegates: const [
               S.delegate,
+              SfGlobalLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,

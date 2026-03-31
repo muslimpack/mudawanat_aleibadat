@@ -8,7 +8,7 @@
 PRODUCT_NAME = mudawanat_aleibadat
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.hassaneltantawy.mudawanatAleibadat
+PRODUCT_BUNDLE_IDENTIFIER = com.hassaneltantawy.mudawanat-aleibadat
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2024 com.hassaneltantawy. All rights reserved.

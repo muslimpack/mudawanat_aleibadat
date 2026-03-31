@@ -3,7 +3,7 @@ description: "Track your daily deeds."
 
 publish_to: "none"
 
-version: 0.6.01+10
+version: 0.6.02+11
 
 environment:
   sdk: ">=3.5.1 <4.0.0"
@@ -24,11 +24,13 @@ dependencies:
   hive_flutter: ^1.1.0
   intl: ^0.20.2
   liquid_progress_indicator_v2: ^0.5.0
+  package_info_plus: ^8.1.0
   path: ^1.9.1
   path_provider: ^2.1.5
-  sqflite: ^2.4.2
+  sqflite: ^2.3.3+1
   sqflite_common_ffi: ^2.3.6
   syncfusion_flutter_calendar: ^31.2.2
+  syncfusion_localizations: ^31.2.18
   url_launcher: ^6.3.2
   window_manager: ^0.5.1
 
